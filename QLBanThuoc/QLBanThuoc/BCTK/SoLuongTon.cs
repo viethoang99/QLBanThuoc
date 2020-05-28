@@ -16,7 +16,7 @@ namespace QLBanThuoc.BCTK
     public partial class SoLuongTon : DevExpress.XtraEditors.XtraUserControl
     {
         frmConnection Connect = new frmConnection();
-        DataTable main = new DataTable();
+        DataTable mainTable = new DataTable();
 
         public SoLuongTon()
         {
@@ -27,8 +27,8 @@ namespace QLBanThuoc.BCTK
         {
             //Lấy danh sách thông tin thuốc vào bảng
             SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_ThongKeTon", frmConnection.connection);
-            search.Fill(main);
-            dgvKetQua.DataSource = main;
+            search.Fill(mainTable);
+            dgvKetQua.DataSource = mainTable;
         }
 
         private void SoLuongTon_Load(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace QLBanThuoc.BCTK
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Vui lòng kết nốt với máy in trước khi thực hiện thao tác này...", "Thông báo.");
+            MessageBox.Show("Đang xuất file Excel...", "Thông báo.");
         }
     }
 }

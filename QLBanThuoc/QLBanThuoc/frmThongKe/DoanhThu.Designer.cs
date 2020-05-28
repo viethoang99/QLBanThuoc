@@ -52,6 +52,8 @@
             this.cmbThang = new System.Windows.Forms.ComboBox();
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
+            this.Thang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinh)).BeginInit();
@@ -221,6 +223,9 @@
             // 
             this.dgvDoanhThu.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDoanhThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Thang,
+            this.Nam});
             this.dgvDoanhThu.Location = new System.Drawing.Point(0, 47);
             this.dgvDoanhThu.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDoanhThu.Name = "dgvDoanhThu";
@@ -324,6 +329,22 @@
             // 
             this.excelDataSource1.Name = "excelDataSource1";
             // 
+            // Thang
+            // 
+            this.Thang.DataPropertyName = "Tháng";
+            this.Thang.HeaderText = "Tháng";
+            this.Thang.MinimumWidth = 6;
+            this.Thang.Name = "Thang";
+            this.Thang.Width = 125;
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Năm";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.MinimumWidth = 6;
+            this.Nam.Name = "Nam";
+            this.Nam.Width = 125;
+            // 
             // DoanhThu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -367,5 +388,7 @@
         private System.Windows.Forms.ComboBox cmbNam;
         private DevExpress.DataAccess.Excel.ExcelDataSource excelDataSource1;
         private DevExpress.XtraEditors.SimpleButton btnExcel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Thang;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nam;
     }
 }

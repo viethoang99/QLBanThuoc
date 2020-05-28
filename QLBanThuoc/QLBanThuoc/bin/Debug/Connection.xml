@@ -11,7 +11,7 @@ Thong so co ban:
 -->
 <config>
   <costatus>true</costatus>
-  <servname>(local)</servname>
+  <servname>win7prox64</servname>
   <username />
   <password />
   <database>QLBanThuoc</database>

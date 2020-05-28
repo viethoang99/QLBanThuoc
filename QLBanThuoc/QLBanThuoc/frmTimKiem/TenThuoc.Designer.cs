@@ -33,20 +33,20 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txbTimKiem = new System.Windows.Forms.TextBox();
-            this.dateHSD = new System.Windows.Forms.DateTimePicker();
             this.btnTimKiem = new DevExpress.XtraEditors.SimpleButton();
-            this.dateNSX = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.DonGia1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HanSuDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgaySanXuat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DangThuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ThanhPhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CongDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvKetQua = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CongDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ThanhPhan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DangThuoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgaySanXuat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HanSuDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateHSD = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateNSX = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).BeginInit();
@@ -64,7 +64,7 @@
             this.groupBox1.Size = new System.Drawing.Size(876, 521);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tìm kiếm thuốc theo tên thuốc, công dụng, thành phần, dạng thuốc";
+            this.groupBox1.Text = "Tìm kiếm thuốc theo tên thuốc";
             // 
             // groupBox2
             // 
@@ -103,16 +103,6 @@
             this.txbTimKiem.Size = new System.Drawing.Size(335, 27);
             this.txbTimKiem.TabIndex = 0;
             // 
-            // dateHSD
-            // 
-            this.dateHSD.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateHSD.Location = new System.Drawing.Point(588, 23);
-            this.dateHSD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateHSD.Name = "dateHSD";
-            this.dateHSD.Size = new System.Drawing.Size(125, 27);
-            this.dateHSD.TabIndex = 6;
-            this.dateHSD.ValueChanged += new System.EventHandler(this.dateHSD_ValueChanged);
-            // 
             // btnTimKiem
             // 
             this.btnTimKiem.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
@@ -125,100 +115,6 @@
             this.btnTimKiem.TabIndex = 1;
             this.btnTimKiem.Text = "simpleButton1";
             this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
-            // dateNSX
-            // 
-            this.dateNSX.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateNSX.Location = new System.Drawing.Point(409, 25);
-            this.dateNSX.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dateNSX.Name = "dateNSX";
-            this.dateNSX.Size = new System.Drawing.Size(114, 27);
-            this.dateNSX.TabIndex = 5;
-            this.dateNSX.ValueChanged += new System.EventHandler(this.dateNSX_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(408, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 21);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Ngày sản xuất";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(584, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 21);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Hạn sử dụng";
-            // 
-            // DonGia1
-            // 
-            this.DonGia1.DataPropertyName = "DonGia1";
-            this.DonGia1.HeaderText = "Đơn giá xuất";
-            this.DonGia1.MinimumWidth = 6;
-            this.DonGia1.Name = "DonGia1";
-            this.DonGia1.Width = 125;
-            // 
-            // DonGia
-            // 
-            this.DonGia.DataPropertyName = "DonGia";
-            this.DonGia.HeaderText = "Đơn giá nhập";
-            this.DonGia.MinimumWidth = 6;
-            this.DonGia.Name = "DonGia";
-            this.DonGia.Width = 125;
-            // 
-            // HanSuDung
-            // 
-            this.HanSuDung.DataPropertyName = "HanSuDung";
-            this.HanSuDung.HeaderText = "Hạn sử dụng";
-            this.HanSuDung.MinimumWidth = 6;
-            this.HanSuDung.Name = "HanSuDung";
-            this.HanSuDung.Width = 125;
-            // 
-            // NgaySanXuat
-            // 
-            this.NgaySanXuat.DataPropertyName = "NgaySanXuat";
-            this.NgaySanXuat.HeaderText = "Ngày sản xuất";
-            this.NgaySanXuat.MinimumWidth = 6;
-            this.NgaySanXuat.Name = "NgaySanXuat";
-            this.NgaySanXuat.Width = 125;
-            // 
-            // DangThuoc
-            // 
-            this.DangThuoc.DataPropertyName = "DangThuoc";
-            this.DangThuoc.HeaderText = "Dạng thuốc";
-            this.DangThuoc.MinimumWidth = 6;
-            this.DangThuoc.Name = "DangThuoc";
-            this.DangThuoc.Width = 125;
-            // 
-            // ThanhPhan
-            // 
-            this.ThanhPhan.DataPropertyName = "ThanhPhan";
-            this.ThanhPhan.HeaderText = "Thành phần";
-            this.ThanhPhan.MinimumWidth = 6;
-            this.ThanhPhan.Name = "ThanhPhan";
-            this.ThanhPhan.Width = 125;
-            // 
-            // CongDung
-            // 
-            this.CongDung.DataPropertyName = "CongDung";
-            this.CongDung.HeaderText = "Công dụng";
-            this.CongDung.MinimumWidth = 6;
-            this.CongDung.Name = "CongDung";
-            this.CongDung.Width = 125;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "TenThuoc";
-            this.Column1.HeaderText = "Tên thuốc";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
             // 
             // dgvKetQua
             // 
@@ -241,6 +137,110 @@
             this.dgvKetQua.RowHeadersWidth = 51;
             this.dgvKetQua.Size = new System.Drawing.Size(862, 406);
             this.dgvKetQua.TabIndex = 7;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "TenThuoc";
+            this.Column1.HeaderText = "Tên thuốc";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
+            // 
+            // CongDung
+            // 
+            this.CongDung.DataPropertyName = "CongDung";
+            this.CongDung.HeaderText = "Công dụng";
+            this.CongDung.MinimumWidth = 6;
+            this.CongDung.Name = "CongDung";
+            this.CongDung.Width = 125;
+            // 
+            // ThanhPhan
+            // 
+            this.ThanhPhan.DataPropertyName = "ThanhPhan";
+            this.ThanhPhan.HeaderText = "Thành phần";
+            this.ThanhPhan.MinimumWidth = 6;
+            this.ThanhPhan.Name = "ThanhPhan";
+            this.ThanhPhan.Width = 125;
+            // 
+            // DangThuoc
+            // 
+            this.DangThuoc.DataPropertyName = "DangThuoc";
+            this.DangThuoc.HeaderText = "Dạng thuốc";
+            this.DangThuoc.MinimumWidth = 6;
+            this.DangThuoc.Name = "DangThuoc";
+            this.DangThuoc.Width = 125;
+            // 
+            // NgaySanXuat
+            // 
+            this.NgaySanXuat.DataPropertyName = "NgaySanXuat";
+            this.NgaySanXuat.HeaderText = "Ngày sản xuất";
+            this.NgaySanXuat.MinimumWidth = 6;
+            this.NgaySanXuat.Name = "NgaySanXuat";
+            this.NgaySanXuat.Width = 125;
+            // 
+            // HanSuDung
+            // 
+            this.HanSuDung.DataPropertyName = "HanSuDung";
+            this.HanSuDung.HeaderText = "Hạn sử dụng";
+            this.HanSuDung.MinimumWidth = 6;
+            this.HanSuDung.Name = "HanSuDung";
+            this.HanSuDung.Width = 125;
+            // 
+            // DonGia
+            // 
+            this.DonGia.DataPropertyName = "DonGia";
+            this.DonGia.HeaderText = "Đơn giá nhập";
+            this.DonGia.MinimumWidth = 6;
+            this.DonGia.Name = "DonGia";
+            this.DonGia.Width = 125;
+            // 
+            // DonGia1
+            // 
+            this.DonGia1.DataPropertyName = "DonGia1";
+            this.DonGia1.HeaderText = "Đơn giá xuất";
+            this.DonGia1.MinimumWidth = 6;
+            this.DonGia1.Name = "DonGia1";
+            this.DonGia1.Width = 125;
+            // 
+            // dateHSD
+            // 
+            this.dateHSD.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateHSD.Location = new System.Drawing.Point(588, 23);
+            this.dateHSD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateHSD.Name = "dateHSD";
+            this.dateHSD.Size = new System.Drawing.Size(125, 27);
+            this.dateHSD.TabIndex = 6;
+            this.dateHSD.ValueChanged += new System.EventHandler(this.dateHSD_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(584, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 21);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Hạn sử dụng";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(408, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 21);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ngày sản xuất";
+            // 
+            // dateNSX
+            // 
+            this.dateNSX.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateNSX.Location = new System.Drawing.Point(409, 25);
+            this.dateNSX.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateNSX.Name = "dateNSX";
+            this.dateNSX.Size = new System.Drawing.Size(114, 27);
+            this.dateNSX.TabIndex = 5;
+            this.dateNSX.ValueChanged += new System.EventHandler(this.dateNSX_ValueChanged);
             // 
             // TenThuoc
             // 
@@ -265,11 +265,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txbTimKiem;
-        private System.Windows.Forms.DateTimePicker dateHSD;
         private DevExpress.XtraEditors.SimpleButton btnTimKiem;
-        private System.Windows.Forms.DateTimePicker dateNSX;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvKetQua;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CongDung;
@@ -279,5 +275,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn HanSuDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonGia1;
+        private System.Windows.Forms.DateTimePicker dateHSD;
+        private System.Windows.Forms.DateTimePicker dateNSX;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

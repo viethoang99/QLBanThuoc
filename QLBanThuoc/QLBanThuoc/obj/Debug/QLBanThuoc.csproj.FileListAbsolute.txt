@@ -205,8 +205,6 @@ D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBan
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.Data.XtraForm1.resources
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.Form1.resources
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmNhaCungCap.NhaCungCap.resources
-D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmQuanLyNguoiDung.EditNguoiDung.resources
-D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmQuanLyNguoiDung.frmThemMoi.resources
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmQuanLyThuoc.frmDanhSach.resources
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmThongKe.DoanhThu.resources
 D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmTimKiem.TenThuoc.resources
@@ -725,3 +723,5 @@ D:\Project\C#\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.exe
 D:\Project\C#\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.pdb
 C:\Users\vietm\Desktop\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmQuanLyThuoc.frmBanThuoc.resources
 C:\Users\vietm\Desktop\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmQuanLyNguoiDung.frmNhapThuoc.resources
+D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmQuanLyThuoc.frmBanThuoc.resources
+D:\Study\College Stuff\Nam3\Kỳ 2\Thực tập CSDL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmQuanLyNguoiDung.frmNhapThuoc.resources

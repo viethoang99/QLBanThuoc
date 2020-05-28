@@ -16,7 +16,7 @@ namespace QLBanThuoc.BCTK
     public partial class ThuocBanRa : DevExpress.XtraEditors.XtraUserControl
     {
         frmConnection Connect = new frmConnection();
-        DataTable xuat = new DataTable();
+        DataTable mainTable = new DataTable();
 
         public ThuocBanRa()
         {
@@ -25,33 +25,40 @@ namespace QLBanThuoc.BCTK
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Vui lòng kết nốt với máy in trước khi thực hiện thao tác này...", "Thông báo.");
+            MessageBox.Show("Đang xuất file Excel...", "Thông báo.");
         }
 
-        private void btnBaoCao_Click(object sender, EventArgs e)
+        void loadData()
         {
             string startDate = date1.Value.ToString().Split(' ')[0].Replace("/", "-");
             string endDate = date2.Value.ToString().Split(' ')[0].Replace("/", "-");
 
             //xuất ra thông tin cho bảng
-            SqlDataAdapter search = new SqlDataAdapter("select MaLoThuoc,TenThuoc,DangThuoc,SoLuong,DonGia,SUM(DonGia*SoLuong) ThanhTien " +
-                "from THUOC T, PHIEUXUAT P, CHITIETPHIEUXUAT C " +
-                "where T.MaThuoc = C.MaThuoc and P.MaPhieuXuat = C.MaPhieuXuat and (NgayXuat between '" + startDate + "' and '" + endDate + "') " +
-                "group by MaLoThuoc, TenThuoc, DangThuoc, SoLuong, DonGia", frmConnection.connection);
-            search.Fill(xuat);
-            dgvThuocBanRa.DataSource = xuat;
+            SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_ThuocBan '" + startDate + "', '" + endDate + "'", frmConnection.connection);
+            search.Fill(mainTable);
+            dgvThuocBanRa.DataSource = mainTable;
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            mainTable.Clear();
+            loadData();
+        }
+
+        void checkTime()
+        {
+            date2.MinDate = date1.Value;
+            date2.Value = date1.Value;
         }
 
         private void ThuocBanRa_Load(object sender, EventArgs e)
         {
-            date2.MinDate = date1.Value;
-            date2.Value = date1.Value;
+            checkTime();
         }
 
         private void date1_ValueChanged(object sender, EventArgs e)
         {
-            date2.MinDate = date1.Value;
-            date2.Value = date1.Value;
+            checkTime();
         }
 
         private void date2_ValueChanged(object sender, EventArgs e)

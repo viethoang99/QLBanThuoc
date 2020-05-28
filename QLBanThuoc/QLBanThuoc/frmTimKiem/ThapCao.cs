@@ -17,6 +17,7 @@ namespace QLBanThuoc.frmTimKiem
     {
         frmConnection TimKiem = new frmConnection();
         DataTable mainTable = new DataTable();
+        DataTable searchTable = new DataTable();
 
         public ThapCao()
         {
@@ -25,11 +26,11 @@ namespace QLBanThuoc.frmTimKiem
 
         void loadData()
         {
-            ////Lấy danh sách thông tin thuốc vào bảng
+            MessageBox.Show("Vui lòng nhập chính xác đơn giá của thuốc cần tìm kiếm.", "Thông báo.");
+            //Lấy danh sách thông tin thuốc vào bảng
             SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_TimKiem", frmConnection.connection);
-            DataTable first = new DataTable();
-            search.Fill(first);
-            dgvKetQua.DataSource = first;
+            search.Fill(mainTable);
+            dgvKetQua.DataSource = mainTable;
         }
 
         private void ThapCao_Load(object sender, EventArgs e)
@@ -41,29 +42,22 @@ namespace QLBanThuoc.frmTimKiem
         void search()
         {
             string giaTien = txbTimKiem.Text.ToString();
-            string check1 = "select * from THUOC T " +
-                "inner join CHITIETPHIEUNHAP C1 on T.MaThuoc = C1.MaThuoc " +
-                "inner join CHITIETPHIEUXUAT C2 on T.MaThuoc = C2.MaThuoc " +
-                "where C1.DonGia = '" + giaTien + "'";
-            string get = "select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia " +
-                "from THUOC T inner join LOTHUOC L on T.MaLoThuoc = L.MaLoThuoc " +
-                "inner join CHITIETPHIEUNHAP C1 on T.MaThuoc = C1.MaThuoc inner join CHITIETPHIEUXUAT C2 on T.MaThuoc = C2.MaThuoc " +
-                "where C1.DonGia = '" + giaTien + "'";
+            string check1 = "execute dbo.proc_TimKiemThuoc '" + giaTien + "'";
+            string get = "execute dbo.proc_TimKiemTheoGia '" + giaTien + "'";
             //đơn giá nhập
+            mainTable.Clear();
             TimKiem.readDatathroughAdapter(check1, mainTable);
             if (mainTable.Rows.Count != 0)
             {
-                MessageBox.Show("Có thuốc với giá nhập cần tìm.", "Thông báo.");
-
-                DataTable TimDuoc = new DataTable();
-                TimKiem.readDatathroughAdapter(get, TimDuoc);
-                dgvKetQua.DataSource = TimDuoc;
+                TimKiem.readDatathroughAdapter(get, searchTable);
+                dgvKetQua.DataSource = searchTable;
+                MessageBox.Show("Có thuốc với giá nhập cần tìm.", "Thông báo.");                
             }
             else
             {
-                MessageBox.Show("Không có thuốc với giá nhập cần tìm....", "Thông báo.");
                 txbTimKiem.Clear();
-                dgvKetQua.Columns.Clear();
+                searchTable.Clear();
+                MessageBox.Show("Không có thuốc với giá nhập cần tìm....", "Thông báo.");
             }
         }
 

@@ -15,17 +15,20 @@ namespace QLBanThuoc.frmThongKe
     public partial class DoanhThu : UserControl
     {
         frmConnection Connect = new frmConnection();
-        DataTable doanhthu = new DataTable();
+        DataTable mainTable = new DataTable();
+        DataTable searchTable = new DataTable();
 
         public DoanhThu()
         {
             InitializeComponent();
         }
 
-        private void btnThongKe_Click(object sender, EventArgs e)
+        void loadData()
         {
             string month = cmbThang.Text;
             string year = cmbNam.Text;
+            string date1 = year + "-" + month + "-01";
+            string date2 = year + "-" + "01-01";
 
             //thông kê theo các giá trị đã chọn
             //txbThang = Tháng => THống kê theo năm
@@ -34,48 +37,51 @@ namespace QLBanThuoc.frmThongKe
                 if (cmbNam.Text != "Năm")
                 {
                     //đưa ra doanh thu tháng - năm
-                    DataTable dsthangnam = new DataTable();
-                    string thangnam = "select DISTINCT MONTH('" + year + "-" + month + "-01" + "') as N'Tháng',YEAR('" + year + "-" + month + "-01" + "') as N'Năm'," +
-                        "dbo.DOANHTHUTHANG('" + year + "-" + month + "-01" + "') as N'Doanh Thu' from PHIEUXUAT";
+                    string thangnam = "exec dbo.DTThang '" + date1 + "'";
                     SqlDataAdapter search = new SqlDataAdapter(thangnam, frmConnection.connection);
-                    search.Fill(dsthangnam);
-                    dgvDoanhThu.DataSource = dsthangnam;
-                }   
+                    search.Fill(searchTable);
+                    dgvDoanhThu.DataSource = searchTable;
+                }
                 else if (cmbNam.Text == "Năm")
                 {
                     MessageBox.Show("Vui lòng lựa chọn năm cần thống kê doanh thu.", "Thông báo.");
-                }    
-            }   
+                }
+            }
             else if (cmbThang.Text == "Tháng")
             {
                 if (cmbNam.Text != "Năm")
                 {
                     //đưa ra doanh thu năm
-                    DataTable dsnam = new DataTable();
-                    string nam = "select DISTINCT YEAR('" + year + "-01-01" + "') as N'Năm',dbo.DOANHTHUNAM('" + year + "-01-01" + "') as N'Doanh thu' from PHIEUXUAT ";
+                    string nam = "exec dbo.DTNam '" + date2 + "'";
                     SqlDataAdapter search = new SqlDataAdapter(nam, frmConnection.connection);
-                    search.Fill(dsnam);
-                    dgvDoanhThu.DataSource = dsnam;
-                }   
+                    search.Fill(searchTable);
+                    dgvDoanhThu.DataSource = searchTable;
+                }
                 else if (cmbNam.Text == "Năm")
                 {
                     MessageBox.Show("Vui lòng lựa chọn tháng và năm cần thống kê doanh thu.", "Thông báo.");
-                }    
-            }                
+                }
+            }
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            searchTable.Clear();
+            loadData();
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
             //đưa ra màn hình xác nhận in
-            MessageBox.Show("Vui lòng kết nốt với máy in trước khi thực hiện thao tác này...", "Thông báo.");
+            MessageBox.Show("Đang xuất file Excel...", "Thông báo.");
         }
 
         private void DoanhThu_Load(object sender, EventArgs e)
         {
             //load thông tin vào bảng
-            SqlDataAdapter search = new SqlDataAdapter("execute dbo.DTThang", frmConnection.connection);
-            search.Fill(doanhthu);
-            dgvDoanhThu.DataSource = doanhthu;
+            SqlDataAdapter search = new SqlDataAdapter("execute dbo.DTThang0", frmConnection.connection);
+            search.Fill(mainTable);
+            dgvDoanhThu.DataSource = mainTable;
         }
     }
 }

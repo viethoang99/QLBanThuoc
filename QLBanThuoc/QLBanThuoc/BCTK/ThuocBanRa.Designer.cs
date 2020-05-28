@@ -31,10 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThuocBanRa));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.date2 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.date1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.bindingNavigatorHocSinh = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -50,14 +46,18 @@
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.dgvThuocBanRa = new System.Windows.Forms.DataGridView();
-            this.btnExcel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnBaoCao = new DevExpress.XtraEditors.SimpleButton();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExcel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnBaoCao = new DevExpress.XtraEditors.SimpleButton();
+            this.date2 = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.date1 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinh)).BeginInit();
             this.bindingNavigatorHocSinh.SuspendLayout();
@@ -82,46 +82,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống kê thuốc bán";
-            // 
-            // date2
-            // 
-            this.date2.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
-            this.date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date2.Location = new System.Drawing.Point(414, 42);
-            this.date2.Name = "date2";
-            this.date2.Size = new System.Drawing.Size(146, 23);
-            this.date2.TabIndex = 16;
-            this.date2.ValueChanged += new System.EventHandler(this.date2_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(344, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 24);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Đến:";
-            // 
-            // date1
-            // 
-            this.date1.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
-            this.date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date1.Location = new System.Drawing.Point(145, 42);
-            this.date1.Name = "date1";
-            this.date1.Size = new System.Drawing.Size(146, 23);
-            this.date1.TabIndex = 14;
-            this.date1.ValueChanged += new System.EventHandler(this.date1_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(88, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 24);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Từ:";
             // 
             // bindingNavigatorHocSinh
             // 
@@ -270,27 +230,6 @@
             this.dgvThuocBanRa.Size = new System.Drawing.Size(817, 368);
             this.dgvThuocBanRa.TabIndex = 8;
             // 
-            // btnExcel
-            // 
-            this.btnExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.ImageOptions.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(757, 32);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExcel.Name = "simpleButton2";
-            this.btnExcel.Size = new System.Drawing.Size(47, 44);
-            this.btnExcel.TabIndex = 7;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnBaoCao
-            // 
-            this.btnBaoCao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCao.ImageOptions.Image")));
-            this.btnBaoCao.Location = new System.Drawing.Point(621, 36);
-            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnBaoCao.Name = "simpleButton1";
-            this.btnBaoCao.Size = new System.Drawing.Size(96, 37);
-            this.btnBaoCao.TabIndex = 6;
-            this.btnBaoCao.Text = "Báo cáo";
-            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
-            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "MaLoThuoc";
@@ -339,6 +278,65 @@
             this.Column2.Name = "Column2";
             this.Column2.Width = 125;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.ImageOptions.Image")));
+            this.btnExcel.Location = new System.Drawing.Point(757, 32);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExcel.Name = "simpleButton2";
+            this.btnExcel.Size = new System.Drawing.Size(47, 44);
+            this.btnExcel.TabIndex = 7;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnBaoCao
+            // 
+            this.btnBaoCao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCao.ImageOptions.Image")));
+            this.btnBaoCao.Location = new System.Drawing.Point(621, 36);
+            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBaoCao.Name = "simpleButton1";
+            this.btnBaoCao.Size = new System.Drawing.Size(96, 37);
+            this.btnBaoCao.TabIndex = 6;
+            this.btnBaoCao.Text = "Báo cáo";
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            // 
+            // date2
+            // 
+            this.date2.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
+            this.date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date2.Location = new System.Drawing.Point(366, 41);
+            this.date2.Name = "date2";
+            this.date2.Size = new System.Drawing.Size(146, 23);
+            this.date2.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(296, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 24);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Đến:";
+            // 
+            // date1
+            // 
+            this.date1.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
+            this.date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date1.Location = new System.Drawing.Point(97, 41);
+            this.date1.Name = "date1";
+            this.date1.Size = new System.Drawing.Size(146, 23);
+            this.date1.TabIndex = 14;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(40, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Từ:";
+            // 
             // ThuocBanRa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -378,15 +376,15 @@
         private System.Windows.Forms.DataGridView dgvThuocBanRa;
         private DevExpress.XtraEditors.SimpleButton btnBaoCao;
         private DevExpress.XtraEditors.SimpleButton btnExcel;
-        private System.Windows.Forms.DateTimePicker date2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker date1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DateTimePicker date2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker date1;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -16,7 +16,7 @@ namespace QLBanThuoc.BCTK
     public partial class ThuocHetHan : DevExpress.XtraEditors.XtraUserControl
     {
         frmConnection Connect = new frmConnection();
-        DataTable main = new DataTable();
+        DataTable mainTable = new DataTable();
 
         public ThuocHetHan()
         {
@@ -27,16 +27,16 @@ namespace QLBanThuoc.BCTK
         {
             //Lấy danh sách thông tin thuốc vào bảng
             string check = "execute dbo.proc_ThongKeHetHan";
-            Connect.readDatathroughAdapter(check, main);
-            if(main.Rows.Count == 0)
+            Connect.readDatathroughAdapter(check, mainTable);
+            if (mainTable.Rows.Count == 0)
             {
                 MessageBox.Show("Hiện tại không có loại thuốc nào hết hạn.", "Thông báo.");
             }   
             else
             {
-                SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_ThongKeHetHan", frmConnection.connection);
-                search.Fill(main);
-                dgvKetQua.DataSource = main;
+                SqlDataAdapter search = new SqlDataAdapter(check, frmConnection.connection);
+                search.Fill(mainTable);
+                dgvKetQua.DataSource = mainTable;
             }
         }
 
@@ -47,7 +47,7 @@ namespace QLBanThuoc.BCTK
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Vui lòng kết nốt với máy in trước khi thực hiện thao tác này...", "Thông báo.");
+            MessageBox.Show("Đang xuất file Excel...", "Thông báo.");
         }
     }
 }
