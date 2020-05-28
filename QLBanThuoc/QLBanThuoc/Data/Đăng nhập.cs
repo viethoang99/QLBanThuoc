@@ -81,7 +81,7 @@ namespace QLBanThuoc.Data
             }
             else
             {
-                MessageBox.Show("Tài khoảng và mật khẩu không đúng !");
+                MessageBox.Show("Tài khoản và mật khẩu không đúng !");
             }
         }
     }

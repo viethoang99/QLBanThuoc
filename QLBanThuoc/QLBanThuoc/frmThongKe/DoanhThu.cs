@@ -16,7 +16,6 @@ namespace QLBanThuoc.frmThongKe
     {
         frmConnection Connect = new frmConnection();
         DataTable mainTable = new DataTable();
-        DataTable searchTable = new DataTable();
 
         public DoanhThu()
         {
@@ -39,8 +38,8 @@ namespace QLBanThuoc.frmThongKe
                     //đưa ra doanh thu tháng - năm
                     string thangnam = "exec dbo.DTThang '" + date1 + "'";
                     SqlDataAdapter search = new SqlDataAdapter(thangnam, frmConnection.connection);
-                    search.Fill(searchTable);
-                    dgvDoanhThu.DataSource = searchTable;
+                    search.Fill(mainTable);
+                    dgvDoanhThu.DataSource = mainTable;
                 }
                 else if (cmbNam.Text == "Năm")
                 {
@@ -54,8 +53,8 @@ namespace QLBanThuoc.frmThongKe
                     //đưa ra doanh thu năm
                     string nam = "exec dbo.DTNam '" + date2 + "'";
                     SqlDataAdapter search = new SqlDataAdapter(nam, frmConnection.connection);
-                    search.Fill(searchTable);
-                    dgvDoanhThu.DataSource = searchTable;
+                    search.Fill(mainTable);
+                    dgvDoanhThu.DataSource = mainTable;
                 }
                 else if (cmbNam.Text == "Năm")
                 {
@@ -66,7 +65,7 @@ namespace QLBanThuoc.frmThongKe
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            searchTable.Clear();
+            mainTable.Clear();
             loadData();
         }
 
