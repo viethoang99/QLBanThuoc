@@ -24,13 +24,22 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
 
         private string maHangSanXuat;
         private string maLoaiThuoc;
-
+  
         private void comboBoxTenNCC_ItemChange(object sender, EventArgs e)
         {
             
         }
         private void frmNhapThuoc_Load(object sender, EventArgs e)
         {
+            SqlCommand sql = new SqlCommand();
+            sql.CommandText = "proc_searchNhanVien";
+            sql.Parameters.AddWithValue("@maNV", XtraForm1.Ma_USER);
+            DataTable dataTemp = new DataTable();
+            frmconnection.readDataProc(sql, dataTemp);
+            lbMaNhanVien.Text = XtraForm1.Ma_USER;
+            lbTenNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
+            labelSDT.Text = dataTemp.Rows[0].ItemArray[1].ToString();
+
             SqlCommand cmNhaCungCap = new SqlCommand("proc_searchTenNhaCungCap");
         
             DataTable dtNhaCungCap = new DataTable();
@@ -83,12 +92,7 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            textBoxMaNhanVien.Text = "";
-            labelTenNhanVien.Text = "________________________";
-            labelSDT.Text = "________________________";
-        }
+ 
 
         private void comboTenNCC_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -117,10 +121,10 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
         {
             SqlCommand sql = new SqlCommand();
             sql.CommandText = "proc_searchNhanVien";
-            sql.Parameters.AddWithValue("@maNV", textBoxMaNhanVien.Text.ToString());
+            sql.Parameters.AddWithValue("@maNV", lbMaNhanVien.Text.ToString());
             DataTable dataTemp = new DataTable();
             frmconnection.readDataProc(sql, dataTemp);
-            labelTenNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
+            lbMaNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
             labelSDT.Text = dataTemp.Rows[0].ItemArray[1].ToString();
         }
 
@@ -159,7 +163,7 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
 
             sqlThuoc.Parameters.AddWithValue("@date", DateTime.Now.ToString());
             sqlThuoc.Parameters.AddWithValue("@mncc", labelMaNhaCungCap.Text);
-            sqlThuoc.Parameters.AddWithValue("@mnv", textBoxMaNhanVien.Text);
+            sqlThuoc.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);
             sqlThuoc.Parameters.AddWithValue("@sl", tbSoLuong.Text);
             sqlThuoc.Parameters.AddWithValue("@gia", tbDonGia.Text);
             sqlThuoc.Parameters.AddWithValue("@hsd", dtpHanSD.Value.ToString());

@@ -140,6 +140,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
             {
                 comboBoxTenThuoc.Items.Add(dtTemp.Rows[i].ItemArray[0]);
             }
+            tbTenNhanVien.Text = XtraForm1.Ten_USER;
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
@@ -183,7 +184,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
             SqlCommand sqlPhieuXuat = new SqlCommand("proc_addPX");
             sqlPhieuXuat.Parameters.AddWithValue("@date", DateTime.Now.ToString());
             sqlPhieuXuat.Parameters.AddWithValue("@mkh", maKH);
-            sqlPhieuXuat.Parameters.AddWithValue("@mnv", tbMaNhanVien.Text);
+            sqlPhieuXuat.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);
             sqlPhieuXuat.Parameters.AddWithValue("@tong", labelTongTien.Text);
             conn.executeProc(sqlPhieuXuat);
             for (int i = 0; i < dataGridViewGioHang.Rows.Count-1; i++)
@@ -227,7 +228,6 @@ namespace QLBanThuoc.frmQuanLyThuoc
             tbCongDung.Text = "";
             tbSoLuongTon.Text = "";
             tbDonGia.Text = "";
-            tbMaNhanVien.Text = "";
             comboBoxTenThuoc.Text = "";
             tbSoLuongMua.Text = "";
         }

@@ -47,7 +47,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.comboBoxTenThuoc = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.tbMaNhanVien = new System.Windows.Forms.TextBox();
+            this.tbTenNhanVien = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -114,7 +114,7 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.comboBoxTenThuoc);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.tbMaNhanVien);
+            this.groupBox2.Controls.Add(this.tbTenNhanVien);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -289,13 +289,14 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Tên thuốc";
             // 
-            // tbMaNhanVien
+            // tbTenNhanVien
             // 
-            this.tbMaNhanVien.Location = new System.Drawing.Point(108, 29);
-            this.tbMaNhanVien.Name = "tbMaNhanVien";
-            this.tbMaNhanVien.Size = new System.Drawing.Size(141, 21);
-            this.tbMaNhanVien.TabIndex = 4;
-            this.tbMaNhanVien.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbTenNhanVien.Location = new System.Drawing.Point(108, 29);
+            this.tbTenNhanVien.Name = "tbTenNhanVien";
+            this.tbTenNhanVien.ReadOnly = true;
+            this.tbTenNhanVien.Size = new System.Drawing.Size(182, 21);
+            this.tbTenNhanVien.TabIndex = 4;
+            this.tbTenNhanVien.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label3
             // 
@@ -303,9 +304,9 @@
             this.label3.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(6, 29);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 16);
+            this.label3.Size = new System.Drawing.Size(102, 16);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Mã nhân viên";
+            this.label3.Text = "Tên nhân viên";
             // 
             // groupBox1
             // 
@@ -627,7 +628,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn clXoa;
         private System.Windows.Forms.TextBox txbSDT;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbMaNhanVien;
+        private System.Windows.Forms.TextBox tbTenNhanVien;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonThemVaoGio;
         private System.Windows.Forms.Button buttonXoa;
