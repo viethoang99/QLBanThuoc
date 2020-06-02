@@ -112,6 +112,21 @@ namespace QLBanThuoc.Data
                 throw err;
             }
         }
+
+        public void excuteReaderProc(SqlCommand sql, SqlDataReader dr)
+        {
+            try
+            {
+                sql.Connection = connection;
+                sql.CommandType = CommandType.StoredProcedure;
+                dr = sql.ExecuteReader();
+            }
+            catch (SqlException e)
+            {
+                MessageBox.Show(e.Message.ToString(), "ErrorMessage");
+                
+            }
+        }
         public void readDataProc(SqlCommand sql, DataTable dt)
         {
             try

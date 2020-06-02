@@ -84,5 +84,10 @@ namespace QLBanThuoc.Data
                 MessageBox.Show("Tài khoản và mật khẩu không đúng !");
             }
         }
+
+        private void XtraForm1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

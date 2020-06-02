@@ -122,6 +122,7 @@
             this.Controls.Add(this.txbTenDangNhap);
             this.Name = "XtraForm1";
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.XtraForm1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

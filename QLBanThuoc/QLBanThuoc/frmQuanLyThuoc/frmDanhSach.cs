@@ -30,9 +30,14 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void dgvCellClick_Click(object sender, DataGridViewCellEventArgs e)
         {
+            MessageBox.Show("cell click "+ dataGridView1.Rows[i].Cells[1].Value.ToString());
             int i = e.RowIndex;
             index = e.RowIndex;
-            maThuoc = dataGridView1.Rows[i].Cells[0].Value.ToString();
+            if (i >= 0)
+            {
+                maThuoc = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                MessageBox.Show(maThuoc);
+            }
         }
         private void buttonLuu_Click(object sender, EventArgs e)
         {
@@ -73,19 +78,29 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void buttonSua_Click(object sender, EventArgs e)
         {
-            maThuoc = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            textBoxTenThuoc.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBoxLoThuoc.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            textBoxLoaiThuoc.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
-            textBoxHangSX.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
-            textBoxThanhPhanChinh.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-            textBoxCongDung.Text = dataGridView1.CurrentRow.Cells[7].Value.ToString();
-            textBoxNgaySX.Text = dataGridView1.CurrentRow.Cells[8].Value.ToString();
-            textBoxHanSD.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString();
-            textBoxGiaBan.Text = dataGridView1.CurrentRow.Cells[9].Value.ToString();
-            textBoxSoLuongTon.Text = dataGridView1.CurrentRow.Cells[10].Value.ToString();
-            textBoxDonVi.Text = dataGridView1.CurrentRow.Cells[11].Value.ToString();
+            try
+            {
 
+                SqlCommand sqlCommand = new SqlCommand("proc_searchThuocSua");
+                sqlCommand.Parameters.AddWithValue("@maT", maThuoc);
+                DataTable dtTemp = new DataTable();
+                frmConnection.readDataProc(sqlCommand, dtTemp);
+                textBoxTenThuoc.Text = dtTemp.Rows[0].ItemArray[0].ToString();
+                textBoxLoThuoc.Text = dtTemp.Rows[0].ItemArray[1].ToString();
+                textBoxLoaiThuoc.Text = dtTemp.Rows[0].ItemArray[2].ToString();
+                textBoxHangSX.Text = dtTemp.Rows[0].ItemArray[3].ToString();
+                textBoxThanhPhanChinh.Text = dtTemp.Rows[0].ItemArray[4].ToString();
+                textBoxCongDung.Text = dtTemp.Rows[0].ItemArray[5].ToString();
+                textBoxNgaySX.Text = dtTemp.Rows[0].ItemArray[6].ToString();
+                textBoxHanSD.Text = dtTemp.Rows[0].ItemArray[7].ToString();
+                textBoxGiaBan.Text = dtTemp.Rows[0].ItemArray[8].ToString();
+                textBoxSoLuongTon.Text = dtTemp.Rows[0].ItemArray[9].ToString();
+                textBoxDonVi.Text = dtTemp.Rows[0].ItemArray[10].ToString();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message.ToString());
+            }
 
 
 
@@ -109,11 +124,10 @@ namespace QLBanThuoc.frmQuanLyThuoc
             dt.Rows.Clear();
             if (textBoxTimKiem.Text != "")
             {
-                SqlCommand cmd = new SqlCommand("proc_SearchThuoc", frmConnection.connection);
-                SqlDataAdapter adt = new SqlDataAdapter(cmd);
-                adt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                adt.SelectCommand.Parameters.Add(new SqlParameter("@s", textBoxTimKiem.Text));
-                adt.Fill(dt);
+                SqlCommand cmd = new SqlCommand("proc_searchThuocDanhSachDGV");
+                cmd.Parameters.AddWithValue("@ten", textBoxTimKiem.Text);
+                frmConnection.readDataProc(cmd, dt);
+                
             }
             else
             {
@@ -132,5 +146,18 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         }
 
+        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxTimKiem_Click(object sender, EventArgs e)
+        {
+            if(textBoxTimKiem.Text == "Thông tin tìm kiếm")
+            {
+                textBoxTimKiem.Text = "";
+            }
+
+        }
     }
 }

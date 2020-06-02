@@ -180,22 +180,26 @@ namespace QLBanThuoc.frmQuanLyThuoc
                 //    conn.executeProc(commandCTPX);
                 //}
             }
+           
+         
             
             SqlCommand sqlPhieuXuat = new SqlCommand("proc_addPX");
             sqlPhieuXuat.Parameters.AddWithValue("@date", DateTime.Now.ToString());
             sqlPhieuXuat.Parameters.AddWithValue("@mkh", maKH);
             sqlPhieuXuat.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);
             sqlPhieuXuat.Parameters.AddWithValue("@tong", labelTongTien.Text);
-            conn.executeProc(sqlPhieuXuat);
-            for (int i = 0; i < dataGridViewGioHang.Rows.Count-1; i++)
+            DataTable dt = new DataTable();
+            conn.readDataProc(sqlPhieuXuat, dt);
+            string mapx = dt.Rows[0].ItemArray[0].ToString();
+            for (int i = 0; i < dataGridViewGioHang.Rows.Count - 1; i++)
             {
 
                 SqlCommand sqlCTPX = new SqlCommand("proc_addCTPX");
-                sqlCTPX.Parameters.AddWithValue("@date", DateTime.Now.ToString());
-                sqlCTPX.Parameters.AddWithValue("@mkh", maKH);
+                sqlCTPX.Parameters.AddWithValue("@mpx", mapx);
                 sqlCTPX.Parameters.AddWithValue("@maT", dataGridViewGioHang.Rows[i].Cells[0].Value.ToString());
                 sqlCTPX.Parameters.AddWithValue("@sl", dataGridViewGioHang.Rows[i].Cells[2].Value.ToString());
                 sqlCTPX.Parameters.AddWithValue("@gia", dataGridViewGioHang.Rows[i].Cells[3].Value.ToString());
+                conn.executeProc(sqlCTPX);
             }
             MessageBox.Show("Xuất thành công", "Thông báo");
             
@@ -208,7 +212,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void comboBoxTenThuoc_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlCommand sqlSelectThuoc = new SqlCommand("proc_searchThuoc");
+            SqlCommand sqlSelectThuoc = new SqlCommand("proc_searchThuocBan");
             sqlSelectThuoc.Parameters.AddWithValue("@tenThuoc", comboBoxTenThuoc.SelectedItem.ToString());
             DataTable dtThuoc = new DataTable();
             conn.readDataProc(sqlSelectThuoc, dtThuoc);
@@ -234,12 +238,22 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void tbSoLuongMua_TextChanged(object sender, EventArgs e)
         {
-            int slTon = Int16.Parse(tbSoLuongTon.Text);
-            int slMua = Int16.Parse(tbSoLuongMua.Text);
-            if (slMua > slTon)
+            try
             {
-                MessageBox.Show("Không đủ thuốc", "Thông báo");
-                tbSoLuongMua.Text = "";
+                if (tbSoLuongMua.Text != "")
+                {
+                    int slTon = Int16.Parse(tbSoLuongTon.Text);
+                    int slMua = Int16.Parse(tbSoLuongMua.Text);
+                    if (slMua > slTon)
+                    {
+                        MessageBox.Show("Không đủ thuốc", "Thông báo");
+                        tbSoLuongMua.Text = "0";
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message.ToString());
             }
         }
 
