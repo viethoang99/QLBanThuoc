@@ -147,20 +147,7 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
         private void button4_Click(object sender, EventArgs e)
         {
             SqlCommand sqlThuoc = new SqlCommand("proc_addThuoc");
-            //SqlCommand sqlPhieuNhap = new SqlCommand("proc_addPhieuNhap");
-            //sqlPhieuNhap.Parameters.AddWithValue("@date", DateTime.Now);
-            //sqlPhieuNhap.Parameters.AddWithValue("@mncc", labelMaNhaCungCap.Text);
-            //sqlPhieuNhap.Parameters.AddWithValue("@mnv", textBoxMaNhanVien.Text.ToString());
-            //sqlPhieuNhap.Parameters.AddWithValue("@maT","");
-            //sqlPhieuNhap.Parameters.AddWithValue("@sl", tbSoLuong.Text.ToString());
-            //sqlPhieuNhap.Parameters.AddWithValue("@gia", tbDonGia.Text.ToString());
-
-            //SqlCommand sqlLoThuoc = new SqlCommand("proc_addLoThuoc");
-            //sqlLoThuoc.Parameters.AddWithValue("@mahang", comboBoxHangSanXuat.Text.ToString());
-            //sqlLoThuoc.Parameters.AddWithValue("@nsx", dtpNgaySX.Value);
-            //sqlLoThuoc.Parameters.AddWithValue("@hsd", dtpHanSD.Value);
-            //sqlLoThuoc.Parameters.AddWithValue("@sl", tbSoLuong.Text.ToString());
-
+      
             sqlThuoc.Parameters.AddWithValue("@date", DateTime.Now.ToString());
             sqlThuoc.Parameters.AddWithValue("@mncc", labelMaNhaCungCap.Text);
             sqlThuoc.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);

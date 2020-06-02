@@ -30,13 +30,14 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void dgvCellClick_Click(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("cell click "+ dataGridView1.Rows[i].Cells[1].Value.ToString());
             int i = e.RowIndex;
+            //MessageBox.Show("cell click "+ dataGridView1.Rows[i].Cells[1].Value.ToString());
+            
             index = e.RowIndex;
             if (i >= 0)
             {
-                maThuoc = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                MessageBox.Show(maThuoc);
+                maThuoc = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                //MessageBox.Show(maThuoc);
             }
         }
         private void buttonLuu_Click(object sender, EventArgs e)
@@ -53,6 +54,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
             cmd.Parameters.AddWithValue("@hsd", SqlDbType.Date).Value = textBoxHanSD.Text;
             cmd.Parameters.AddWithValue("@slt", SqlDbType.Int).Value = Convert.ToInt32(textBoxSoLuongTon.Text);
             cmd.Parameters.AddWithValue("@dt", SqlDbType.NVarChar).Value = textBoxDonVi.Text;
+            cmd.Parameters.AddWithValue("@dongia", SqlDbType.Int).Value = Convert.ToInt32(textBoxGiaBan.Text);
             cmd.ExecuteNonQuery();
             frmConnection.connection.Close();
 
@@ -108,11 +110,11 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void buttonXoa_Click(object sender, EventArgs e)
         {
-            maThuoc = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+         
             frmConnection.createConn();
             SqlCommand cmd = new SqlCommand("proc_deleteThuoc", frmConnection.connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ma", SqlDbType.Char).Value = maThuoc;
+            cmd.Parameters.AddWithValue("@maT", SqlDbType.Char).Value = maThuoc;
             cmd.ExecuteNonQuery();
 
             MessageBox.Show("Đã xóa thành công", "Thông báo");

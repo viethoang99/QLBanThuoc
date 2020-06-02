@@ -69,6 +69,24 @@ as begin
 			(MaPhieuNhap,MaThuoc,SoLuong,DonGia)
 	values(@mpn,@maThuoc,@sl,@gia)
 end
+create trigger Update_CTPN_Thuoc on dbo.CHITIETPHIEUNHAP
+INSTEAD OF INSERT
+as begin
+	declare @SLT int
+	set @SLT = (select SoLuongTon from THUOC where MaThuoc in (select MaThuoc from inserted))
+	declare @SLM int
+	set @SLM = (select SoLuong from inserted)
+	
+		begin
+			insert into CHITIETPHIEUNHAP
+					(MaPhieuNhap,MaThuoc,SoLuong,DonGia)
+			select * from inserted
+			update THUOC
+			set SoLuongTon=SoLuongTon+@SLM
+			where MaThuoc in (select MaThuoc from inserted)
+		end
+	
+end
 
 
 
@@ -96,7 +114,7 @@ as begin
 	select TenThuoc from THUOC
 end
 
-create proc proc_searchThuoc
+create proc proc_searchThuocBan
 	@tenThuoc nvarchar(max)
 as begin
 	select MaThuoc,ThanhPhan,CongDung,SoLuongTon,DonGia from THUOC where TenThuoc like @tenThuoc 
@@ -149,6 +167,45 @@ as begin
 	end
 end
 --chạy
+--thêm phiếu xuất + tự sinh mã phiếu
+create proc proc_addPX
+	@date date,
+	@mkh char(35),
+	@mnv char(15)
+as begin
+	declare @mpx char(20)
+	declare @sdt char(15)
+	if not exists (select * from KHACHHANG where MaKhachHang=@mkh)
+	begin
+		print N'Mã khách hàng không hợp lệ'
+		return
+	end
+	else if not exists (select * from NHANVIEN where MaNhanVien=@mnv)
+	begin
+		print N'Mã nhân viên không hợp lệ'
+		return
+	end
+	else
+	begin
+		set @sdt=(select SoDienThoai from KHACHHANG where MaKhachHang=@mkh)
+		set @mpx=replace(convert(varchar, getdate(),103),'/','') + replace(convert(varchar, getdate(),108),':','')
+		insert into dbo.PHIEUXUAT
+				(MaPhieuXuat,NgayXuat,MaKhachHang,MaNhanVien,Tong)
+		values(@mpx,@date,@mkh,@mnv,0)
+	end
+end
+----------------------------phieu nhap
+create proc proc_addPN
+	@date date,
+	@mncc char(15),
+	@mnv char(15)
+as begin
+	declare @mpn char(20)
+	set @mpn=replace(convert(varchar, getdate(),103),'/','') + replace(convert(varchar, getdate(),108),':','')
+	insert into dbo.PHIEUNHAP
+			(MaPhieuNhap,NgayNhap,MaNhaCungCap,MaNhanVien)
+	values(@mpn,@date,@mncc,@mnv)
+end
 	
 --thêm chi tiết phiếu xuất kết hợp vs trigger update số lượng tồn
 create proc proc_addCTPX
@@ -295,3 +352,155 @@ end
 
 -------------end form nha cung cap---------------------------
 
+----------moi------------------------------------------------
+--- form ban thuoc ---
+--1. add phieu xuat
+create proc proc_addPX
+	@date date,
+	@mkh char(35),
+	@mnv char(15),
+	@tong int--,
+	--@mpx char(20) out
+as begin
+	declare @mpx char(20)
+	declare @sdt char(15)
+	if not exists (select * from KHACHHANG where MaKhachHang=@mkh)
+	begin
+		print N'Mã khách hàng không hợp lệ'
+		return
+	end
+	else if not exists (select * from NHANVIEN where MaNhanVien=@mnv)
+	begin
+		print N'Mã nhân viên không hợp lệ'
+		return
+	end
+	else
+	begin
+		set @sdt=(select SoDienThoai from KHACHHANG where MaKhachHang=@mkh)
+		set @mpx=replace(convert(varchar, getdate(),103),'/','') + replace(convert(varchar, getdate(),108),':','')
+		insert into dbo.PHIEUXUAT
+				(MaPhieuXuat,NgayXuat,MaKhachHang,MaNhanVien,Tong)
+		values(@mpx,@date,@mkh,@mnv,@tong)
+		select @mpx as 'MaPX'
+	end
+end
+
+create proc proc_addCTPX
+	@mpx char(20),
+	@maT char(20),
+	@sl int,
+	@gia int
+as begin
+	insert into dbo.CHITIETPHIEUXUAT
+			(MaPhieuXuat,MaThuoc,SoLuong,DonGia)
+	values(@mpx,@maT,@sl,@gia)
+end
+
+create trigger Update_CTPX_Thuoc on dbo.CHITIETPHIEUXUAT
+INSTEAD OF INSERT
+as begin
+	declare @SLT int
+	set @SLT = (select SoLuongTon from THUOC where MaThuoc in (select MaThuoc from inserted))
+	declare @SLM int
+	set @SLM = (select SoLuong from inserted)
+	if(@SLT>=@SLM)
+		begin
+			insert into CHITIETPHIEUXUAT
+					(MaPhieuXuat,MaThuoc,SoLuong,DonGia)
+			select * from inserted
+			update THUOC
+			set SoLuongTon=SoLuongTon-@SLM
+			where MaThuoc in (select MaThuoc from inserted)
+		end
+	else
+		print N'Kho không đủ thuốc'
+end
+-- form danh sach
+
+create proc proc_searchThuocDanhSachDGV
+	@ten nvarchar(50)
+as begin
+	select MaThuoc,MaLoThuoc,TenThuoc,MaLoaiThuoc,DonGia,SoLuongTon from THUOC 
+	where THUOC.TenThuoc like N'%'+@ten+'%'
+end
+exec proc_searchThuocDanhSachDGV 'd'
+
+create proc proc_searchThuocSua
+	@maT char(20)
+as begin
+
+select TenThuoc,THUOC.MaLoThuoc,MaLoaiThuoc,MaHangSX,ThanhPhan,CongDung,NgaySanXuat,HanSuDung,DonGia,SoLuongTon,DangThuoc
+	from THUOC,LOTHUOC
+	where THUOC.MaThuoc like @maT and THUOC.MaLoThuoc=LOTHUOC.MaLoThuoc 
+end
+exec proc_searchThuocSua 'AT670218.TTY.DCT5   '
+
+alter proc proc_deleteThuoc
+	@maT char(20)
+as begin
+	delete from CHITIETPHIEUNHAP where MaThuoc like @maT
+	delete from CHITIETPHIEUXUAT where MaThuoc like @maT
+	delete from THUOC where MaThuoc like @maT
+end
+
+exec proc_deleteThuoc 'DPPM.0115.TDY.BG05  '
+
+alter proc [dbo].[proc_UpdateThuoc]
+	@mathuoc char(20),
+	@malo char(15),
+	@ten nvarchar(max),
+	@tp nvarchar(max),
+	@cd nvarchar(max),
+	@nsx date,
+	@hsd date,
+	@slt int,
+	@dt nvarchar(20),
+	@dongia int
+as begin
+	update THUOC
+	set TenThuoc=@ten,ThanhPhan=@tp,CongDung=@cd,SoLuongTon=@slt,DangThuoc=@dt,DonGia=@dongia
+	where MaThuoc=@mathuoc
+
+	update LOTHUOC 
+	set HanSuDung=@hsd,NgaySanXuat=@nsx
+	where MaLoThuoc=@malo
+end
+
+exec proc_UpdateThuoc 'DPPM.0619.TTY.TT08  ','DPPM.0619      ',N'thuốc trợ tim mạch',N'cetamol',N'trợ tim','10-06-2018','02-21-2024',1000,N'viên nén',15000
+
+create proc [dbo].[proc_addThuoc]
+	@maT char(20),
+	@mahang char(15),
+	@nsx date,
+	@hsd date,
+	@ten nvarchar(max),
+	@cd nvarchar(max),
+	@tp nvarchar(max),
+	@sl int,
+	@dang nvarchar(20),
+	@mLoai char(15),
+	@date date,
+	@mncc char(15),
+	@mnv char(15),
+	@gia int
+as begin
+	declare @maThuoc char(20)
+	declare @maLo char(15)
+	set @maLo = rtrim(@mahang) +'.'+ RIGHT('00' + RTRIM(CAST(MONTH(@nsx) AS varchar(2))),2)+Right(Year(@nsx),2)
+	set @maThuoc= rtrim(@maLo)+'.'+rtrim(@mLoai)+'.'+rtrim(@maT)
+	insert into dbo.LOTHUOC
+				(MaLoThuoc,MaHangSX,NgaySanXuat,HanSuDung)
+		values(@maLo,@mahang,@nsx,@hsd)
+	insert into dbo.THUOC
+			(MaThuoc,MaLoThuoc,TenThuoc,CongDung,ThanhPhan,SoLuongTon,DangThuoc,MaLoaiThuoc,DonGia)
+	values(@maThuoc,@maLo,@ten,@cd,@tp,@sl,@dang,@mLoai,@gia*1.2)
+		declare @mpn char(20)
+	set @mpn=replace(convert(varchar, getdate(),103),'/','') + rtrim(@mnv)
+
+	insert into dbo.PHIEUNHAP
+			(MaPhieuNhap,NgayNhap,MaNhaCungCap,MaNhanVien)
+	values(@mpn,@date,@mncc,@mnv)
+	insert into dbo.CHITIETPHIEUNHAP
+			(MaPhieuNhap,MaThuoc,SoLuong,DonGia)
+	values(@mpn,@maThuoc,@sl,@gia)
+end
