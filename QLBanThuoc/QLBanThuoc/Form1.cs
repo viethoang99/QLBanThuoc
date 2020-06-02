@@ -47,13 +47,6 @@ namespace QLBanThuoc
             panel.Controls.Add(tt);
         }
 
-        private void BarButtonItem18_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            panel.Controls.Clear();
-            ThapCao so = new ThapCao();
-            panel.Controls.Add(so);
-        }
-
         private void BarButtonItem23_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             panel.Controls.Clear();

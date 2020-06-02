@@ -153,12 +153,6 @@
     <Compile Include="frmTimKiem\TenThuoc.Designer.cs">
       <DependentUpon>TenThuoc.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTimKiem\ThapCao.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="frmTimKiem\ThapCao.Designer.cs">
-      <DependentUpon>ThapCao.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BCTK\SoLuongTon.resx">
@@ -199,9 +193,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmTimKiem\TenThuoc.resx">
       <DependentUpon>TenThuoc.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTimKiem\ThapCao.resx">
-      <DependentUpon>ThapCao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

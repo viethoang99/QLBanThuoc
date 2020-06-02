@@ -26,7 +26,7 @@ namespace QLBanThuoc.frmTimKiem
 
         void loadData()
         {
-            MessageBox.Show("Vui lòng nhập chính xác tên thuốc cần tìm kiếm.", "Thông báo.");
+            MessageBox.Show("Vui lòng nhập chính xác tên / thời hạn / tên và thời hạn của thuốc cần tìm kiếm.", "Thông báo.");
             //Lấy danh sách thông tin thuốc vào bảng
             SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_TimKiem", frmConnection.connection);       
             search.Fill(mainTable);
@@ -37,18 +37,20 @@ namespace QLBanThuoc.frmTimKiem
         {
             //load dữ liệu vào bảng
             loadData();
+            checkTime();
+            dateNSX.Value = dateHSD.Value = DateTime.Now;
         }
 
-        void search()
+        void searchTheoTen()
         {
             string ten = txbTimKiem.Text;
-            string check1 = "execute dbo.proc_TimKiemThuoc2 '" + ten + "'";
             string get = "execute dbo.proc_TimKiemTheoTen '" + ten + "'";
             //tên thuốc  
             mainTable.Clear();
-            TimKiem.readDatathroughAdapter(check1, mainTable);
+            TimKiem.readDatathroughAdapter(get, mainTable);
             if (mainTable.Rows.Count != 0)
             {
+                searchTable.Clear();
                 TimKiem.readDatathroughAdapter(get, searchTable);
                 dgvKetQua.DataSource = searchTable;
                 MessageBox.Show("Có thuốc cần tìm.", "Thông báo.");                           
@@ -61,17 +63,76 @@ namespace QLBanThuoc.frmTimKiem
             } 
         }
 
+        void searchTheoThoiHan()
+        {
+            string date1 = dateNSX.Value.ToString().Split(' ')[0].Replace("/", "-");
+            string date2 = dateHSD.Value.ToString().Split(' ')[0].Replace("/", "-");
+            string get = "execute dbo.proc_TimKiemTheoThoiHan '" + date1 + "', '" + date2 + "'";
+            //thời hạn
+            mainTable.Clear();
+            TimKiem.readDatathroughAdapter(get, mainTable);
+            if (mainTable.Rows.Count != 0)
+            {
+                searchTable.Clear();
+                TimKiem.readDatathroughAdapter(get, searchTable);
+                dgvKetQua.DataSource = searchTable;
+                MessageBox.Show("Có thuốc cần tìm.", "Thông báo.");
+            }
+            else
+            {
+                txbTimKiem.Clear();
+                searchTable.Clear();
+                MessageBox.Show("Không có thuốc cần tìm....", "Thông báo.");
+            }
+        }
+
+        void searchTheoTenVaThoiHan()
+        {
+            string ten = txbTimKiem.Text;
+            string date1 = dateNSX.Value.ToString().Split(' ')[0].Replace("/", "-");
+            string date2 = dateHSD.Value.ToString().Split(' ')[0].Replace("/", "-");
+            string get = "execute dbo.proc_TimKiemTheoTenVaThoiHan '" + ten + "', '" + date1 + "', '" + date2 + "'";
+            //tên và thời hạn
+            mainTable.Clear();
+            TimKiem.readDatathroughAdapter(get, mainTable);
+            if (mainTable.Rows.Count != 0)
+            {
+                searchTable.Clear();
+                TimKiem.readDatathroughAdapter(get, searchTable);
+                dgvKetQua.DataSource = searchTable;
+                MessageBox.Show("Có thuốc cần tìm.", "Thông báo.");
+            }
+            else
+            {
+                txbTimKiem.Clear();
+                searchTable.Clear();
+                MessageBox.Show("Không có thuốc cần tìm....", "Thông báo.");
+            }
+        }
+
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             //tìm kiếm tất cả các thông tin có liên quan đến chuỗi tìm kiếm
-            if (txbTimKiem.Text == "")
+            if (txbTimKiem.Text == "" && dateNSX.Value == DateTime.Now && dateHSD.Value == DateTime.Now)
             {
                 MessageBox.Show("Vui lòng kiểm tra lại thông tin tìm kiếm.", "Thông báo.");
             }   
-            else 
+            else if (txbTimKiem.Text != "" && dateNSX.Value == DateTime.Now && dateHSD.Value == DateTime.Now)
             {
-                search();
+                searchTheoTen();
             }  
+            else if (txbTimKiem.Text == "" && dateNSX.Value != DateTime.Now && dateHSD.Value != DateTime.Now)
+            {
+                searchTheoThoiHan();
+            }
+            else if (txbTimKiem.Text != "" && dateNSX.Value != DateTime.Now && dateHSD.Value != DateTime.Now)
+            {
+                searchTheoTenVaThoiHan();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng kiểm tra lại thông tin tìm kiếm.", "Thông báo.");
+            }
         }
 
         void checkTime()
