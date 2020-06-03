@@ -504,3 +504,133 @@ as begin
 			(MaPhieuNhap,MaThuoc,SoLuong,DonGia)
 	values(@mpn,@maThuoc,@sl,@gia)
 end
+
+
+-------------------form tìm kiếm--------------------------------------
+------------------đưa ra toàn bộ thông tin của thuốc đã được nhập về và bán ra---------------------------------------
+create procedure proc_TimKiem 
+as begin
+	select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia
+	from THUOC T
+	inner join LOTHUOC L on T.MaLoThuoc = L.MaLoThuoc
+	inner join CHITIETPHIEUNHAP C1 on T.MaThuoc = C1.MaThuoc
+	inner join CHITIETPHIEUXUAT C2 on T.MaThuoc = C2.MaThuoc
+	order by C1.DonGia asc
+end
+------------------tìm kiếm theo tên thuốc---------------------------------------
+create proc proc_TimKiemTheoTen(@ten nvarchar(max))
+as begin
+	select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia 
+	from THUOC T 
+	inner join LOTHUOC L on T.MaLoThuoc = L.MaLoThuoc
+	inner join CHITIETPHIEUNHAP C1 on T.MaThuoc = C1.MaThuoc 
+	inner join CHITIETPHIEUXUAT C2 on T.MaThuoc = C2.MaThuoc
+	where T.TenThuoc = @ten
+end
+------------------tìm kiếm theo thời hạn sản xuất và sử dụng thuốc---------------------------------------
+create proc proc_TimKiemTheoThoiHan (@date1 datetime, @date2 datetime)
+as begin
+	select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia 
+	from THUOC T 
+	inner join LOTHUOC L on T.MaLoThuoc = L.MaLoThuoc
+	inner join CHITIETPHIEUNHAP C1 on T.MaThuoc = C1.MaThuoc 
+	inner join CHITIETPHIEUXUAT C2 on T.MaThuoc = C2.MaThuoc
+	where (NgaySanXuat <= @date1) and (HanSuDung >= @date2)
+end
+------------------tìm kiếm theo tên thuốc và thời hạn sản xuất và sử dụng thuốc---------------------------------------
+create proc proc_TimKiemTheoTenVaThoiHan (@ten nvarchar(max), @date1 datetime, @date2 datetime)
+as begin
+	select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia 
+	from THUOC T 
+	inner join LOTHUOC L on T.MaLoThuoc = L.MaLoThuoc
+	inner join CHITIETPHIEUNHAP C1 on T.MaThuoc = C1.MaThuoc 
+	inner join CHITIETPHIEUXUAT C2 on T.MaThuoc = C2.MaThuoc
+	where (NgaySanXuat <= @date1) and (HanSuDung >= @date2) and (T.TenThuoc = @ten)
+end
+
+-------------------end form tìm kiếm--------------------------------------
+
+
+-------------------form thống kê, báo cáo--------------------------------------
+-------------------thống kê các thuốc đã nhập về--------------------------------------
+create proc proc_ThuocNhap(@start date, @end date)
+as begin
+	select MaLoThuoc,TenNhaCungCap,TenThuoc,DangThuoc,SoLuong,DonGia,SUM(DonGia*SoLuong) ThanhTien
+	from THUOC T, PHIEUNHAP P, CHITIETPHIEUNHAP C, NHACUNGCAP N
+	where T.MaThuoc = C.MaThuoc and P.MaPhieuNhap = C.MaPhieuNhap and P.MaNhaCungCap = N.MaNhaCungCap and (NgayNhap between @start and @end)
+	group by MaLoThuoc, TenNhaCungCap, TenThuoc, DangThuoc, SoLuong, DonGia
+end      
+-------------------thống kê các thuốc đã bán ra--------------------------------------
+create proc proc_ThuocBan(@start date, @end date)
+as begin
+	select MaLoThuoc,TenThuoc,DangThuoc,SoLuong,DonGia,SUM(DonGia*SoLuong) ThanhTien
+	from THUOC T, PHIEUXUAT P, CHITIETPHIEUXUAT C
+	where T.MaThuoc = C.MaThuoc and P.MaPhieuXuat = C.MaPhieuXuat and (NgayXuat between @start and @end)
+	group by MaLoThuoc, TenThuoc, DangThuoc, SoLuong, DonGia
+end
+-------------------thống kê các thuốc còn tồn trong kho--------------------------------------
+create procedure proc_ThongKeTon 
+as begin
+	select MaLoThuoc,TenNhaCungCap,TenThuoc,DangThuoc,DonGia,SoLuongTon
+	from THUOC T, PHIEUNHAP P, CHITIETPHIEUNHAP C, NHACUNGCAP N
+	where T.MaThuoc = C.MaThuoc and P.MaPhieuNhap = C.MaPhieuNhap and P.MaNhaCungCap = N.MaNhaCungCap
+end
+-------------------thống kê các thuốc đã hết hạn--------------------------------------
+create procedure proc_ThongKeHetHan 
+as begin
+	select T.MaLoThuoc,TenThuoc,DangThuoc,NgaySanXuat,HanSuDung,SoLuongTon
+	from THUOC T, LOTHUOC L
+	where T.MaLoThuoc = L.MaLoThuoc and HanSuDung - GETDATE() < 0 
+end
+-------------------doanh thu của nhà thuốc--------------------------------------
+--chức năng thống kê doanh thu theo từng tháng--------------------
+--function tách phần tháng và phần năm
+create function DOANHTHUTHANG(@date date)
+returns int
+as begin
+	declare @month int = datepart(MONTH,@date)
+	declare @year int = datepart(YEAR,@date)
+	if not exists (select * from PHIEUXUAT where datepart(month,NgayXuat)=@month and datepart(year,NgayXuat)=@year)
+		return 0
+	else
+		declare @a int = 0 
+		select @a = sum(Tong)
+		from PHIEUXUAT
+		where datepart(month,NgayXuat)=@month and datepart(year,NgayXuat)=@year
+		return @a
+end
+--procedure xuất ra thời gian và doanh thu của tháng đó
+create proc DTThang(@ngay date)
+as begin
+	select DISTINCT MONTH(@ngay) as N'Tháng',YEAR(@ngay) as N'Năm',dbo.DOANHTHUTHANG(@ngay) as N'Doanh Thu'
+	from PHIEUXUAT
+end
+--procedure đưa ra thông tin doanh thu tổng
+create proc DTThang0
+as begin
+	select DISTINCT MONTH(NgayXuat) as N'Tháng',YEAR(NgayXuat) as N'Năm',dbo.DOANHTHUTHANG(NgayXuat) as N'Doanh Thu'
+	from PHIEUXUAT
+end
+exec dbo.DTThang0
+--chức năng thống kê doanh thu theo từng năm
+--function tách phần năm
+create function DOANHTHUNAM(@date date)
+returns int
+as begin
+	declare @year int = datepart(YEAR,@date)
+	if not exists (select * from PHIEUXUAT where datepart(year,NgayXuat)=@year)
+		return 0
+	else
+		declare @a int = 0 
+		select @a = sum(Tong)
+		from PHIEUXUAT
+		where datepart(year,NgayXuat)=@year
+		return @a
+end
+--procedure xuất ra thời gian và doanh thu của năm đó
+create proc DTNam (@ngay date)
+as begin
+	select DISTINCT YEAR(@ngay) as N'Năm',dbo.DOANHTHUNAM(@ngay) as N'Doanh thu'
+	from PHIEUXUAT 
+end
+-------------------end form thống kê, báo cáo--------------------------------------
