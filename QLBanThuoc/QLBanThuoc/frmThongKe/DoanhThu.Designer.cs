@@ -47,13 +47,13 @@
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.dgvDoanhThu = new System.Windows.Forms.DataGridView();
+            this.Thang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcel = new DevExpress.XtraEditors.SimpleButton();
             this.btnThongKe = new DevExpress.XtraEditors.SimpleButton();
             this.cmbThang = new System.Windows.Forms.ComboBox();
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
-            this.Thang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinh)).BeginInit();
@@ -221,6 +221,7 @@
             // 
             // dgvDoanhThu
             // 
+            this.dgvDoanhThu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDoanhThu.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvDoanhThu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDoanhThu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -232,6 +233,20 @@
             this.dgvDoanhThu.RowHeadersWidth = 51;
             this.dgvDoanhThu.Size = new System.Drawing.Size(985, 410);
             this.dgvDoanhThu.TabIndex = 4;
+            // 
+            // Thang
+            // 
+            this.Thang.DataPropertyName = "Tháng";
+            this.Thang.HeaderText = "Tháng";
+            this.Thang.MinimumWidth = 6;
+            this.Thang.Name = "Thang";
+            // 
+            // Nam
+            // 
+            this.Nam.DataPropertyName = "Năm";
+            this.Nam.HeaderText = "Năm";
+            this.Nam.MinimumWidth = 6;
+            this.Nam.Name = "Nam";
             // 
             // btnExcel
             // 
@@ -328,22 +343,6 @@
             // excelDataSource1
             // 
             this.excelDataSource1.Name = "excelDataSource1";
-            // 
-            // Thang
-            // 
-            this.Thang.DataPropertyName = "Tháng";
-            this.Thang.HeaderText = "Tháng";
-            this.Thang.MinimumWidth = 6;
-            this.Thang.Name = "Thang";
-            this.Thang.Width = 125;
-            // 
-            // Nam
-            // 
-            this.Nam.DataPropertyName = "Năm";
-            this.Nam.HeaderText = "Năm";
-            this.Nam.MinimumWidth = 6;
-            this.Nam.Name = "Nam";
-            this.Nam.Width = 125;
             // 
             // DoanhThu
             // 

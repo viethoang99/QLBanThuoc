@@ -56,12 +56,19 @@ namespace QLBanThuoc.frmNhaCungCap
             else
             {
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "proc_addNhaCungCap";
-                sqlCommand.Parameters.AddWithValue("@MaNCC", textBoxMaNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@TenNCC", textBoxTenNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@NguoiDaiDien", textBoxNguoiDaiDien.Text);
-                sqlCommand.Parameters.AddWithValue("@SoDienThoai", textBoxSoDienThoai.Text);
-                sqlCommand.Parameters.AddWithValue("@DiaChi", textBoxDiaChi.Text);
+                //sqlCommand.CommandText = "proc_addNhaCungCap";
+                //sqlCommand.Parameters.AddWithValue("@MaNCC", textBoxMaNhaCungCap.Text);
+                //sqlCommand.Parameters.AddWithValue("@TenNCC", textBoxTenNhaCungCap.Text);
+                //sqlCommand.Parameters.AddWithValue("@NguoiDaiDien", textBoxNguoiDaiDien.Text);
+                //sqlCommand.Parameters.AddWithValue("@SoDienThoai", textBoxSoDienThoai.Text);
+                //sqlCommand.Parameters.AddWithValue("@DiaChi", textBoxDiaChi.Text);
+
+                sqlCommand.CommandText = "proc_addNCC";
+                sqlCommand.Parameters.AddWithValue("@ma", textBoxMaNhaCungCap.Text);
+                sqlCommand.Parameters.AddWithValue("@ten", textBoxTenNhaCungCap.Text);
+                sqlCommand.Parameters.AddWithValue("@tt", textBoxNguoiDaiDien.Text);
+                sqlCommand.Parameters.AddWithValue("@sdt", textBoxSoDienThoai.Text);
+                sqlCommand.Parameters.AddWithValue("@diachi", textBoxDiaChi.Text);
                 int i = connection.executeProc(sqlCommand);
                 if (i!= 0)
                 {
@@ -108,12 +115,19 @@ namespace QLBanThuoc.frmNhaCungCap
             else
             {
                 SqlCommand sqlCommand = new SqlCommand();
-                sqlCommand.CommandText = "proc_updateNhaCungCap";
-                sqlCommand.Parameters.AddWithValue("@MaNCC", textBoxMaNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@TenNCC", textBoxTenNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@NguoiDaiDien", textBoxNguoiDaiDien.Text);
-                sqlCommand.Parameters.AddWithValue("@SoDienThoai", textBoxSoDienThoai.Text);
-                sqlCommand.Parameters.AddWithValue("@DiaChi", textBoxDiaChi.Text);
+                //sqlCommand.CommandText = "proc_updateNhaCungCap";
+                //sqlCommand.Parameters.AddWithValue("@MaNCC", textBoxMaNhaCungCap.Text);
+                //sqlCommand.Parameters.AddWithValue("@TenNCC", textBoxTenNhaCungCap.Text);
+                //sqlCommand.Parameters.AddWithValue("@NguoiDaiDien", textBoxNguoiDaiDien.Text);
+                //sqlCommand.Parameters.AddWithValue("@SoDienThoai", textBoxSoDienThoai.Text);
+                //sqlCommand.Parameters.AddWithValue("@DiaChi", textBoxDiaChi.Text);
+
+                sqlCommand.CommandText = "proc_updateNCC";
+                sqlCommand.Parameters.AddWithValue("@ma", textBoxMaNhaCungCap.Text);
+                sqlCommand.Parameters.AddWithValue("@ten", textBoxTenNhaCungCap.Text);
+                sqlCommand.Parameters.AddWithValue("@tt", textBoxNguoiDaiDien.Text);
+                sqlCommand.Parameters.AddWithValue("@sdt", textBoxSoDienThoai.Text);
+                sqlCommand.Parameters.AddWithValue("@diachi", textBoxDiaChi.Text);
                 int i = connection.executeProc(sqlCommand);
                 if (i != 0)
                 {
@@ -132,8 +146,8 @@ namespace QLBanThuoc.frmNhaCungCap
         private void ButtonXoa_Click(object sender, EventArgs e)
         {   
             SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.CommandText = "proc_deleteNhaCungCap";
-            sqlCommand.Parameters.AddWithValue("@MaNCC", textBoxMaNhaCungCap.Text);
+            sqlCommand.CommandText = "proc_deleteNCC";
+            sqlCommand.Parameters.AddWithValue("@ma", textBoxMaNhaCungCap.Text);
             int i = connection.executeProc(sqlCommand);
             if (i != 0)
             {

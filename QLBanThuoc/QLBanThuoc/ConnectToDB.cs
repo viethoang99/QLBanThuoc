@@ -169,18 +169,15 @@ namespace QLBanThuoc.Data
 
         public void BtnOK_Click(object sender, EventArgs e)
         {
-            connection.Open();
-            if (connection.State == ConnectionState.Open)
-            {
-                this.DialogResult = DialogResult.OK;
-                XtraForm1 frm = new XtraForm1();
-                frm.Show();
-                this.Hide();
-            }
+            if (cmbAuthentication.SelectedItem.Equals("Windows Authentication"))
+                XML.XMLWriter("Connection.xml", txtServer.Text, cmbDatabase.Text, "true");
             else
-            {
-                MessageBox.Show("Lỗi kết nối", "FAILED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
+                XML.XMLWriter("Connection.xml", txtServer.Text, txtUsername.Text, txtPassword.Text, cmbDatabase.Text, "false");
+
+            this.DialogResult = DialogResult.OK;
+            XtraForm1 frm = new XtraForm1();
+            frm.Show();
+            this.Hide();
         }
 
         public void BtnTestConnection_Click(object sender, EventArgs e)
@@ -203,7 +200,7 @@ namespace QLBanThuoc.Data
                     {
                         cmbDatabase.Items.Add(m_DReader[0].ToString());
                     }
-                    if (m_Conn.State == ConnectionState.Open)
+                    if (String.Compare(txtServer.Text, "") > 0)
                     {
                         MessageBox.Show("Kết nối thành công!", "SUCCESSED", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         str = "Data Source=" + xmlEle.SelectSingleNode("servname").InnerText + ";Initial Catalog=" + xmlEle.SelectSingleNode("database").InnerText + ";Integrated Security=True;";
@@ -242,12 +239,8 @@ namespace QLBanThuoc.Data
                     {
                         cmbDatabase.Items.Add(m_DReader[0].ToString());
                     }
-                    if (m_Conn.State == ConnectionState.Open)
-                    {
+                    if (String.Compare(txtServer.Text, "") == 0)
                         MessageBox.Show("Kết nối thành công!", "SUCCESSED", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        str = "Data Source=" + xmlEle.SelectSingleNode("servname").InnerText + ";Initial Catalog=" + xmlEle.SelectSingleNode("database").InnerText + ";Integrated Security=True; User Id=" + txtUsername.Text + ";Password=" + txtPassword.Text + ";";
-                        connection = new SqlConnection(str);
-                    }
                     else
                         MessageBox.Show("Lỗi kết nối", "FAILED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
@@ -294,6 +287,90 @@ namespace QLBanThuoc.Data
             }
 
             return xmlR;
+        }
+
+        public static void XMLWriter(String filename, String servname, String database, String costatus)
+        {
+            XmlTextWriter xmlW = new XmlTextWriter(filename, null);
+            xmlW.Formatting = Formatting.Indented;
+
+            xmlW.WriteStartDocument();
+            xmlW.WriteComment("\nKhong duoc thay doi noi dung file nay!\n" +
+                                "Thong so co ban:\n\t" +
+                                "costatus = true : quyen Windows\n\t" +
+                                "costatus = false: quyen SQL Server\n\t" +
+                                "servname: ten server\n\t" +
+                                "username: ten dang nhap he thong\n\t" +
+                                "password: mat khau dang nhap he thong\n\t" +
+                                "database: ten co so du lieu\n");
+            xmlW.WriteStartElement("config");
+
+            xmlW.WriteStartElement("costatus");
+            xmlW.WriteString(costatus);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("servname");
+            xmlW.WriteString(servname);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("username");
+            xmlW.WriteString("");
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("password");
+            xmlW.WriteString("");
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("database");
+            xmlW.WriteString(database);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteEndElement();
+            xmlW.WriteEndDocument();
+
+            xmlW.Close();
+        }
+
+        public static void XMLWriter(String filename, String servname, String username, String password, String database, String costatus)
+        {
+            XmlTextWriter xmlW = new XmlTextWriter(filename, null);
+            xmlW.Formatting = Formatting.Indented;
+
+            xmlW.WriteStartDocument();
+            xmlW.WriteComment("\nKhong duoc thay doi noi dung file nay!\n" +
+                                "Thong so co ban:\n\t" +
+                                "costatus = true : quyen Windows\n\t" +
+                                "costatus = false: quyen SQL Server\n\t" +
+                                "servname: ten server\n\t" +
+                                "username: ten dang nhap he thong\n\t" +
+                                "password: mat khau dang nhap he thong\n\t" +
+                                "database: ten co so du lieu\n");
+            xmlW.WriteStartElement("config");
+
+            xmlW.WriteStartElement("costatus");
+            xmlW.WriteString(costatus);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("servname");
+            xmlW.WriteString(servname);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("username");
+            xmlW.WriteString(username);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("password");
+            xmlW.WriteString(password);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteStartElement("database");
+            xmlW.WriteString(database);
+            xmlW.WriteEndElement();
+
+            xmlW.WriteEndElement();
+            xmlW.WriteEndDocument();
+
+            xmlW.Close();
         }
     }
 }

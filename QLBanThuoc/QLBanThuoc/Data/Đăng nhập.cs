@@ -73,6 +73,7 @@ namespace QLBanThuoc.Data
         {
             Ten_USER = getID(txbTenDangNhap.Text, txbMatKhau.Text);
             if (Ten_USER != "")
+                //if (txbTenDangNhap.Text!="")
             {
                 MessageBox.Show("Phiên đăng nhập nhân viên: " + Ten_USER);
                 Form1 fmain = new Form1();

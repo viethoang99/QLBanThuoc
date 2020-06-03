@@ -143,7 +143,14 @@ namespace QLBanThuoc.frmTimKiem
 
         private void dateNSX_ValueChanged(object sender, EventArgs e)
         {
-            checkTime();
+            try
+            {
+                checkTime();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message.ToString(),"Thông báo");
+            }
         }
 
         private void dateHSD_ValueChanged(object sender, EventArgs e)

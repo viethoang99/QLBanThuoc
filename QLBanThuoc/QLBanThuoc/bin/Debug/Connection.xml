@@ -11,7 +11,7 @@ Thong so co ban:
 -->
 <config>
   <costatus>true</costatus>
-  <servname>DUNG-PC\SQLEXPRESS</servname>
+  <servname>admin\sqlexpress</servname>
   <username />
   <password />
   <database>QLBanThuoc</database>

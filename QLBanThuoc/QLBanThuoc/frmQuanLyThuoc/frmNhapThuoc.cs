@@ -147,7 +147,6 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
         private void button4_Click(object sender, EventArgs e)
         {
             SqlCommand sqlThuoc = new SqlCommand("proc_addThuoc");
-      
             sqlThuoc.Parameters.AddWithValue("@date", DateTime.Now.ToString());
             sqlThuoc.Parameters.AddWithValue("@mncc", labelMaNhaCungCap.Text);
             sqlThuoc.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);
@@ -163,10 +162,8 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
             sqlThuoc.Parameters.AddWithValue("@dang", tbDangThuoc.Text);
             sqlThuoc.Parameters.AddWithValue("@mLoai", maLoaiThuoc);
 
-           // frmconnection.executeProc(sqlLoThuoc);
             int i = frmconnection.executeProc(sqlThuoc);
             MessageBox.Show(i.ToString() + " dòng bị ảnh hưởng", "thông báo");
-           // frmconnection.executeProc(sqlPhieuNhap);
         }
 
         private void comboBoxHangSanXuat_SelectedIndexChanged(object sender, EventArgs e)
