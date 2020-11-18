@@ -70,10 +70,10 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void TinhTongTien()
         {
-            if (dataGridViewGioHang.Rows.Count > 1)
+            if (dataGridViewGioHang.Rows.Count > 0)
             {
                 Int32 tongTien = 0;
-                for (int i = 0; i < dataGridViewGioHang.Rows.Count - 1; i++)
+                for (int i = 0; i < dataGridViewGioHang.Rows.Count; i++)
                 {
                     tongTien += Int32.Parse(dataGridViewGioHang.Rows[i].Cells[4].Value.ToString());
                 }
@@ -190,7 +190,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
             sqlPhieuXuat.Parameters.AddWithValue("@tong", labelTongTien.Text);
             DataTable dt = new DataTable();
             conn.readDataProc(sqlPhieuXuat, dt);
-            string mapx = dt.Rows[0].ItemArray[0].ToString();
+            string mapx = dt.Rows[1].ItemArray[0].ToString();
             for (int i = 0; i < dataGridViewGioHang.Rows.Count - 1; i++)
             {
 

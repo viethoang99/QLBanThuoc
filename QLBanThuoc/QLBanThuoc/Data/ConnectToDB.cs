@@ -206,7 +206,7 @@ namespace QLBanThuoc.Data
                     if (m_Conn.State == ConnectionState.Open)
                     {
                         MessageBox.Show("Kết nối thành công!", "SUCCESSED", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        str = "Data Source=" + xmlEle.SelectSingleNode("servname").InnerText + ";Initial Catalog=" + xmlEle.SelectSingleNode("database").InnerText + ";Integrated Security=True;";
+                        str = "Data Source=" + txtServer.Text + ";Initial Catalog=" + xmlEle.SelectSingleNode("database").InnerText + ";Integrated Security=True;";
                         connection = new SqlConnection(str);
                     }
                     else

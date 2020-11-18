@@ -427,6 +427,7 @@
             // 
             // dataGridViewGioHang
             // 
+            this.dataGridViewGioHang.AllowUserToAddRows = false;
             this.dataGridViewGioHang.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridViewGioHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewGioHang.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
