@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e56dc3af-44ca-4bb6-8e3e-d9e156247934" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:24538/QLBanThuocService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="QLBanThuocService.xsd" MetadataType="Schema" ID="9b87f04d-c433-4fff-88d4-c601d828ac20" SourceId="1" SourceUrl="http://localhost:24538/QLBanThuocService.svc?xsd=xsd0" />
+    <MetadataFile FileName="QLBanThuocService1.xsd" MetadataType="Schema" ID="9407446a-21dc-4087-918a-b5edc7f61e16" SourceId="1" SourceUrl="http://localhost:24538/QLBanThuocService.svc?xsd=xsd1" />
+    <MetadataFile FileName="QLBanThuocService.wsdl" MetadataType="Wsdl" ID="dec19c04-afb1-4e00-ae0f-6f3d4ac371ad" SourceId="1" SourceUrl="http://localhost:24538/QLBanThuocService.svc?wsdl" />
+    <MetadataFile FileName="QLBanThuocService.disco" MetadataType="Disco" ID="bea2b3ac-076b-4178-bcde-b4a955fff6d8" SourceId="1" SourceUrl="http://localhost:24538/QLBanThuocService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

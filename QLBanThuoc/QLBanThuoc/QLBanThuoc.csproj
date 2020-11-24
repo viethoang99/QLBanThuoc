@@ -99,6 +99,11 @@
     <Compile Include="BCTK\ThuocNhap.Designer.cs">
       <DependentUpon>ThuocNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\QLBanThuocServiceRf\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Data\ConnectToDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +210,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService.wsdl" />
+    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -215,7 +227,27 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\QLBanThuocServiceRf\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QLBanThuocServiceRf\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QLBanThuocServiceRf\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\QLBanThuocServiceRf\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
