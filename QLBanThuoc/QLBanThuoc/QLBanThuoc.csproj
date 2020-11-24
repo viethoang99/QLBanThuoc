@@ -99,7 +99,7 @@
     <Compile Include="BCTK\ThuocNhap.Designer.cs">
       <DependentUpon>ThuocNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\QLBanThuocServiceRf\Reference.cs">
+    <Compile Include="Connected Services\QLBanThuoc_RF\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -210,13 +210,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
-    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService.wsdl" />
-    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService.xsd">
-      <SubType>Designer</SubType>
+    <None Include="Connected Services\QLBanThuoc_RF\QLBanThuoc.QLBanThuoc_RF.HelloWorldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="Connected Services\QLBanThuoc_RF\QLBanThuocService.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -231,19 +228,19 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\QLBanThuocServiceRf\" />
+    <WCFMetadataStorage Include="Connected Services\QLBanThuoc_RF\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuocServiceRf\QLBanThuocService.disco" />
+    <None Include="Connected Services\QLBanThuoc_RF\QLBanThuocService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuocServiceRf\configuration91.svcinfo" />
+    <None Include="Connected Services\QLBanThuoc_RF\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuocServiceRf\configuration.svcinfo" />
+    <None Include="Connected Services\QLBanThuoc_RF\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuocServiceRf\Reference.svcmap">
+    <None Include="Connected Services\QLBanThuoc_RF\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

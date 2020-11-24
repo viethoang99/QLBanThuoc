@@ -1454,7 +1454,6 @@ D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QL
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\bin\Debug\es\DevExpress.Diagram.v19.2.Core.resources.dll
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\bin\Debug\ja\DevExpress.Diagram.v19.2.Core.resources.dll
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\bin\Debug\ru\DevExpress.Diagram.v19.2.Core.resources.dll
-D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.csprojAssemblyReference.cache
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.BCTK.SoLuongTon.resources
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.BCTK.ThuocBanRa.resources
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.BCTK.ThuocHetHan.resources

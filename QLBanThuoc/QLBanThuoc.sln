@@ -5,10 +5,10 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QLBanThuoc", "QLBanThuoc\QLBanThuoc.csproj", "{4E62A670-FC66-49EB-99F2-5FD90A3217FA}"
 	ProjectSection(ProjectDependencies) = postProject
-		{40716B82-4CB9-4D73-9DE0-F4502A6BA66D} = {40716B82-4CB9-4D73-9DE0-F4502A6BA66D}
+		{11FFAFDA-6235-473E-ACB4-4F34505FD642} = {11FFAFDA-6235-473E-ACB4-4F34505FD642}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService", "WcfService\WcfService.csproj", "{40716B82-4CB9-4D73-9DE0-F4502A6BA66D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSTest", "WSTest\WSTest.csproj", "{11FFAFDA-6235-473E-ACB4-4F34505FD642}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +20,10 @@ Global
 		{4E62A670-FC66-49EB-99F2-5FD90A3217FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E62A670-FC66-49EB-99F2-5FD90A3217FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E62A670-FC66-49EB-99F2-5FD90A3217FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40716B82-4CB9-4D73-9DE0-F4502A6BA66D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40716B82-4CB9-4D73-9DE0-F4502A6BA66D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40716B82-4CB9-4D73-9DE0-F4502A6BA66D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40716B82-4CB9-4D73-9DE0-F4502A6BA66D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11FFAFDA-6235-473E-ACB4-4F34505FD642}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FFAFDA-6235-473E-ACB4-4F34505FD642}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FFAFDA-6235-473E-ACB4-4F34505FD642}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FFAFDA-6235-473E-ACB4-4F34505FD642}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
