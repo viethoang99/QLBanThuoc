@@ -20,15 +20,11 @@ namespace QLBanThuoc.frmNhaCungCap
         }
 
         frmConnection connection = new frmConnection();
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         private void SimpleButton1_Click(object sender, EventArgs e)
         {
-            SqlCommand sqlCommand = new SqlCommand("proc_searchNCC");
-            sqlCommand.Parameters.AddWithValue("@ten", textBox6.Text);
-            //SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM NHACUNGCAP",frmConnection.connection);
-            DataTable dt = new DataTable();
-            connection.readDataProc(sqlCommand, dt);
-            dataGridView1.DataSource = dt;
+            DataTable DSTK = client.TimKiemNCC(textBox6.Text);
+            dataGridView1.DataSource = DSTK;
         }
 
         private void groupControl2_Paint(object sender, PaintEventArgs e)
@@ -55,25 +51,15 @@ namespace QLBanThuoc.frmNhaCungCap
             }
             else
             {
-                SqlCommand sqlCommand = new SqlCommand();
-                //sqlCommand.CommandText = "proc_addNhaCungCap";
-                //sqlCommand.Parameters.AddWithValue("@MaNCC", textBoxMaNhaCungCap.Text);
-                //sqlCommand.Parameters.AddWithValue("@TenNCC", textBoxTenNhaCungCap.Text);
-                //sqlCommand.Parameters.AddWithValue("@NguoiDaiDien", textBoxNguoiDaiDien.Text);
-                //sqlCommand.Parameters.AddWithValue("@SoDienThoai", textBoxSoDienThoai.Text);
-                //sqlCommand.Parameters.AddWithValue("@DiaChi", textBoxDiaChi.Text);
-
-                sqlCommand.CommandText = "proc_addNCC";
-                sqlCommand.Parameters.AddWithValue("@ma", textBoxMaNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@ten", textBoxTenNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@tt", textBoxNguoiDaiDien.Text);
-                sqlCommand.Parameters.AddWithValue("@sdt", textBoxSoDienThoai.Text);
-                sqlCommand.Parameters.AddWithValue("@diachi", textBoxDiaChi.Text);
-                int i = connection.executeProc(sqlCommand);
+                int i = client.ThemMoiNCC(textBoxMaNhaCungCap.Text, textBoxTenNhaCungCap.Text, textBoxNguoiDaiDien.Text, textBoxSoDienThoai.Text,textBoxDiaChi.Text);
                 if (i!= 0)
                 {
-                    MessageBox.Show("Thêm thành công", "Thông báo");
+                    MessageBox.Show("Thêm thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
+                else
+                {
+                    MessageBox.Show("Thêm mới không thành công", "Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }    
             }
         }
 
@@ -114,24 +100,14 @@ namespace QLBanThuoc.frmNhaCungCap
             }
             else
             {
-                SqlCommand sqlCommand = new SqlCommand();
-                //sqlCommand.CommandText = "proc_updateNhaCungCap";
-                //sqlCommand.Parameters.AddWithValue("@MaNCC", textBoxMaNhaCungCap.Text);
-                //sqlCommand.Parameters.AddWithValue("@TenNCC", textBoxTenNhaCungCap.Text);
-                //sqlCommand.Parameters.AddWithValue("@NguoiDaiDien", textBoxNguoiDaiDien.Text);
-                //sqlCommand.Parameters.AddWithValue("@SoDienThoai", textBoxSoDienThoai.Text);
-                //sqlCommand.Parameters.AddWithValue("@DiaChi", textBoxDiaChi.Text);
-
-                sqlCommand.CommandText = "proc_updateNCC";
-                sqlCommand.Parameters.AddWithValue("@ma", textBoxMaNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@ten", textBoxTenNhaCungCap.Text);
-                sqlCommand.Parameters.AddWithValue("@tt", textBoxNguoiDaiDien.Text);
-                sqlCommand.Parameters.AddWithValue("@sdt", textBoxSoDienThoai.Text);
-                sqlCommand.Parameters.AddWithValue("@diachi", textBoxDiaChi.Text);
-                int i = connection.executeProc(sqlCommand);
+                int i = client.SuaNhaCungCap(textBoxMaNhaCungCap.Text, textBoxTenNhaCungCap.Text, textBoxNguoiDaiDien.Text, textBoxSoDienThoai.Text, textBoxDiaChi.Text);
                 if (i != 0)
                 {
-                    MessageBox.Show("Update thành công", "Thông báo");
+                    MessageBox.Show("Thay đổi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Thay đổi không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 textBoxMaNhaCungCap.Text = "";
                 textBoxTenNhaCungCap.Text = "";
@@ -144,21 +120,31 @@ namespace QLBanThuoc.frmNhaCungCap
         }
 
         private void ButtonXoa_Click(object sender, EventArgs e)
-        {   
-            SqlCommand sqlCommand = new SqlCommand();
-            sqlCommand.CommandText = "proc_deleteNCC";
-            sqlCommand.Parameters.AddWithValue("@ma", textBoxMaNhaCungCap.Text);
-            int i = connection.executeProc(sqlCommand);
-            if (i != 0)
+        {
+            textBoxMaNhaCungCap.Text = MaNCC;
+            textBoxDiaChi.Text = DiaChi;
+            textBoxSoDienThoai.Text = SoDienThoai;
+            textBoxNguoiDaiDien.Text = NguoiDaiDien;
+            textBoxTenNhaCungCap.Text = TenNCC;
+            textBoxMaNhaCungCap.ReadOnly = true;
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            switch (result)
             {
-                MessageBox.Show("Xóa thành công", "Thông báo");
-                dataGridView1.Rows.RemoveAt(iRowIndex);
-            }
-            else
-            {
-                MessageBox.Show("Xóa thất bại", "Thông báo");
-            }
-            
+                case DialogResult.Yes:
+                    int i = client.XoaNhaCungCap(textBoxMaNhaCungCap.Text);
+                    if (i != 0)
+                    {
+                        MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dataGridView1.Rows.RemoveAt(iRowIndex);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    break;
+                case DialogResult.No:
+                    break;
+            }     
         }
 
         private void ButtonHuy_Click(object sender, EventArgs e)

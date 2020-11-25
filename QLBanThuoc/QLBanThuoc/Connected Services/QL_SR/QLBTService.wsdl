@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ThemMoiNCC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mancc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tenncc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nguoidd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sdt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="diachi" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ThemMoiNCCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ThemMoiNCCResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SuaNhaCungCap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mancc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tenncc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nguoidd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sdt" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="diachi" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SuaNhaCungCapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SuaNhaCungCapResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XoaNhaCungCap">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mancc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XoaNhaCungCapResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="XoaNhaCungCapResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimKiemNCC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="thongtin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimKiemNCCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TimKiemNCCResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ThemMoiNCCSoapIn">
+    <wsdl:part name="parameters" element="tns:ThemMoiNCC" />
+  </wsdl:message>
+  <wsdl:message name="ThemMoiNCCSoapOut">
+    <wsdl:part name="parameters" element="tns:ThemMoiNCCResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuaNhaCungCapSoapIn">
+    <wsdl:part name="parameters" element="tns:SuaNhaCungCap" />
+  </wsdl:message>
+  <wsdl:message name="SuaNhaCungCapSoapOut">
+    <wsdl:part name="parameters" element="tns:SuaNhaCungCapResponse" />
+  </wsdl:message>
+  <wsdl:message name="XoaNhaCungCapSoapIn">
+    <wsdl:part name="parameters" element="tns:XoaNhaCungCap" />
+  </wsdl:message>
+  <wsdl:message name="XoaNhaCungCapSoapOut">
+    <wsdl:part name="parameters" element="tns:XoaNhaCungCapResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimKiemNCCSoapIn">
+    <wsdl:part name="parameters" element="tns:TimKiemNCC" />
+  </wsdl:message>
+  <wsdl:message name="TimKiemNCCSoapOut">
+    <wsdl:part name="parameters" element="tns:TimKiemNCCResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloNameSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloName" />
+  </wsdl:message>
+  <wsdl:message name="HelloNameSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloNameResponse" />
+  </wsdl:message>
+  <wsdl:portType name="QLBanThuocServiceSoap">
+    <wsdl:operation name="ThemMoiNCC">
+      <wsdl:input message="tns:ThemMoiNCCSoapIn" />
+      <wsdl:output message="tns:ThemMoiNCCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SuaNhaCungCap">
+      <wsdl:input message="tns:SuaNhaCungCapSoapIn" />
+      <wsdl:output message="tns:SuaNhaCungCapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XoaNhaCungCap">
+      <wsdl:input message="tns:XoaNhaCungCapSoapIn" />
+      <wsdl:output message="tns:XoaNhaCungCapSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemNCC">
+      <wsdl:input message="tns:TimKiemNCCSoapIn" />
+      <wsdl:output message="tns:TimKiemNCCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloName">
+      <wsdl:input message="tns:HelloNameSoapIn" />
+      <wsdl:output message="tns:HelloNameSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="QLBanThuocServiceSoap" type="tns:QLBanThuocServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ThemMoiNCC">
+      <soap:operation soapAction="http://tempuri.org/ThemMoiNCC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaNhaCungCap">
+      <soap:operation soapAction="http://tempuri.org/SuaNhaCungCap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaNhaCungCap">
+      <soap:operation soapAction="http://tempuri.org/XoaNhaCungCap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemNCC">
+      <soap:operation soapAction="http://tempuri.org/TimKiemNCC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloName">
+      <soap:operation soapAction="http://tempuri.org/HelloName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="QLBanThuocServiceSoap12" type="tns:QLBanThuocServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ThemMoiNCC">
+      <soap12:operation soapAction="http://tempuri.org/ThemMoiNCC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SuaNhaCungCap">
+      <soap12:operation soapAction="http://tempuri.org/SuaNhaCungCap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XoaNhaCungCap">
+      <soap12:operation soapAction="http://tempuri.org/XoaNhaCungCap" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemNCC">
+      <soap12:operation soapAction="http://tempuri.org/TimKiemNCC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloName">
+      <soap12:operation soapAction="http://tempuri.org/HelloName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QLBanThuocService">
+    <wsdl:port name="QLBanThuocServiceSoap" binding="tns:QLBanThuocServiceSoap">
+      <soap:address location="https://localhost:44372/QLBTService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="QLBanThuocServiceSoap12" binding="tns:QLBanThuocServiceSoap12">
+      <soap12:address location="https://localhost:44372/QLBTService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

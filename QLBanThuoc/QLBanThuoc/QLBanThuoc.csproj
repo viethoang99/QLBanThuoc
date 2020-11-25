@@ -99,7 +99,7 @@
     <Compile Include="BCTK\ThuocNhap.Designer.cs">
       <DependentUpon>ThuocNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\QLBanThuoc_RF\Reference.cs">
+    <Compile Include="Connected Services\QL_SR\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -210,10 +210,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
-    <None Include="Connected Services\QLBanThuoc_RF\QLBanThuoc.QLBanThuoc_RF.HelloWorldResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\QLBanThuoc_RF\QLBanThuocService.wsdl" />
+    <None Include="Connected Services\QL_SR\QLBTService.wsdl" />
+    <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -228,19 +226,19 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\QLBanThuoc_RF\" />
+    <WCFMetadataStorage Include="Connected Services\QL_SR\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuoc_RF\QLBanThuocService.disco" />
+    <None Include="Connected Services\QL_SR\QLBTService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuoc_RF\configuration91.svcinfo" />
+    <None Include="Connected Services\QL_SR\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuoc_RF\configuration.svcinfo" />
+    <None Include="Connected Services\QL_SR\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\QLBanThuoc_RF\Reference.svcmap">
+    <None Include="Connected Services\QL_SR\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
