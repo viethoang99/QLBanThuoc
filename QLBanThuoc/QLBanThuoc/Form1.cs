@@ -123,6 +123,7 @@ namespace QLBanThuoc
             if (dialog == DialogResult.Yes)
             {
                 XtraForm1 DangNhap = new XtraForm1();
+                XtraForm1.Ten_USER = "";
                 DangNhap.Show();
                 this.Hide();
             }

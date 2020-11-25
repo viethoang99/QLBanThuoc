@@ -20,8 +20,8 @@ namespace WSTest
     // [System.Web.Script.Services.ScriptService]
     static class Connection
     {
-        //static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
 
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static int executeProc(SqlCommand command)
@@ -150,7 +150,7 @@ namespace WSTest
             byte[] hash = mh.ComputeHash(inputBytes);
             //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
             StringBuilder sb = new StringBuilder();
-
+            Ten_USER="0";
             for (int i = 0; i < hash.Length; i++)
             {
                 sb.Append(hash[i].ToString("X2"));

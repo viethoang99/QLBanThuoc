@@ -39,7 +39,7 @@ namespace QLBanThuoc.Data
         {
             Ten_USER = client.getID(txbTenDangNhap.Text, txbMatKhau.Text);
             Ma_USER = client.ma_user();
-            if (Ten_USER != "")
+            if (Ten_USER != "0")
                 //if (txbTenDangNhap.Text!="")
             {
                 //Lưu giữ tên đăng nhập mà mật khẩu
