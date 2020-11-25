@@ -283,6 +283,117 @@
       <s:element name="DoiMatKhauResponse">
         <s:complexType />
       </s:element>
+      <s:element name="NhapThuoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maNCC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maNV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Gia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HSD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maThuoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maHSX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NSX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tenThuoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dangThuoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maloaiThuoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NhapThuocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NhapThuocResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimNCC">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TenNCC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimNCCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TimNCCResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadThongTinNV">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="maNV" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadThongTinNVResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadThongTinNVResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadThongTinHSX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tenHSX" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadThongTinHSXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadThongTinHSXResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadThongTinLoaiThuoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tenLoaiThuoc" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoadThongTinLoaiThuocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoadThongTinLoaiThuocResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="HelloWorld">
         <s:complexType />
       </s:element>
@@ -405,6 +516,36 @@
   <wsdl:message name="DoiMatKhauSoapOut">
     <wsdl:part name="parameters" element="tns:DoiMatKhauResponse" />
   </wsdl:message>
+  <wsdl:message name="NhapThuocSoapIn">
+    <wsdl:part name="parameters" element="tns:NhapThuoc" />
+  </wsdl:message>
+  <wsdl:message name="NhapThuocSoapOut">
+    <wsdl:part name="parameters" element="tns:NhapThuocResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimNCCSoapIn">
+    <wsdl:part name="parameters" element="tns:TimNCC" />
+  </wsdl:message>
+  <wsdl:message name="TimNCCSoapOut">
+    <wsdl:part name="parameters" element="tns:TimNCCResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadThongTinNVSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadThongTinNV" />
+  </wsdl:message>
+  <wsdl:message name="LoadThongTinNVSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadThongTinNVResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadThongTinHSXSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadThongTinHSX" />
+  </wsdl:message>
+  <wsdl:message name="LoadThongTinHSXSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadThongTinHSXResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoadThongTinLoaiThuocSoapIn">
+    <wsdl:part name="parameters" element="tns:LoadThongTinLoaiThuoc" />
+  </wsdl:message>
+  <wsdl:message name="LoadThongTinLoaiThuocSoapOut">
+    <wsdl:part name="parameters" element="tns:LoadThongTinLoaiThuocResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldSoapIn">
     <wsdl:part name="parameters" element="tns:HelloWorld" />
   </wsdl:message>
@@ -481,6 +622,26 @@
     <wsdl:operation name="DoiMatKhau">
       <wsdl:input message="tns:DoiMatKhauSoapIn" />
       <wsdl:output message="tns:DoiMatKhauSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NhapThuoc">
+      <wsdl:input message="tns:NhapThuocSoapIn" />
+      <wsdl:output message="tns:NhapThuocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TimNCC">
+      <wsdl:input message="tns:TimNCCSoapIn" />
+      <wsdl:output message="tns:TimNCCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinNV">
+      <wsdl:input message="tns:LoadThongTinNVSoapIn" />
+      <wsdl:output message="tns:LoadThongTinNVSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinHSX">
+      <wsdl:input message="tns:LoadThongTinHSXSoapIn" />
+      <wsdl:output message="tns:LoadThongTinHSXSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinLoaiThuoc">
+      <wsdl:input message="tns:LoadThongTinLoaiThuocSoapIn" />
+      <wsdl:output message="tns:LoadThongTinLoaiThuocSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -630,6 +791,51 @@
     </wsdl:operation>
     <wsdl:operation name="DoiMatKhau">
       <soap:operation soapAction="http://tempuri.org/DoiMatKhau" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NhapThuoc">
+      <soap:operation soapAction="http://tempuri.org/NhapThuoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimNCC">
+      <soap:operation soapAction="http://tempuri.org/TimNCC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinNV">
+      <soap:operation soapAction="http://tempuri.org/LoadThongTinNV" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinHSX">
+      <soap:operation soapAction="http://tempuri.org/LoadThongTinHSX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinLoaiThuoc">
+      <soap:operation soapAction="http://tempuri.org/LoadThongTinLoaiThuoc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -795,6 +1001,51 @@
     </wsdl:operation>
     <wsdl:operation name="DoiMatKhau">
       <soap12:operation soapAction="http://tempuri.org/DoiMatKhau" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NhapThuoc">
+      <soap12:operation soapAction="http://tempuri.org/NhapThuoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimNCC">
+      <soap12:operation soapAction="http://tempuri.org/TimNCC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinNV">
+      <soap12:operation soapAction="http://tempuri.org/LoadThongTinNV" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinHSX">
+      <soap12:operation soapAction="http://tempuri.org/LoadThongTinHSX" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoadThongTinLoaiThuoc">
+      <soap12:operation soapAction="http://tempuri.org/LoadThongTinLoaiThuoc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
