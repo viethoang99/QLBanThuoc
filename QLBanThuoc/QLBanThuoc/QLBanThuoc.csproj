@@ -104,9 +104,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Data\ConnectToDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Data\ConnectToDB.cs" />
     <Compile Include="Data\ConnectToDB.Designer.cs">
       <DependentUpon>ConnectToDB.cs</DependentUpon>
     </Compile>

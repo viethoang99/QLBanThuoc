@@ -44,6 +44,20 @@ namespace QLBanThuoc.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemNCC", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> TimKiemNCCAsync(string thongtin);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getID", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string getID(string username, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getID", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> getIDAsync(string username, string pass);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ma_user", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string ma_user();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ma_user", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> ma_userAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string HelloWorld();
@@ -116,6 +130,22 @@ namespace QLBanThuoc.QL_SR {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> TimKiemNCCAsync(string thongtin) {
             return base.Channel.TimKiemNCCAsync(thongtin);
+        }
+        
+        public string getID(string username, string pass) {
+            return base.Channel.getID(username, pass);
+        }
+        
+        public System.Threading.Tasks.Task<string> getIDAsync(string username, string pass) {
+            return base.Channel.getIDAsync(username, pass);
+        }
+        
+        public string ma_user() {
+            return base.Channel.ma_user();
+        }
+        
+        public System.Threading.Tasks.Task<string> ma_userAsync() {
+            return base.Channel.ma_userAsync();
         }
         
         public string HelloWorld() {

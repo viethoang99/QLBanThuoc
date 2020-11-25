@@ -16,8 +16,9 @@ namespace QLBanThuoc.Data
 {
     public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
     {
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         public static string Ten_USER = "";
-        public static string Ma_USER = "";
+        public static string Ma_USER ="";
         public XtraForm1()
         {
             InitializeComponent();
@@ -26,52 +27,11 @@ namespace QLBanThuoc.Data
         private void Label1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private string getID(string username, string pass)
-        {
-            //Tạo MD5 
-            MD5 mh = MD5.Create();
-            //Chuyển kiểu chuổi thành kiểu byte
-            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
-            //mã hóa chuỗi đã chuyển
-            byte[] hash = mh.ComputeHash(inputBytes);
-            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < hash.Length; i++)
-            {
-                sb.Append(hash[i].ToString("X2"));
-            }
-            string id = "";
-            try
-            {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM NHANVIEN WHERE username ='" + username + "' and password='" + sb.ToString() + "'", frmConnection.connection);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                if (dt != null)
-                {
-                    foreach (DataRow dr in dt.Rows)
-                    {
-                        id = dr["TenNhanVien"].ToString();
-                        Ma_USER = dr["MaNhanVien"].ToString();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Lỗi xảy ra khi truy vấn dữ liệu hoặc kết nối với server thất bại !");
-            }
-            finally
-            {
-                frmConnection.connection.Close();
-            }
-            return id;
-        }
+        }        
         private void BtnDangNhap_Click(object sender, EventArgs e)
         {
-            Ten_USER = getID(txbTenDangNhap.Text, txbMatKhau.Text);
+            Ten_USER = client.getID(txbTenDangNhap.Text, txbMatKhau.Text);
+            Ma_USER = client.ma_user();
             if (Ten_USER != "")
                 //if (txbTenDangNhap.Text!="")
             {

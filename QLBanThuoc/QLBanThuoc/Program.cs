@@ -19,7 +19,7 @@ namespace QLBanThuoc
             Application.SetCompatibleTextRenderingDefault(false);
 
             BonusSkins.Register();
-            Application.Run(new frmConnection());
+            Application.Run(new XtraForm1());
         }
     }
 }

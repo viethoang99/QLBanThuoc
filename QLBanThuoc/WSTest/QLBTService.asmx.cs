@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 
@@ -99,6 +101,52 @@ namespace WSTest
             Adapter.Dispose();
             //Kết thúc lấy dữ liệu
             return result;
+        }
+        //5. Chức năng đăng nhập
+        public static string Ma_USER, Ten_USER;
+
+        [WebMethod]
+        public string getID(string username, string pass)
+        {
+            //Tạo MD5 
+            MD5 mh = MD5.Create();
+            //Chuyển kiểu chuổi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
+            //mã hóa chuỗi đã chuyển
+            byte[] hash = mh.ComputeHash(inputBytes);
+            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            string id = "";
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM NHANVIEN WHERE username ='" + username + "' and password='" + sb.ToString() + "'", Connection.connection);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt != null)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        Ten_USER = dr["TenNhanVien"].ToString();
+                        Ma_USER = dr["MaNhanVien"].ToString();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return "0";
+            }
+            return Ten_USER;
+        }
+        [WebMethod]
+        public string ma_user()
+        {
+            return Ma_USER;
         }
         [WebMethod]
         public string HelloWorld()
