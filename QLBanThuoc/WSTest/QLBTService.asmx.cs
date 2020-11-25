@@ -148,6 +148,61 @@ namespace WSTest
         {
             return Ma_USER;
         }
+        //6. Chức năng cập nhật danh sách thuốc
+        [WebMethod]
+        public DataTable TimKiemThuoc(string str)
+        {
+            DataTable result = new DataTable("DSTB");
+            SqlCommand sqlCommand = new SqlCommand("select MaThuoc, MaLoThuoc, TenThuoc, MaLoaiThuoc, DonGia, SoLuongTon from THUOC where THUOC.TenThuoc like N'%' + @ten + '%'", Connection.connection);
+            sqlCommand.Parameters.AddWithValue("@ten", str);
+            SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
+            Adapter.Fill(result);
+            Adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //6.1 Tìm kiếm thuốc để điền lên form
+        [WebMethod]
+        public DataTable TimKiemThuocSua(string str)
+        {
+            DataTable result = new DataTable("DSTB");
+            SqlCommand sqlCommand = new SqlCommand("select TenThuoc,THUOC.MaLoThuoc,MaLoaiThuoc,MaHangSX,ThanhPhan,CongDung,NgaySanXuat,HanSuDung,DonGia,SoLuongTon,DangThuoc from THUOC, LOTHUOC  where THUOC.MaThuoc like @maT and THUOC.MaLoThuoc = LOTHUOC.MaLoThuoc ", Connection.connection);
+            sqlCommand.Parameters.AddWithValue("@maT", str);
+            SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
+            Adapter.Fill(result);
+            Adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;         
+        }
+        //6.2. Lưu thuốc sau khi sửa thông tin
+        [WebMethod]
+        public int LuuThuoc(string mathuoc,string malo,string ten,string tp,string cd, string nsx,string hsd,string slt,string dt,string dongia )
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "proc_UpdateThuoc";            
+            cmd.Parameters.AddWithValue("@mathuoc", SqlDbType.Char).Value = mathuoc;
+            cmd.Parameters.AddWithValue("@malo", SqlDbType.Char).Value = malo;
+            cmd.Parameters.AddWithValue("@ten", SqlDbType.NVarChar).Value = ten;
+            cmd.Parameters.AddWithValue("@tp", SqlDbType.NVarChar).Value = tp;
+            cmd.Parameters.AddWithValue("@cd", SqlDbType.NVarChar).Value =cd;
+            cmd.Parameters.AddWithValue("@nsx", SqlDbType.Date).Value = nsx;
+            cmd.Parameters.AddWithValue("@hsd", SqlDbType.Date).Value = hsd;
+            cmd.Parameters.AddWithValue("@slt", SqlDbType.Int).Value = Convert.ToInt32(slt);
+            cmd.Parameters.AddWithValue("@dt", SqlDbType.NVarChar).Value = dt;
+            cmd.Parameters.AddWithValue("@dongia", SqlDbType.Int).Value = Convert.ToInt32(dongia);
+            int i = Connection.executeProc(cmd);
+            return i;
+        }
+        //6.3. Xóa thuốc đi
+        [WebMethod]
+        public int XoaThuoc(string maThuoc)
+        {
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.CommandText = "proc_deleteThuoc";
+            sqlCommand.Parameters.AddWithValue("@maT", SqlDbType.Char).Value = maThuoc;
+            int i = Connection.executeProc(sqlCommand);
+            return i;
+        }
         //Tùng - Tìm kiếm
         [WebMethod]
         public DataTable DanhSachThuocTheoTen(string TenThuoc)

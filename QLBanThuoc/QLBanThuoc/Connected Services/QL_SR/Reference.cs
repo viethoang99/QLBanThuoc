@@ -58,6 +58,41 @@ namespace QLBanThuoc.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ma_user", ReplyAction="*")]
         System.Threading.Tasks.Task<string> ma_userAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TimKiemThuoc(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuocAsync(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuocSua", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TimKiemThuocSua(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuocSua", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuocSuaAsync(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LuuThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int LuuThuoc(string mathuoc, string malo, string ten, string tp, string cd, string nsx, string hsd, string slt, string dt, string dongia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LuuThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> LuuThuocAsync(string mathuoc, string malo, string ten, string tp, string cd, string nsx, string hsd, string slt, string dt, string dongia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int XoaThuoc(string maThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> XoaThuocAsync(string maThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoTen", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable DanhSachThuocTheoTen(string TenThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoTen", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoTenAsync(string TenThuoc);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string HelloWorld();
@@ -146,6 +181,46 @@ namespace QLBanThuoc.QL_SR {
         
         public System.Threading.Tasks.Task<string> ma_userAsync() {
             return base.Channel.ma_userAsync();
+        }
+        
+        public System.Data.DataTable TimKiemThuoc(string str) {
+            return base.Channel.TimKiemThuoc(str);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuocAsync(string str) {
+            return base.Channel.TimKiemThuocAsync(str);
+        }
+        
+        public System.Data.DataTable TimKiemThuocSua(string str) {
+            return base.Channel.TimKiemThuocSua(str);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuocSuaAsync(string str) {
+            return base.Channel.TimKiemThuocSuaAsync(str);
+        }
+        
+        public int LuuThuoc(string mathuoc, string malo, string ten, string tp, string cd, string nsx, string hsd, string slt, string dt, string dongia) {
+            return base.Channel.LuuThuoc(mathuoc, malo, ten, tp, cd, nsx, hsd, slt, dt, dongia);
+        }
+        
+        public System.Threading.Tasks.Task<int> LuuThuocAsync(string mathuoc, string malo, string ten, string tp, string cd, string nsx, string hsd, string slt, string dt, string dongia) {
+            return base.Channel.LuuThuocAsync(mathuoc, malo, ten, tp, cd, nsx, hsd, slt, dt, dongia);
+        }
+        
+        public int XoaThuoc(string maThuoc) {
+            return base.Channel.XoaThuoc(maThuoc);
+        }
+        
+        public System.Threading.Tasks.Task<int> XoaThuocAsync(string maThuoc) {
+            return base.Channel.XoaThuocAsync(maThuoc);
+        }
+        
+        public System.Data.DataTable DanhSachThuocTheoTen(string TenThuoc) {
+            return base.Channel.DanhSachThuocTheoTen(TenThuoc);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoTenAsync(string TenThuoc) {
+            return base.Channel.DanhSachThuocTheoTenAsync(TenThuoc);
         }
         
         public string HelloWorld() {
