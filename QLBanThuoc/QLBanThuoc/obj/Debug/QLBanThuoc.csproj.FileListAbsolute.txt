@@ -1474,3 +1474,6 @@ D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QL
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.csproj.CopyComplete
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.exe
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.pdb
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.csprojAssemblyReference.cache
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.Data.Đăng_ký.resources
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.Data.Đổi_mật_khẩu.resources

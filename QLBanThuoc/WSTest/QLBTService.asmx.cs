@@ -148,6 +148,46 @@ namespace WSTest
         {
             return Ma_USER;
         }
+        //Tùng - Tìm kiếm
+        [WebMethod]
+        public DataTable DanhSachThuocTheoTen(string TenThuoc)
+        {
+            DataTable result = new DataTable("DS");
+            //Lấy dữ liệu
+            SqlCommand command = new SqlCommand("execute dbo.proc_TimKiemTheoTen '" + TenThuoc + "'", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //[WebMethod]
+        //public DataTable DanhSachThuocTheoThoiHan(string date1, string date2)
+        //{
+        //    DataTable result = new DataTable("DS");
+        //    //Lấy dữ liệu
+        //    string get = @"execute dbo.proc_TimKiemTheoThoiHan '" + date1 + "', '" + date2 + "'";
+        //    SqlCommand command = new SqlCommand(get, Connection.conn);
+        //    SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //    adapter.Fill(result);
+        //    adapter.Dispose();
+        //    //Kết thúc lấy dữ liệu
+        //    return result;
+        //}
+        //[WebMethod]
+        //public DataTable DanhSachThuocTheoTenVaThoiHan(string TenThuoc, string date1, string date2)
+        //{
+        //    DataTable result = new DataTable("DS");
+        //    //Lấy dữ liệu
+        //    string get = @"execute dbo.proc_TimKiemTheoTenVaThoiHan '" + TenThuoc + "', '" + date1 + "', '" + date2 + "'";
+        //    SqlCommand command = new SqlCommand(get, Connection.conn);
+        //    SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //    adapter.Fill(result);
+        //    adapter.Dispose();
+        //    //Kết thúc lấy dữ liệu
+        //    return result;
+        //}
+
         [WebMethod]
         public string HelloWorld()
         {

@@ -19,6 +19,10 @@ namespace QLBanThuoc.Data
         QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         public static string Ten_USER = "";
         public static string Ma_USER ="";
+
+        public static string tendangnhap;
+        public static string matkhaucu;
+
         public XtraForm1()
         {
             InitializeComponent();
@@ -35,6 +39,10 @@ namespace QLBanThuoc.Data
             if (Ten_USER != "")
                 //if (txbTenDangNhap.Text!="")
             {
+                //Lưu giữ tên đăng nhập mà mật khẩu
+                tendangnhap = txbTenDangNhap.Text;
+                matkhaucu = txbMatKhau.Text;
+                //Bắt đầu phiên đăng nhập
                 MessageBox.Show("Phiên đăng nhập nhân viên: " + Ten_USER);
                 Form1 fmain = new Form1();
                 fmain.Show();
@@ -48,7 +56,33 @@ namespace QLBanThuoc.Data
 
         private void XtraForm1_Load(object sender, EventArgs e)
         {
+            txbMatKhau.UseSystemPasswordChar = true;
+        }
 
+        private void lbDangKy_Click(object sender, EventArgs e)
+        {
+            Đăng_ký DangKy = new Đăng_ký();
+            DangKy.Show();
+            this.Hide();
+        }
+
+        private void cbPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPass.Checked == true)
+            {
+                txbMatKhau.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txbMatKhau.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void btnTrangChu_Click(object sender, EventArgs e)
+        {
+            Form1 frmMain = new Form1();
+            frmMain.Show();
+            this.Hide();
         }
     }
 }
