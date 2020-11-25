@@ -115,4 +115,3 @@ C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csproj
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csproj.CopyComplete
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.dll
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.pdb
-D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache

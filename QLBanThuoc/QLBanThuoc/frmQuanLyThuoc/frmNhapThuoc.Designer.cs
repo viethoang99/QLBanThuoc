@@ -108,7 +108,6 @@
             this.comboTenNCC.Name = "comboTenNCC";
             this.comboTenNCC.Size = new System.Drawing.Size(189, 21);
             this.comboTenNCC.TabIndex = 2;
-            this.comboTenNCC.SelectedIndexChanged += new System.EventHandler(this.comboTenNCC_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -273,7 +272,6 @@
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin thuốc nhập";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // comboBoxLoaiThuoc
             // 
@@ -523,7 +521,6 @@
             this.tbTenThuoc.Name = "tbTenThuoc";
             this.tbTenThuoc.Size = new System.Drawing.Size(195, 21);
             this.tbTenThuoc.TabIndex = 5;
-            this.tbTenThuoc.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label8
             // 
@@ -533,7 +530,6 @@
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Tên thuốc";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // lbTenNhanVien
             // 

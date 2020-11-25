@@ -367,6 +367,22 @@ namespace WSTest
             SqlCommand change = new SqlCommand("update NHANVIEN set password = '" + MatKhauMoi + "' where username = '" + tenDangNhap + "' and password = '" + MatKhauCu + "'");
             Connection.executeQuery(change);
         }
+        //Tùng - Nhập thuốc
+        //[WebMethod]
+        //public DataTable TimKiemNCC(string TenNCC)
+        //{
+        //    DataTable result = new DataTable("DSNCC");
+        //    SqlCommand command = new SqlCommand();
+
+        //    command.CommandText = "proc_searchNhaCungCap";
+        //    command.Parameters.AddWithValue("@tenNCC", TenNCC);
+
+        //    SqlDataAdapter adapter = new SqlDataAdapter(command);
+        //    adapter.Fill(result);
+        //    adapter.Dispose();
+        //    //Kết thúc lấy dữ liệu
+        //    return result;
+        //}
 
         [WebMethod]
         public string HelloWorld()

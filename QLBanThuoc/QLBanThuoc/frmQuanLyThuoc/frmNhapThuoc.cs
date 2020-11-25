@@ -31,83 +31,50 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
         }
         private void frmNhapThuoc_Load(object sender, EventArgs e)
         {
-            SqlCommand sql = new SqlCommand();
-            sql.CommandText = "proc_searchNhanVien";
-            sql.Parameters.AddWithValue("@maNV", XtraForm1.Ma_USER);
-            DataTable dataTemp = new DataTable();
-            frmconnection.readDataProc(sql, dataTemp);
-            lbMaNhanVien.Text = XtraForm1.Ma_USER;
-            lbTenNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
-            labelSDT.Text = dataTemp.Rows[0].ItemArray[1].ToString();
+            //SqlCommand sql = new SqlCommand();
+            //sql.CommandText = "proc_searchNhanVien";
+            //sql.Parameters.AddWithValue("@maNV", XtraForm1.Ma_USER);
+            //DataTable dataTemp = new DataTable();
+            //frmconnection.readDataProc(sql, dataTemp);
+            //lbMaNhanVien.Text = XtraForm1.Ma_USER;
+            //lbTenNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
+            //labelSDT.Text = dataTemp.Rows[0].ItemArray[1].ToString();
 
-            SqlCommand cmNhaCungCap = new SqlCommand("proc_searchTenNhaCungCap");
+            //SqlCommand cmNhaCungCap = new SqlCommand("proc_searchTenNhaCungCap");
         
-            DataTable dtNhaCungCap = new DataTable();
-            frmconnection.readDataProc(cmNhaCungCap, dtNhaCungCap);
-            for (int i = 0; i < dtNhaCungCap.Rows.Count; i++)
-            {
-                comboTenNCC.Items.Add(dtNhaCungCap.Rows[i].ItemArray[0].ToString());
-            }
-            dtNhaCungCap.Clear();
-            SqlCommand cmHangSX = new SqlCommand("proc_searchHangSanXuat");
-            DataTable dtHangSX = new DataTable();
-            frmconnection.readDataProc(cmHangSX, dtHangSX);
-            for (int i = 0; i < dtHangSX.Rows.Count; i++)
-            {
-                comboBoxHangSanXuat.Items.Add(dtHangSX.Rows[i].ItemArray[0].ToString());
-            }
-            dtHangSX.Clear();
-            SqlCommand cmLoaiThuoc = new SqlCommand("proc_searchLoaiThuoc");
-            DataTable dtLoaiThuoc = new DataTable();
-            frmconnection.readDataProc(cmLoaiThuoc, dtLoaiThuoc);
-            for (int i = 0; i < dtLoaiThuoc.Rows.Count; i++)
-            {
-                comboBoxLoaiThuoc.Items.Add(dtLoaiThuoc.Rows[i].ItemArray[0].ToString());
-            }
-            dtLoaiThuoc.Clear();
-        }
-
-        private void buttonThemVaoKho_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnThemVaoGio_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
- 
-
-        private void comboTenNCC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            //DataTable dtNhaCungCap = new DataTable();
+            //frmconnection.readDataProc(cmNhaCungCap, dtNhaCungCap);
+            //for (int i = 0; i < dtNhaCungCap.Rows.Count; i++)
+            //{
+            //    comboTenNCC.Items.Add(dtNhaCungCap.Rows[i].ItemArray[0].ToString());
+            //}
+            //dtNhaCungCap.Clear();
+            //SqlCommand cmHangSX = new SqlCommand("proc_searchHangSanXuat");
+            //DataTable dtHangSX = new DataTable();
+            //frmconnection.readDataProc(cmHangSX, dtHangSX);
+            //for (int i = 0; i < dtHangSX.Rows.Count; i++)
+            //{
+            //    comboBoxHangSanXuat.Items.Add(dtHangSX.Rows[i].ItemArray[0].ToString());
+            //}
+            //dtHangSX.Clear();
+            //SqlCommand cmLoaiThuoc = new SqlCommand("proc_searchLoaiThuoc");
+            //DataTable dtLoaiThuoc = new DataTable();
+            //frmconnection.readDataProc(cmLoaiThuoc, dtLoaiThuoc);
+            //for (int i = 0; i < dtLoaiThuoc.Rows.Count; i++)
+            //{
+            //    comboBoxLoaiThuoc.Items.Add(dtLoaiThuoc.Rows[i].ItemArray[0].ToString());
+            //}
+            //dtLoaiThuoc.Clear();
         }
 
         private void btnNhaCungCapOK_Click(object sender, EventArgs e)
         {
-            SqlCommand sql = new SqlCommand();
-            sql.CommandText = "proc_searchNhaCungCap";
-            sql.Parameters.AddWithValue("@tenNCC", comboTenNCC.SelectedItem.ToString());
-            DataTable dataTemp = new DataTable();
-            frmconnection.readDataProc(sql, dataTemp);
-            labelMaNhaCungCap.Text = dataTemp.Rows[0].ItemArray[0].ToString();
-            labelThongTinDaiDien.Text = dataTemp.Rows[0].ItemArray[1].ToString();
+            QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
+
+            DataTable DSTK = client.TimKiemNCC(comboTenNCC.Text);
+            
+            labelMaNhaCungCap.Text = DSTK.Rows[0].ItemArray[0].ToString();
+            labelThongTinDaiDien.Text = DSTK.Rows[0].ItemArray[1].ToString();
         }
 
         private void btnNhaCungCapHuy_Click(object sender, EventArgs e)
@@ -119,13 +86,13 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SqlCommand sql = new SqlCommand();
-            sql.CommandText = "proc_searchNhanVien";
-            sql.Parameters.AddWithValue("@maNV", lbMaNhanVien.Text.ToString());
-            DataTable dataTemp = new DataTable();
-            frmconnection.readDataProc(sql, dataTemp);
-            lbMaNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
-            labelSDT.Text = dataTemp.Rows[0].ItemArray[1].ToString();
+            //SqlCommand sql = new SqlCommand();
+            //sql.CommandText = "proc_searchNhanVien";
+            //sql.Parameters.AddWithValue("@maNV", lbMaNhanVien.Text.ToString());
+            //DataTable dataTemp = new DataTable();
+            //frmconnection.readDataProc(sql, dataTemp);
+            //lbMaNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
+            //labelSDT.Text = dataTemp.Rows[0].ItemArray[1].ToString();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -146,24 +113,24 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SqlCommand sqlThuoc = new SqlCommand("proc_addThuoc");
-            sqlThuoc.Parameters.AddWithValue("@date", DateTime.Now.ToString());
-            sqlThuoc.Parameters.AddWithValue("@mncc", labelMaNhaCungCap.Text);
-            sqlThuoc.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);
-            sqlThuoc.Parameters.AddWithValue("@sl", tbSoLuong.Text);
-            sqlThuoc.Parameters.AddWithValue("@gia", tbDonGia.Text);
-            sqlThuoc.Parameters.AddWithValue("@hsd", dtpHanSD.Value.ToString());
-            sqlThuoc.Parameters.AddWithValue("@maT", tbMaThuoc.Text);
-            sqlThuoc.Parameters.AddWithValue("@mahang",maHangSanXuat);
-            sqlThuoc.Parameters.AddWithValue("@nsx", dtpNgaySX.Value.ToString());
-            sqlThuoc.Parameters.AddWithValue("@ten", tbTenThuoc.Text);
-            sqlThuoc.Parameters.AddWithValue("@cd", tbCongDung.Text);
-            sqlThuoc.Parameters.AddWithValue("@tp", tbThanhPhan.Text);
-            sqlThuoc.Parameters.AddWithValue("@dang", tbDangThuoc.Text);
-            sqlThuoc.Parameters.AddWithValue("@mLoai", maLoaiThuoc);
+            //SqlCommand sqlThuoc = new SqlCommand("proc_addThuoc");
+            //sqlThuoc.Parameters.AddWithValue("@date", DateTime.Now.ToString());
+            //sqlThuoc.Parameters.AddWithValue("@mncc", labelMaNhaCungCap.Text);
+            //sqlThuoc.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);
+            //sqlThuoc.Parameters.AddWithValue("@sl", tbSoLuong.Text);
+            //sqlThuoc.Parameters.AddWithValue("@gia", tbDonGia.Text);
+            //sqlThuoc.Parameters.AddWithValue("@hsd", dtpHanSD.Value.ToString());
+            //sqlThuoc.Parameters.AddWithValue("@maT", tbMaThuoc.Text);
+            //sqlThuoc.Parameters.AddWithValue("@mahang",maHangSanXuat);
+            //sqlThuoc.Parameters.AddWithValue("@nsx", dtpNgaySX.Value.ToString());
+            //sqlThuoc.Parameters.AddWithValue("@ten", tbTenThuoc.Text);
+            //sqlThuoc.Parameters.AddWithValue("@cd", tbCongDung.Text);
+            //sqlThuoc.Parameters.AddWithValue("@tp", tbThanhPhan.Text);
+            //sqlThuoc.Parameters.AddWithValue("@dang", tbDangThuoc.Text);
+            //sqlThuoc.Parameters.AddWithValue("@mLoai", maLoaiThuoc);
 
-            int i = frmconnection.executeProc(sqlThuoc);
-            MessageBox.Show(i.ToString() + " dòng bị ảnh hưởng", "thông báo");
+            //int i = frmconnection.executeProc(sqlThuoc);
+            //MessageBox.Show(i.ToString() + " dòng bị ảnh hưởng", "thông báo");
         }
 
         private void comboBoxHangSanXuat_SelectedIndexChanged(object sender, EventArgs e)
