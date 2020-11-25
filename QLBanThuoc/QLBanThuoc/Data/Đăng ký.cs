@@ -26,6 +26,11 @@ namespace QLBanThuoc.Data
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+            QL_SR.QLBanThuocServiceSoapClient qlClient = new QL_SR.QLBanThuocServiceSoapClient();
+
+            string TenDangNhap = txbTenDangNhap.Text;
+            string MatKhau = txbMatKhau.Text;
+            qlClient.DangKy(TenDangNhap, MatKhau);
 
             //Đăng ký thành công
             MessageBox.Show("Đăng ký thành công.", "Thông báo.");

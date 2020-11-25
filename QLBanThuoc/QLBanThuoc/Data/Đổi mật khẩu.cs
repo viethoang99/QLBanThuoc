@@ -26,25 +26,32 @@ namespace QLBanThuoc.Data
 
         private void btnDoiMK_Click(object sender, EventArgs e)
         {
+            string TenDangNhap = labelTenDangNhap.Text;
+            string MatKhauCu = txbMatKhau0.Text;
+            string MatKhauMoi = txbMatKhau1.Text;
+            string MatKhauMoi2 = txbMatKhau2.Text;
             //cập nhật thông tin người dùng
-            if (txbMatKhau0.Text != XtraForm1.matkhaucu)
+            if (MatKhauCu != XtraForm1.matkhaucu)
             {
                 MessageBox.Show("Vui lòng kiểm tra lại mật khẩu cũ.", "Thông báo.");
             }
             else
             {
-                if (txbMatKhau2.Text != txbMatKhau1.Text)
+                if (MatKhauMoi2 != MatKhauMoi)
                 {
                     MessageBox.Show("Vui lòng kiểm tra lại mật khẩu mới.", "Thông báo.");
                 }
                 else
                 {
-                    if (txbMatKhau1.Text == txbMatKhau0.Text)
+                    if (MatKhauMoi == MatKhauCu)
                     {
                         MessageBox.Show("Mật khẩu mới phải khác mật khẩu cũ.", "Thông báo.");
                     }
                     else
                     {
+                        QL_SR.QLBanThuocServiceSoapClient qlClient = new QL_SR.QLBanThuocServiceSoapClient();
+
+                        qlClient.DoiMatKhau(TenDangNhap, MatKhauCu, MatKhauMoi);
                         //Hàm thay đổi mật khẩu
                         MessageBox.Show("Thay đổi mật khẩu thành công.", "Thông báo.");
                         XtraForm1 DangNhap = new XtraForm1();

@@ -86,12 +86,47 @@ namespace QLBanThuoc.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaThuoc", ReplyAction="*")]
         System.Threading.Tasks.Task<int> XoaThuocAsync(string maThuoc);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable DanhSachThuoc();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoTen", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         System.Data.DataTable DanhSachThuocTheoTen(string TenThuoc);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoTen", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoTenAsync(string TenThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoThoiHan", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable DanhSachThuocTheoThoiHan(string date1, string date2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoThoiHan", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoThoiHanAsync(string date1, string date2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoTenVaThoiHan", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable DanhSachThuocTheoTenVaThoiHan(string TenThuoc, string date1, string date2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DanhSachThuocTheoTenVaThoiHan", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoTenVaThoiHanAsync(string TenThuoc, string date1, string date2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DangKy", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void DangKy(string tenDangNhap, string MatKhau);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DangKy", ReplyAction="*")]
+        System.Threading.Tasks.Task DangKyAsync(string tenDangNhap, string MatKhau);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DoiMatKhau", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        void DoiMatKhau(string tenDangNhap, string MatKhauCu, string MatKhauMoi);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DoiMatKhau", ReplyAction="*")]
+        System.Threading.Tasks.Task DoiMatKhauAsync(string tenDangNhap, string MatKhauCu, string MatKhauMoi);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -215,12 +250,52 @@ namespace QLBanThuoc.QL_SR {
             return base.Channel.XoaThuocAsync(maThuoc);
         }
         
+        public System.Data.DataTable DanhSachThuoc() {
+            return base.Channel.DanhSachThuoc();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocAsync() {
+            return base.Channel.DanhSachThuocAsync();
+        }
+        
         public System.Data.DataTable DanhSachThuocTheoTen(string TenThuoc) {
             return base.Channel.DanhSachThuocTheoTen(TenThuoc);
         }
         
         public System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoTenAsync(string TenThuoc) {
             return base.Channel.DanhSachThuocTheoTenAsync(TenThuoc);
+        }
+        
+        public System.Data.DataTable DanhSachThuocTheoThoiHan(string date1, string date2) {
+            return base.Channel.DanhSachThuocTheoThoiHan(date1, date2);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoThoiHanAsync(string date1, string date2) {
+            return base.Channel.DanhSachThuocTheoThoiHanAsync(date1, date2);
+        }
+        
+        public System.Data.DataTable DanhSachThuocTheoTenVaThoiHan(string TenThuoc, string date1, string date2) {
+            return base.Channel.DanhSachThuocTheoTenVaThoiHan(TenThuoc, date1, date2);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> DanhSachThuocTheoTenVaThoiHanAsync(string TenThuoc, string date1, string date2) {
+            return base.Channel.DanhSachThuocTheoTenVaThoiHanAsync(TenThuoc, date1, date2);
+        }
+        
+        public void DangKy(string tenDangNhap, string MatKhau) {
+            base.Channel.DangKy(tenDangNhap, MatKhau);
+        }
+        
+        public System.Threading.Tasks.Task DangKyAsync(string tenDangNhap, string MatKhau) {
+            return base.Channel.DangKyAsync(tenDangNhap, MatKhau);
+        }
+        
+        public void DoiMatKhau(string tenDangNhap, string MatKhauCu, string MatKhauMoi) {
+            base.Channel.DoiMatKhau(tenDangNhap, MatKhauCu, MatKhauMoi);
+        }
+        
+        public System.Threading.Tasks.Task DoiMatKhauAsync(string tenDangNhap, string MatKhauCu, string MatKhauMoi) {
+            return base.Channel.DoiMatKhauAsync(tenDangNhap, MatKhauCu, MatKhauMoi);
         }
         
         public string HelloWorld() {

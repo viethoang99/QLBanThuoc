@@ -21,6 +21,7 @@ namespace WSTest
     static class Connection
     {
         static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static int executeProc(SqlCommand command)
         {
@@ -37,6 +38,38 @@ namespace WSTest
                 return 0;
             }
         }
+        public static void createConn()
+        {
+            try
+            {
+                if (connection.State != ConnectionState.Open)
+                {
+                    connection.ConnectionString = ConnectionString;
+                    connection.Open();
+                }
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
+        public static int executeQuery(SqlCommand dbCommend)
+        {
+            try
+            {
+                if (connection.State == 0)
+                    createConn();
+                dbCommend.Connection = connection;
+                dbCommend.CommandType = CommandType.Text;
+                return dbCommend.ExecuteNonQuery();
+            }
+            catch (Exception err)
+            {
+                throw err;
+            }
+        }
+
         public static void readDataProc(SqlCommand sql, DataTable dt)
         {
             if (connection.State == ConnectionState.Closed)
@@ -205,43 +238,132 @@ namespace WSTest
         }
         //Tùng - Tìm kiếm
         [WebMethod]
-        public DataTable DanhSachThuocTheoTen(string TenThuoc)
+        public DataTable DanhSachThuoc()
         {
             DataTable result = new DataTable("DS");
             //Lấy dữ liệu
-            SqlCommand command = new SqlCommand("execute dbo.proc_TimKiemTheoTen '" + TenThuoc + "'", Connection.connection);
+            SqlCommand command = new SqlCommand("select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia " +
+                "from THUOC T inner join LOTHUOC L on L.MaLoThuoc = T.MaLoThuoc " +
+                "inner join CHITIETPHIEUNHAP C1 on C1.MaThuoc = T.MaThuoc " +
+                "inner join CHITIETPHIEUXUAT C2 on C2.MaThuoc = T.MaThuoc ", Connection.connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(result);
             adapter.Dispose();
             //Kết thúc lấy dữ liệu
             return result;
         }
-        //[WebMethod]
-        //public DataTable DanhSachThuocTheoThoiHan(string date1, string date2)
-        //{
-        //    DataTable result = new DataTable("DS");
-        //    //Lấy dữ liệu
-        //    string get = @"execute dbo.proc_TimKiemTheoThoiHan '" + date1 + "', '" + date2 + "'";
-        //    SqlCommand command = new SqlCommand(get, Connection.conn);
-        //    SqlDataAdapter adapter = new SqlDataAdapter(command);
-        //    adapter.Fill(result);
-        //    adapter.Dispose();
-        //    //Kết thúc lấy dữ liệu
-        //    return result;
-        //}
-        //[WebMethod]
-        //public DataTable DanhSachThuocTheoTenVaThoiHan(string TenThuoc, string date1, string date2)
-        //{
-        //    DataTable result = new DataTable("DS");
-        //    //Lấy dữ liệu
-        //    string get = @"execute dbo.proc_TimKiemTheoTenVaThoiHan '" + TenThuoc + "', '" + date1 + "', '" + date2 + "'";
-        //    SqlCommand command = new SqlCommand(get, Connection.conn);
-        //    SqlDataAdapter adapter = new SqlDataAdapter(command);
-        //    adapter.Fill(result);
-        //    adapter.Dispose();
-        //    //Kết thúc lấy dữ liệu
-        //    return result;
-        //}
+        [WebMethod]
+        public DataTable DanhSachThuocTheoTen(string TenThuoc)
+        {
+            DataTable result = new DataTable("DS");
+            //Lấy dữ liệu
+            SqlCommand command = new SqlCommand("select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia " +
+                "from THUOC T inner join LOTHUOC L on L.MaLoThuoc = T.MaLoThuoc " +
+                "inner join CHITIETPHIEUNHAP C1 on C1.MaThuoc = T.MaThuoc " +
+                "inner join CHITIETPHIEUXUAT C2 on C2.MaThuoc = T.MaThuoc " +
+                "where T.TenThuoc LIKE like '%'+ @ten +'%'", Connection.connection);
+            command.Parameters.AddWithValue("@ten", TenThuoc);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        [WebMethod]
+        public DataTable DanhSachThuocTheoThoiHan(string date1, string date2)
+        {
+            DataTable result = new DataTable("DS");
+            //Lấy dữ liệu
+            SqlCommand command = new SqlCommand("select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia " +
+                "from THUOC T inner join LOTHUOC L on L.MaLoThuoc = T.MaLoThuoc " +
+                "inner join CHITIETPHIEUNHAP C1 on C1.MaThuoc = T.MaThuoc " +
+                "inner join CHITIETPHIEUXUAT C2 on C2.MaThuoc = T.MaThuoc " +
+                "where (NgaySanXuat <= @date1) and (HanSuDung >= @date2)", Connection.connection);
+            command.Parameters.AddWithValue("@date1", date1);
+            command.Parameters.AddWithValue("@date2", date2);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        [WebMethod]
+        public DataTable DanhSachThuocTheoTenVaThoiHan(string TenThuoc, string date1, string date2)
+        {
+            DataTable result = new DataTable("DS");
+            //Lấy dữ liệu
+            SqlCommand command = new SqlCommand("select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia " +
+                "from THUOC T inner join LOTHUOC L on L.MaLoThuoc = T.MaLoThuoc " +
+                "inner join CHITIETPHIEUNHAP C1 on C1.MaThuoc = T.MaThuoc " +
+                "inner join CHITIETPHIEUXUAT C2 on C2.MaThuoc = T.MaThuoc " +
+                "where (NgaySanXuat <= @date1) and (HanSuDung >= @date2) and (T.TenThuoc LIKE like '%'+ @ten +'%')", Connection.connection);
+            command.Parameters.AddWithValue("@ten", TenThuoc);
+            command.Parameters.AddWithValue("@date1", date1);
+            command.Parameters.AddWithValue("@date2", date2);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+
+        //Tùng - Đăng ký
+        [WebMethod]
+        public void DangKy(string tenDangNhap, string MatKhau)
+        {
+            //hàm chuyển password thành mã hash
+            //Tạo MD5 
+            MD5 mh = MD5.Create();
+            //Chuyển kiểu chuổi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(MatKhau);
+            //mã hóa chuỗi đã chuyển
+            byte[] hash = mh.ComputeHash(inputBytes);
+            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            MatKhau = sb.ToString();
+
+            //hàm đăng ký
+            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password) values('" + "hàm sinh số random" + "','" + tenDangNhap + "','" + MatKhau + "')");
+            Connection.executeQuery(insert);
+        }
+        //Tùng - Đổi mật khẩu
+        [WebMethod]
+        public void DoiMatKhau(string tenDangNhap, string MatKhauCu, string MatKhauMoi)
+        {
+            //hàm chuyển password thành mã hash
+            //Tạo MD5 
+            MD5 mh = MD5.Create();
+            //Chuyển kiểu chuổi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(MatKhauCu);
+            byte[] inputBytes2 = System.Text.Encoding.ASCII.GetBytes(MatKhauMoi);
+            //mã hóa chuỗi đã chuyển
+            byte[] hash = mh.ComputeHash(inputBytes);
+            byte[] hash2 = mh.ComputeHash(inputBytes2);
+            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+            StringBuilder sb = new StringBuilder();
+            StringBuilder sb2 = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+            MatKhauCu = sb.ToString();
+
+            for (int i = 0; i < hash2.Length; i++)
+            {
+                sb2.Append(hash2[i].ToString("X2"));
+            }
+            MatKhauMoi = sb2.ToString();
+
+            //hàm đổi mật khẩu    
+            SqlCommand change = new SqlCommand("update NHANVIEN set password = '" + MatKhauMoi + "' where username = '" + tenDangNhap + "' and password = '" + MatKhauCu + "')");
+            Connection.executeQuery(change);
+        }
 
         [WebMethod]
         public string HelloWorld()
