@@ -5,6 +5,8 @@ using QLBanThuoc.frmQuanLyThuoc;
 using QLBanThuoc.frmTimKiem;
 using QLBanThuoc.frmThongKe;
 using QLBanThuoc.frmNhaCungCap;
+using QLBanThuoc.Data;
+using System.Windows.Forms;
 
 namespace QLBanThuoc
 {
@@ -102,6 +104,24 @@ namespace QLBanThuoc
             panel.Controls.Clear();
             NhaCungCap ncc = new NhaCungCap();
             panel.Controls.Add(ncc);
+        }
+
+        private void barButtonItem9_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Đổi_mật_khẩu DoiMK = new Đổi_mật_khẩu();
+            DoiMK.Show();
+            this.Hide();
+        }
+
+        private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Xác nhận đăng xuất ?", "Thông báo.", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                XtraForm1 DangNhap = new XtraForm1();
+                DangNhap.Show();
+                this.Hide();
+            }
         }
     }
 }

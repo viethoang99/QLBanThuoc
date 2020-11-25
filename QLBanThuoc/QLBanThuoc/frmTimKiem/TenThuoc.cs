@@ -15,10 +15,6 @@ namespace QLBanThuoc.frmTimKiem
 {
     public partial class TenThuoc : DevExpress.XtraEditors.XtraUserControl
     {
-        frmConnection TimKiem = new frmConnection();
-        DataTable mainTable = new DataTable();
-        DataTable searchTable = new DataTable();
-
         public TenThuoc()
         {
             InitializeComponent();
@@ -28,9 +24,11 @@ namespace QLBanThuoc.frmTimKiem
         {
             MessageBox.Show("Vui lòng nhập chính xác tên / thời hạn / tên và thời hạn của thuốc cần tìm kiếm.", "Thông báo.");
             //Lấy danh sách thông tin thuốc vào bảng
-            SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_TimKiem", frmConnection.connection);       
-            search.Fill(mainTable);
-            dgvKetQua.DataSource = mainTable;
+            QL_SR.QLBanThuocServiceSoapClient qlClient = new QL_SR.QLBanThuocServiceSoapClient();
+
+            DataTable DS = qlClient.DanhSachThuoc();
+            dgvKetQua.AutoGenerateColumns = false;
+            dgvKetQua.DataSource = DS;
         }
 
         private void TenThuoc_Load(object sender, EventArgs e)
@@ -43,71 +41,38 @@ namespace QLBanThuoc.frmTimKiem
 
         void searchTheoTen()
         {
-            string ten = txbTimKiem.Text;
-            string get = "execute dbo.proc_TimKiemTheoTen '" + ten + "'";
-            //tên thuốc  
-            mainTable.Clear();
-            TimKiem.readDatathroughAdapter(get, mainTable);
-            if (mainTable.Rows.Count != 0)
-            {
-                searchTable.Clear();
-                TimKiem.readDatathroughAdapter(get, searchTable);
-                dgvKetQua.DataSource = searchTable;
-                MessageBox.Show("Có thuốc cần tìm.", "Thông báo.");                           
-            }
-            else
-            {
-                txbTimKiem.Clear();
-                searchTable.Clear();
-                MessageBox.Show("Không có thuốc cần tìm....", "Thông báo.");                
-            } 
+            QL_SR.QLBanThuocServiceSoapClient qlClient = new QL_SR.QLBanThuocServiceSoapClient();
+
+            string TenThuoc = txbTimKiem.Text;
+            DataTable DS = qlClient.DanhSachThuocTheoTen(TenThuoc);
+
+            dgvKetQua.AutoGenerateColumns = false;
+            dgvKetQua.DataSource = DS;
         }
 
         void searchTheoThoiHan()
         {
+            QL_SR.QLBanThuocServiceSoapClient qlClient = new QL_SR.QLBanThuocServiceSoapClient();
+
             string date1 = dateNSX.Value.ToString().Split(' ')[0].Replace("/", "-");
             string date2 = dateHSD.Value.ToString().Split(' ')[0].Replace("/", "-");
-            string get = "execute dbo.proc_TimKiemTheoThoiHan '" + date1 + "', '" + date2 + "'";
-            //thời hạn
-            mainTable.Clear();
-            TimKiem.readDatathroughAdapter(get, mainTable);
-            if (mainTable.Rows.Count != 0)
-            {
-                searchTable.Clear();
-                TimKiem.readDatathroughAdapter(get, searchTable);
-                dgvKetQua.DataSource = searchTable;
-                MessageBox.Show("Có thuốc cần tìm.", "Thông báo.");
-            }
-            else
-            {
-                txbTimKiem.Clear();
-                searchTable.Clear();
-                MessageBox.Show("Không có thuốc cần tìm....", "Thông báo.");
-            }
+
+            DataTable DS = qlClient.DanhSachThuocTheoThoiHan(date1, date2);
+            dgvKetQua.AutoGenerateColumns = false;
+            dgvKetQua.DataSource = DS;
         }
 
         void searchTheoTenVaThoiHan()
         {
-            string ten = txbTimKiem.Text;
+            QL_SR.QLBanThuocServiceSoapClient qlClient = new QL_SR.QLBanThuocServiceSoapClient();
+
+            string TenThuoc = txbTimKiem.Text;
             string date1 = dateNSX.Value.ToString().Split(' ')[0].Replace("/", "-");
             string date2 = dateHSD.Value.ToString().Split(' ')[0].Replace("/", "-");
-            string get = "execute dbo.proc_TimKiemTheoTenVaThoiHan '" + ten + "', '" + date1 + "', '" + date2 + "'";
-            //tên và thời hạn
-            mainTable.Clear();
-            TimKiem.readDatathroughAdapter(get, mainTable);
-            if (mainTable.Rows.Count != 0)
-            {
-                searchTable.Clear();
-                TimKiem.readDatathroughAdapter(get, searchTable);
-                dgvKetQua.DataSource = searchTable;
-                MessageBox.Show("Có thuốc cần tìm.", "Thông báo.");
-            }
-            else
-            {
-                txbTimKiem.Clear();
-                searchTable.Clear();
-                MessageBox.Show("Không có thuốc cần tìm....", "Thông báo.");
-            }
+
+            DataTable DS = qlClient.DanhSachThuocTheoTenVaThoiHan(TenThuoc, date1, date2);
+            dgvKetQua.AutoGenerateColumns = false;
+            dgvKetQua.DataSource = DS;
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -116,11 +81,11 @@ namespace QLBanThuoc.frmTimKiem
             if (txbTimKiem.Text == "" && dateNSX.Value == DateTime.Now && dateHSD.Value == DateTime.Now)
             {
                 MessageBox.Show("Vui lòng kiểm tra lại thông tin tìm kiếm.", "Thông báo.");
-            }   
+            }
             else if (txbTimKiem.Text != "" && dateNSX.Value == DateTime.Now && dateHSD.Value == DateTime.Now)
             {
                 searchTheoTen();
-            }  
+            }
             else if (txbTimKiem.Text == "" && dateNSX.Value != DateTime.Now && dateHSD.Value != DateTime.Now)
             {
                 searchTheoThoiHan();
@@ -149,7 +114,7 @@ namespace QLBanThuoc.frmTimKiem
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message.ToString(),"Thông báo");
+                MessageBox.Show(err.Message.ToString(), "Thông báo");
             }
         }
 

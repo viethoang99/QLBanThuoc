@@ -42,25 +42,16 @@ namespace QLBanThuoc.frmQuanLyThuoc
         }
         private void buttonLuu_Click(object sender, EventArgs e)
         {
-            frmConnection.createConn();
-            SqlCommand cmd = new SqlCommand("proc_UpdateThuoc", frmConnection.connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@mathuoc", SqlDbType.Char).Value = maThuoc;
-            cmd.Parameters.AddWithValue("@malo", SqlDbType.Char).Value = textBoxLoThuoc.Text;
-            cmd.Parameters.AddWithValue("@ten", SqlDbType.NVarChar).Value = textBoxTenThuoc.Text;
-            cmd.Parameters.AddWithValue("@tp", SqlDbType.NVarChar).Value = textBoxThanhPhanChinh.Text;
-            cmd.Parameters.AddWithValue("@cd", SqlDbType.NVarChar).Value = textBoxCongDung.Text;
-            cmd.Parameters.AddWithValue("@nsx", SqlDbType.Date).Value = textBoxNgaySX.Text;
-            cmd.Parameters.AddWithValue("@hsd", SqlDbType.Date).Value = textBoxHanSD.Text;
-            cmd.Parameters.AddWithValue("@slt", SqlDbType.Int).Value = Convert.ToInt32(textBoxSoLuongTon.Text);
-            cmd.Parameters.AddWithValue("@dt", SqlDbType.NVarChar).Value = textBoxDonVi.Text;
-            cmd.Parameters.AddWithValue("@dongia", SqlDbType.Int).Value = Convert.ToInt32(textBoxGiaBan.Text);
-            cmd.ExecuteNonQuery();
-            frmConnection.connection.Close();
-
-            MessageBox.Show("Cập nhật thành công ! ", "Thông báo");
-
-
+            int i = client.LuuThuoc(maThuoc, textBoxLoThuoc.Text, textBoxTenThuoc.Text, textBoxThanhPhanChinh.Text, textBoxCongDung.Text, textBoxNgaySX.Text, textBoxHanSD.Text,
+            textBoxSoLuongTon.Text, textBoxDonVi.Text, textBoxGiaBan.Text);
+            if (i != 0)
+            {
+                MessageBox.Show("Cập nhật thuốc thành công");
+            }
+            else
+            {
+                MessageBox.Show("Cập nhật thuốc không thành công");
+            }
         }
 
         private void buttonHuy_Click(object sender, EventArgs e)
@@ -77,16 +68,13 @@ namespace QLBanThuoc.frmQuanLyThuoc
             textBoxTenThuoc.Text = "";
             textBoxThanhPhanChinh.Text = "";   
         }
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         private void buttonSua_Click(object sender, EventArgs e)
         {
             try
             {
-
-                SqlCommand sqlCommand = new SqlCommand("proc_searchThuocSua");
-                sqlCommand.Parameters.AddWithValue("@maT", maThuoc);
                 DataTable dtTemp = new DataTable();
-                frmConnection.readDataProc(sqlCommand, dtTemp);
+                dtTemp = client.TimKiemThuocSua(maThuoc);
                 textBoxTenThuoc.Text = dtTemp.Rows[0].ItemArray[0].ToString();
                 textBoxLoThuoc.Text = dtTemp.Rows[0].ItemArray[1].ToString();
                 textBoxLoaiThuoc.Text = dtTemp.Rows[0].ItemArray[2].ToString();
@@ -110,15 +98,37 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void buttonXoa_Click(object sender, EventArgs e)
         {
-         
-            frmConnection.createConn();
-            SqlCommand cmd = new SqlCommand("proc_deleteThuoc", frmConnection.connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@maT", SqlDbType.Char).Value = maThuoc;
-            cmd.ExecuteNonQuery();
-
-            MessageBox.Show("Đã xóa thành công", "Thông báo");
-            dataGridView1.Rows.RemoveAt(index);
+            DataTable dtTemp = new DataTable();
+            dtTemp = client.TimKiemThuocSua(maThuoc);
+            textBoxTenThuoc.Text = dtTemp.Rows[0].ItemArray[0].ToString();
+            textBoxLoThuoc.Text = dtTemp.Rows[0].ItemArray[1].ToString();
+            textBoxLoaiThuoc.Text = dtTemp.Rows[0].ItemArray[2].ToString();
+            textBoxHangSX.Text = dtTemp.Rows[0].ItemArray[3].ToString();
+            textBoxThanhPhanChinh.Text = dtTemp.Rows[0].ItemArray[4].ToString();
+            textBoxCongDung.Text = dtTemp.Rows[0].ItemArray[5].ToString();
+            textBoxNgaySX.Text = dtTemp.Rows[0].ItemArray[6].ToString();
+            textBoxHanSD.Text = dtTemp.Rows[0].ItemArray[7].ToString();
+            textBoxGiaBan.Text = dtTemp.Rows[0].ItemArray[8].ToString();
+            textBoxSoLuongTon.Text = dtTemp.Rows[0].ItemArray[9].ToString();
+            textBoxDonVi.Text = dtTemp.Rows[0].ItemArray[10].ToString();
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            switch (result)
+            {
+                case DialogResult.Yes:
+                    int i = client.XoaThuoc(maThuoc);
+                    if (i != 0)
+                    {
+                        MessageBox.Show("Xóa thuốc thành công");
+                        dataGridView1.Rows.RemoveAt(index);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa không thành công", "Lỗi");
+                    }
+                    break;
+                case DialogResult.No:
+                    break;
+            }
         }
         
         private void buttonTimKiem_Click(object sender, EventArgs e)
@@ -126,10 +136,8 @@ namespace QLBanThuoc.frmQuanLyThuoc
             dt.Rows.Clear();
             if (textBoxTimKiem.Text != "")
             {
-                SqlCommand cmd = new SqlCommand("proc_searchThuocDanhSachDGV");
-                cmd.Parameters.AddWithValue("@ten", textBoxTimKiem.Text);
-                frmConnection.readDataProc(cmd, dt);
-                
+                dt = client.TimKiemThuoc(textBoxTimKiem.Text);
+                dataGridView1.DataSource = dt;
             }
             else
             {
