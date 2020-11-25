@@ -331,7 +331,7 @@ namespace WSTest
             Random r = new Random();
 
             //hàm đăng ký
-            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password) values('" + r.Next(1,999999999) + "','" + tenDangNhap + "','" + MatKhau + "')");
+            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password,IdRole) values('" + r.Next(1,999999999) + "','" + tenDangNhap + "','" + MatKhau + "','1')");
             Connection.executeQuery(insert);
         }
         //Tùng - Đổi mật khẩu
