@@ -20,8 +20,9 @@ namespace WSTest
     // [System.Web.Script.Services.ScriptService]
     static class Connection
     {
-        static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        
+        //static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static int executeProc(SqlCommand command)
         {
@@ -296,7 +297,7 @@ namespace WSTest
                 "from THUOC T inner join LOTHUOC L on L.MaLoThuoc = T.MaLoThuoc " +
                 "inner join CHITIETPHIEUNHAP C1 on C1.MaThuoc = T.MaThuoc " +
                 "inner join CHITIETPHIEUXUAT C2 on C2.MaThuoc = T.MaThuoc " +
-                "where (NgaySanXuat <= @date1) and (HanSuDung >= @date2) and (T.TenThuoc LIKE like '%'+ @ten +'%')", Connection.connection);
+                "where (NgaySanXuat <= @date1) and (HanSuDung >= @date2) and (T.TenThuoc LIKE '%'+ @ten + '%')", Connection.connection);
             command.Parameters.AddWithValue("@ten", TenThuoc);
             command.Parameters.AddWithValue("@date1", date1);
             command.Parameters.AddWithValue("@date2", date2);
@@ -327,8 +328,10 @@ namespace WSTest
             }
             MatKhau = sb.ToString();
 
+            Random r = new Random();
+
             //hàm đăng ký
-            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password) values('" + "hàm sinh số random" + "','" + tenDangNhap + "','" + MatKhau + "')");
+            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password) values('" + r.Next(1,999999999) + "','" + tenDangNhap + "','" + MatKhau + "')");
             Connection.executeQuery(insert);
         }
         //Tùng - Đổi mật khẩu
@@ -361,7 +364,7 @@ namespace WSTest
             MatKhauMoi = sb2.ToString();
 
             //hàm đổi mật khẩu    
-            SqlCommand change = new SqlCommand("update NHANVIEN set password = '" + MatKhauMoi + "' where username = '" + tenDangNhap + "' and password = '" + MatKhauCu + "')");
+            SqlCommand change = new SqlCommand("update NHANVIEN set password = '" + MatKhauMoi + "' where username = '" + tenDangNhap + "' and password = '" + MatKhauCu + "'");
             Connection.executeQuery(change);
         }
 

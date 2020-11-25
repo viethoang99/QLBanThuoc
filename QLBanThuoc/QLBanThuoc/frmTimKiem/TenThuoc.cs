@@ -102,8 +102,7 @@ namespace QLBanThuoc.frmTimKiem
 
         void checkTime()
         {
-            dateHSD.Value = dateNSX.Value;
-            dateHSD.MinDate = dateNSX.Value;
+            
         }
 
         private void dateNSX_ValueChanged(object sender, EventArgs e)

@@ -26,6 +26,9 @@ namespace QLBanThuoc.Data
         public XtraForm1()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(100, 100);
         }
 
         private void Label1_Click(object sender, EventArgs e)
@@ -83,6 +86,19 @@ namespace QLBanThuoc.Data
             Form1 frmMain = new Form1();
             frmMain.Show();
             this.Hide();
+        }
+
+        private void XtraForm1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Xác nhận thoát khỏi phần mềm?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("cmd.exe", "/c taskkill /F /IM QuanLyKho-TT.exe");
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

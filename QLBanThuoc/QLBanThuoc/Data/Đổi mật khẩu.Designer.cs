@@ -174,6 +174,7 @@
             this.Controls.Add(this.txbMatKhau1);
             this.Name = "Đổi_mật_khẩu";
             this.Text = "Đổi mật khẩu tài khoản";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Đổi_mật_khẩu_FormClosing);
             this.Load += new System.EventHandler(this.Đổi_mật_khẩu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

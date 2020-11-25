@@ -7,6 +7,7 @@ using QLBanThuoc.frmThongKe;
 using QLBanThuoc.frmNhaCungCap;
 using QLBanThuoc.Data;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace QLBanThuoc
 {
@@ -15,6 +16,9 @@ namespace QLBanThuoc
         public Form1()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(100, 100);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -115,12 +119,25 @@ namespace QLBanThuoc
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Xác nhận đăng xuất ?", "Thông báo.", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Xác nhận đăng xuất?", "Thông báo.", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
                 XtraForm1 DangNhap = new XtraForm1();
                 DangNhap.Show();
                 this.Hide();
+            }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Xác nhận thoát khỏi phần mềm?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("cmd.exe", "/c taskkill /F /IM QuanLyKho-TT.exe");
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
     }

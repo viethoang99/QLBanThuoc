@@ -15,6 +15,9 @@ namespace QLBanThuoc.Data
         public Đổi_mật_khẩu()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(100, 100);
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)
@@ -65,6 +68,19 @@ namespace QLBanThuoc.Data
         private void Đổi_mật_khẩu_Load(object sender, EventArgs e)
         {
             labelTenDangNhap.Text = XtraForm1.tendangnhap;
+        }
+
+        private void Đổi_mật_khẩu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Xác nhận thoát khỏi phần mềm?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("cmd.exe", "/c taskkill /F /IM QuanLyKho-TT.exe");
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

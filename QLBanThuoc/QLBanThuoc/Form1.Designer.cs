@@ -466,6 +466,7 @@
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl1;
             this.Text = "PHẦN MỀM QUẢN LÝ BÁN THUỐC";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();

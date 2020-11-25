@@ -159,6 +159,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "XtraForm1";
             this.Text = "Đăng nhập";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.XtraForm1_FormClosing);
             this.Load += new System.EventHandler(this.XtraForm1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

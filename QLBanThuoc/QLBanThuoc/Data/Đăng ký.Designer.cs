@@ -57,7 +57,7 @@
             this.txbMatKhau2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbMatKhau2.Name = "txbMatKhau2";
             this.txbMatKhau2.Size = new System.Drawing.Size(230, 22);
-            this.txbMatKhau2.TabIndex = 23;
+            this.txbMatKhau2.TabIndex = 18;
             // 
             // btnTrangChu
             // 
@@ -149,6 +149,7 @@
             this.Controls.Add(this.txbTenDangNhap);
             this.Name = "Đăng_ký";
             this.Text = "Đăng ký tài khoản";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Đăng_ký_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
