@@ -371,8 +371,6 @@ namespace WSTest
         [WebMethod]
         public int NhapThuoc(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc)
         {
-            
-
             SqlCommand command = new SqlCommand("execute proc_addThuoc '@date' '@mncc' '@mnv' '@sl' '@gia' '@hsd' '@maT' '@mahang' '@nsx' '@ten' '@cd' '@tp' '@dang' '@mLoai'", Connection.connection);
 
             //button nhập thuốc OK
@@ -450,6 +448,19 @@ namespace WSTest
             adapter.Dispose();
             //Kết thúc lấy dữ liệu
             return result;
+        }
+
+        [WebMethod]
+        public DataTable getRole(string username)
+        {
+            DataTable role = new DataTable("Role");
+            SqlCommand command = new SqlCommand("select * from NHANVIEN where username = '" +  username + "'", Connection.connection);
+            
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(role);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return role;
         }
 
         [WebMethod]

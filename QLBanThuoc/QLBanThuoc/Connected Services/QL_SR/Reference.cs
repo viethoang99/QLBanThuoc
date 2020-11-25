@@ -163,6 +163,13 @@ namespace QLBanThuoc.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoadThongTinLoaiThuoc", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinLoaiThuocAsync(string tenLoaiThuoc);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getRole", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable getRole(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getRole", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> getRoleAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string HelloWorld();
@@ -371,6 +378,14 @@ namespace QLBanThuoc.QL_SR {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinLoaiThuocAsync(string tenLoaiThuoc) {
             return base.Channel.LoadThongTinLoaiThuocAsync(tenLoaiThuoc);
+        }
+        
+        public System.Data.DataTable getRole(string username) {
+            return base.Channel.getRole(username);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> getRoleAsync(string username) {
+            return base.Channel.getRoleAsync(username);
         }
         
         public string HelloWorld() {

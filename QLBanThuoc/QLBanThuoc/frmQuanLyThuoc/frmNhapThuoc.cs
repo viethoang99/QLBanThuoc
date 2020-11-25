@@ -205,5 +205,15 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
 
             maLoaiThuoc = DSLT.Rows[0].ItemArray[0].ToString();
         }
+
+        private void comboTenNCC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
+
+            DataTable DSNCC = client.TimNCC(comboTenNCC.SelectedItem.ToString());
+
+            labelMaNhaCungCap.Text = DSNCC.Rows[0].ItemArray[0].ToString();
+            labelThongTinDaiDien.Text = DSNCC.Rows[0].ItemArray[1].ToString();
+        }
     }
 }

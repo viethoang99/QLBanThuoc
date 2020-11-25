@@ -394,6 +394,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getRole">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRoleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRoleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="HelloWorld">
         <s:complexType />
       </s:element>
@@ -546,6 +567,12 @@
   <wsdl:message name="LoadThongTinLoaiThuocSoapOut">
     <wsdl:part name="parameters" element="tns:LoadThongTinLoaiThuocResponse" />
   </wsdl:message>
+  <wsdl:message name="getRoleSoapIn">
+    <wsdl:part name="parameters" element="tns:getRole" />
+  </wsdl:message>
+  <wsdl:message name="getRoleSoapOut">
+    <wsdl:part name="parameters" element="tns:getRoleResponse" />
+  </wsdl:message>
   <wsdl:message name="HelloWorldSoapIn">
     <wsdl:part name="parameters" element="tns:HelloWorld" />
   </wsdl:message>
@@ -642,6 +669,10 @@
     <wsdl:operation name="LoadThongTinLoaiThuoc">
       <wsdl:input message="tns:LoadThongTinLoaiThuocSoapIn" />
       <wsdl:output message="tns:LoadThongTinLoaiThuocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRole">
+      <wsdl:input message="tns:getRoleSoapIn" />
+      <wsdl:output message="tns:getRoleSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -836,6 +867,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoadThongTinLoaiThuoc">
       <soap:operation soapAction="http://tempuri.org/LoadThongTinLoaiThuoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRole">
+      <soap:operation soapAction="http://tempuri.org/getRole" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1046,6 +1086,15 @@
     </wsdl:operation>
     <wsdl:operation name="LoadThongTinLoaiThuoc">
       <soap12:operation soapAction="http://tempuri.org/LoadThongTinLoaiThuoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRole">
+      <soap12:operation soapAction="http://tempuri.org/getRole" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
