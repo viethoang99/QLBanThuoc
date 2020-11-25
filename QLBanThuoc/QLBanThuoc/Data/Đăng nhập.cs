@@ -22,6 +22,7 @@ namespace QLBanThuoc.Data
 
         public static string tendangnhap;
         public static string matkhaucu;
+        public static string quyen;
 
         public XtraForm1()
         {
@@ -30,11 +31,6 @@ namespace QLBanThuoc.Data
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(100, 100);
         }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }        
         private void BtnDangNhap_Click(object sender, EventArgs e)
         {
             Ten_USER = client.getID(txbTenDangNhap.Text, txbMatKhau.Text);
@@ -42,11 +38,22 @@ namespace QLBanThuoc.Data
             if (Ten_USER != "0")
                 //if (txbTenDangNhap.Text!="")
             {
-                //Lưu giữ tên đăng nhập mà mật khẩu
+                //getRole
+                DataTable role = client.getRole(txbTenDangNhap.Text);
+                quyen = role.Rows[0]["IdRole"].ToString();
+                string tenquyen;
+                if (quyen == "0")
+                {
+                    tenquyen = "Admin";
+                }
+                else
+                    tenquyen = "User";
+                
+                //Lưu giữ tên đăng nhập, mật khẩu và quyền
                 tendangnhap = txbTenDangNhap.Text;
                 matkhaucu = txbMatKhau.Text;
                 //Bắt đầu phiên đăng nhập
-                MessageBox.Show("Phiên đăng nhập nhân viên: " + Ten_USER);
+                MessageBox.Show("Phiên đăng nhập nhân viên: " + Ten_USER + " với quyền là " + tenquyen);
                 Form1 fmain = new Form1();
                 fmain.Show();
                 this.Hide();

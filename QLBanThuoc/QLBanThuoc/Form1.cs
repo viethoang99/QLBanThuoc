@@ -23,9 +23,32 @@ namespace QLBanThuoc
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            checkQuyen();
         }
 
-        private void BarButtonItem28_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        void checkQuyen()
+        {
+            string permission = XtraForm1.quyen;
+            if (permission == "0")
+            {
+                ribbonPage1.Visible = true;
+                ribbonPage6.Visible = true;
+                ribbonPage3.Visible = true;
+                ribbonPage4.Visible = true;
+                ribbonPage5.Visible = true;                
+            }
+            else
+            {
+                ribbonPage1.Visible = true;
+                barButtonItem28.Enabled = false;
+                ribbonPage6.Visible = false;
+                ribbonPage3.Visible = true;
+                ribbonPage4.Visible = true;
+                ribbonPage5.Visible = true;
+            }
+        }
+
+            private void BarButtonItem28_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             panel.Controls.Clear();
             frmDanhSach ds = new frmDanhSach();

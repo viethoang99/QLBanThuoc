@@ -331,7 +331,7 @@ namespace WSTest
             Random r = new Random();
 
             //hàm đăng ký
-            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password) values('" + r.Next(1,999999999) + "','" + tenDangNhap + "','" + MatKhau + "')");
+            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password,IdRole) values('" + r.Next(1,999999999) + "','" + tenDangNhap + "','" + MatKhau + "','1')");
             Connection.executeQuery(insert);
         }
         //Tùng - Đổi mật khẩu
@@ -366,6 +366,101 @@ namespace WSTest
             //hàm đổi mật khẩu    
             SqlCommand change = new SqlCommand("update NHANVIEN set password = '" + MatKhauMoi + "' where username = '" + tenDangNhap + "' and password = '" + MatKhauCu + "'");
             Connection.executeQuery(change);
+        }
+        //Tùng - Nhập thuốc
+        [WebMethod]
+        public int NhapThuoc(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc)
+        {
+            SqlCommand command = new SqlCommand("execute proc_addThuoc '@date' '@mncc' '@mnv' '@sl' '@gia' '@hsd' '@maT' '@mahang' '@nsx' '@ten' '@cd' '@tp' '@dang' '@mLoai'", Connection.connection);
+
+            //button nhập thuốc OK
+            command.Parameters.AddWithValue("@date", date);
+            command.Parameters.AddWithValue("@mncc", maNCC);
+            command.Parameters.AddWithValue("@mnv", maNV);
+            command.Parameters.AddWithValue("@sl", SL);
+            command.Parameters.AddWithValue("@gia", Gia);
+            command.Parameters.AddWithValue("@hsd", HSD);
+            command.Parameters.AddWithValue("@maT", maThuoc);
+            command.Parameters.AddWithValue("@mahang", maHSX);
+            command.Parameters.AddWithValue("@nsx", NSX);
+            command.Parameters.AddWithValue("@ten", tenThuoc);
+            command.Parameters.AddWithValue("@cd", CD);
+            command.Parameters.AddWithValue("@tp", TP);
+            command.Parameters.AddWithValue("@dang", dangThuoc);
+            command.Parameters.AddWithValue("@mLoai", maloaiThuoc);
+
+            int i = Connection.executeProc(command);
+            return i;
+        }
+        [WebMethod]
+        public DataTable TimNCC(string TenNCC)
+        {
+            DataTable result = new DataTable("DSNCC");
+            SqlCommand command = new SqlCommand("execute proc_searchNhaCungCap '@tenNCC'", Connection.connection);
+
+            command.Parameters.AddWithValue("@tenNCC", TenNCC);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+
+        [WebMethod]
+        public DataTable LoadThongTinNV(string maNV)
+        {
+            DataTable result = new DataTable("DSNV");
+            SqlCommand command = new SqlCommand("execute proc_searchNhanVien '@maNV'", Connection.connection);
+            
+            command.Parameters.AddWithValue("@maNV", maNV);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        [WebMethod]
+        public DataTable LoadThongTinHSX(string tenHSX)
+        {
+            DataTable result = new DataTable("DSHSX");
+            SqlCommand command = new SqlCommand("execute proc_selectMaHangSX '@maNV'", Connection.connection);
+
+            command.Parameters.AddWithValue("@maNV", tenHSX);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        [WebMethod]
+        public DataTable LoadThongTinLoaiThuoc(string tenLoaiThuoc)
+        {
+            DataTable result = new DataTable("DSLT");
+            SqlCommand command = new SqlCommand("execute proc_selectLoaiThuoc '@tenLoaiThuoc'", Connection.connection);
+
+            command.Parameters.AddWithValue("@tenLoaiThuoc", tenLoaiThuoc);
+
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+
+        [WebMethod]
+        public DataTable getRole(string username)
+        {
+            DataTable role = new DataTable("Role");
+            SqlCommand command = new SqlCommand("select * from NHANVIEN where username = '" +  username + "'", Connection.connection);
+            
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(role);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return role;
         }
 
         [WebMethod]

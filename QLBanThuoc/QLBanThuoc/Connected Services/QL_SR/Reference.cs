@@ -128,6 +128,48 @@ namespace QLBanThuoc.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DoiMatKhau", ReplyAction="*")]
         System.Threading.Tasks.Task DoiMatKhauAsync(string tenDangNhap, string MatKhauCu, string MatKhauMoi);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NhapThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int NhapThuoc(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NhapThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> NhapThuocAsync(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimNCC", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TimNCC(string TenNCC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimNCC", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TimNCCAsync(string TenNCC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoadThongTinNV", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LoadThongTinNV(string maNV);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoadThongTinNV", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinNVAsync(string maNV);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoadThongTinHSX", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LoadThongTinHSX(string tenHSX);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoadThongTinHSX", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinHSXAsync(string tenHSX);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoadThongTinLoaiThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LoadThongTinLoaiThuoc(string tenLoaiThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoadThongTinLoaiThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinLoaiThuocAsync(string tenLoaiThuoc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getRole", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable getRole(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getRole", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> getRoleAsync(string username);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         string HelloWorld();
@@ -296,6 +338,54 @@ namespace QLBanThuoc.QL_SR {
         
         public System.Threading.Tasks.Task DoiMatKhauAsync(string tenDangNhap, string MatKhauCu, string MatKhauMoi) {
             return base.Channel.DoiMatKhauAsync(tenDangNhap, MatKhauCu, MatKhauMoi);
+        }
+        
+        public int NhapThuoc(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc) {
+            return base.Channel.NhapThuoc(date, maNCC, maNV, SL, Gia, HSD, maThuoc, maHSX, NSX, tenThuoc, CD, TP, dangThuoc, maloaiThuoc);
+        }
+        
+        public System.Threading.Tasks.Task<int> NhapThuocAsync(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc) {
+            return base.Channel.NhapThuocAsync(date, maNCC, maNV, SL, Gia, HSD, maThuoc, maHSX, NSX, tenThuoc, CD, TP, dangThuoc, maloaiThuoc);
+        }
+        
+        public System.Data.DataTable TimNCC(string TenNCC) {
+            return base.Channel.TimNCC(TenNCC);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TimNCCAsync(string TenNCC) {
+            return base.Channel.TimNCCAsync(TenNCC);
+        }
+        
+        public System.Data.DataTable LoadThongTinNV(string maNV) {
+            return base.Channel.LoadThongTinNV(maNV);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinNVAsync(string maNV) {
+            return base.Channel.LoadThongTinNVAsync(maNV);
+        }
+        
+        public System.Data.DataTable LoadThongTinHSX(string tenHSX) {
+            return base.Channel.LoadThongTinHSX(tenHSX);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinHSXAsync(string tenHSX) {
+            return base.Channel.LoadThongTinHSXAsync(tenHSX);
+        }
+        
+        public System.Data.DataTable LoadThongTinLoaiThuoc(string tenLoaiThuoc) {
+            return base.Channel.LoadThongTinLoaiThuoc(tenLoaiThuoc);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LoadThongTinLoaiThuocAsync(string tenLoaiThuoc) {
+            return base.Channel.LoadThongTinLoaiThuocAsync(tenLoaiThuoc);
+        }
+        
+        public System.Data.DataTable getRole(string username) {
+            return base.Channel.getRole(username);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> getRoleAsync(string username) {
+            return base.Channel.getRoleAsync(username);
         }
         
         public string HelloWorld() {
