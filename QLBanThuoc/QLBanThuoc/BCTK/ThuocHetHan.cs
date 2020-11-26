@@ -22,20 +22,17 @@ namespace QLBanThuoc.BCTK
         {
             InitializeComponent();
         }
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         void loadData()
         {
             //Lấy danh sách thông tin thuốc vào bảng
-            string check = "execute dbo.proc_ThongKeHetHan";
-            Connect.readDatathroughAdapter(check, mainTable);
+            mainTable = client.ThongkeSLT();
             if (mainTable.Rows.Count == 0)
             {
                 MessageBox.Show("Hiện tại không có loại thuốc nào hết hạn.", "Thông báo.");
             }   
             else
             {
-                SqlDataAdapter search = new SqlDataAdapter(check, frmConnection.connection);
-                search.Fill(mainTable);
                 dgvKetQua.DataSource = mainTable;
             }
         }

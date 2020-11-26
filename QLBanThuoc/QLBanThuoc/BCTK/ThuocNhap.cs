@@ -23,15 +23,14 @@ namespace QLBanThuoc.BCTK
         {
             InitializeComponent();
         }
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         void loadData()
         {
             string startDate = date1.Value.ToString().Split(' ')[0].Replace("/", "-");
             string endDate = date2.Value.ToString().Split(' ')[0].Replace("/", "-");
 
             //xuất ra thông tin cho bảng
-            SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_ThuocNhap '" + startDate + "', '" + endDate + "'", frmConnection.connection);
-            search.Fill(mainTable);
+            mainTable = client.Thongke_ThuocNhap(startDate, endDate);
             dgvThuocNhap.DataSource = mainTable;
         }
 

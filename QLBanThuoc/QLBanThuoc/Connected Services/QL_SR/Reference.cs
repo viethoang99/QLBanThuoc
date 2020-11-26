@@ -170,19 +170,96 @@ namespace QLBanThuoc.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getRole", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> getRoleAsync(string username);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Thongke_ThuocNhap", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string HelloWorld();
+        System.Data.DataTable Thongke_ThuocNhap(string str1, string str2);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> HelloWorldAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Thongke_ThuocNhap", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> Thongke_ThuocNhapAsync(string str1, string str2);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloName", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Thongke_ThuocBan", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        string HelloName(string name);
+        System.Data.DataTable Thongke_ThuocBan(string str1, string str2);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloName", ReplyAction="*")]
-        System.Threading.Tasks.Task<string> HelloNameAsync(string name);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Thongke_ThuocBan", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> Thongke_ThuocBanAsync(string str1, string str2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongkeSLT", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ThongkeSLT();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongkeSLT", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ThongkeSLTAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongkeTHH", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ThongkeTHH();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThongkeTHH", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ThongkeTHHAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TKDoanhThuMY", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TKDoanhThuMY(string date1);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TKDoanhThuMY", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TKDoanhThuMYAsync(string date1);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TKDoanhThuY", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TKDoanhThuY(string date2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TKDoanhThuY", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TKDoanhThuYAsync(string date2);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TKDoanhThu", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TKDoanhThu();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TKDoanhThu", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TKDoanhThuAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemKH", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TimKiemKH(string cmnd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemKH", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TimKiemKHAsync(string cmnd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemKH", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ThemKH(string ten, string SDT, string cmtnd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemKH", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ThemKHAsync(string ten, string SDT, string cmtnd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuoc_Ban", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TimKiemThuoc_Ban(string cmnd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuoc_Ban", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuoc_BanAsync(string cmnd);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemPhieuXuat", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable ThemPhieuXuat(string date, string makh, string manv, string tong);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemPhieuXuat", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> ThemPhieuXuatAsync(string date, string makh, string manv, string tong);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayMaPX", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LayMaPX(string date, string makh, string manv, string tong);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayMaPX", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LayMaPXAsync(string date, string makh, string manv, string tong);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemDonThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        int ThemDonThuoc(string maPX, string maT, string sl, string gia);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ThemDonThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<int> ThemDonThuocAsync(string maPX, string maT, string sl, string gia);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -388,20 +465,108 @@ namespace QLBanThuoc.QL_SR {
             return base.Channel.getRoleAsync(username);
         }
         
-        public string HelloWorld() {
-            return base.Channel.HelloWorld();
+        public System.Data.DataTable Thongke_ThuocNhap(string str1, string str2) {
+            return base.Channel.Thongke_ThuocNhap(str1, str2);
         }
         
-        public System.Threading.Tasks.Task<string> HelloWorldAsync() {
-            return base.Channel.HelloWorldAsync();
+        public System.Threading.Tasks.Task<System.Data.DataTable> Thongke_ThuocNhapAsync(string str1, string str2) {
+            return base.Channel.Thongke_ThuocNhapAsync(str1, str2);
         }
         
-        public string HelloName(string name) {
-            return base.Channel.HelloName(name);
+        public System.Data.DataTable Thongke_ThuocBan(string str1, string str2) {
+            return base.Channel.Thongke_ThuocBan(str1, str2);
         }
         
-        public System.Threading.Tasks.Task<string> HelloNameAsync(string name) {
-            return base.Channel.HelloNameAsync(name);
+        public System.Threading.Tasks.Task<System.Data.DataTable> Thongke_ThuocBanAsync(string str1, string str2) {
+            return base.Channel.Thongke_ThuocBanAsync(str1, str2);
+        }
+        
+        public System.Data.DataTable ThongkeSLT() {
+            return base.Channel.ThongkeSLT();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ThongkeSLTAsync() {
+            return base.Channel.ThongkeSLTAsync();
+        }
+        
+        public System.Data.DataTable ThongkeTHH() {
+            return base.Channel.ThongkeTHH();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ThongkeTHHAsync() {
+            return base.Channel.ThongkeTHHAsync();
+        }
+        
+        public System.Data.DataTable TKDoanhThuMY(string date1) {
+            return base.Channel.TKDoanhThuMY(date1);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TKDoanhThuMYAsync(string date1) {
+            return base.Channel.TKDoanhThuMYAsync(date1);
+        }
+        
+        public System.Data.DataTable TKDoanhThuY(string date2) {
+            return base.Channel.TKDoanhThuY(date2);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TKDoanhThuYAsync(string date2) {
+            return base.Channel.TKDoanhThuYAsync(date2);
+        }
+        
+        public System.Data.DataTable TKDoanhThu() {
+            return base.Channel.TKDoanhThu();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TKDoanhThuAsync() {
+            return base.Channel.TKDoanhThuAsync();
+        }
+        
+        public System.Data.DataTable TimKiemKH(string cmnd) {
+            return base.Channel.TimKiemKH(cmnd);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TimKiemKHAsync(string cmnd) {
+            return base.Channel.TimKiemKHAsync(cmnd);
+        }
+        
+        public int ThemKH(string ten, string SDT, string cmtnd) {
+            return base.Channel.ThemKH(ten, SDT, cmtnd);
+        }
+        
+        public System.Threading.Tasks.Task<int> ThemKHAsync(string ten, string SDT, string cmtnd) {
+            return base.Channel.ThemKHAsync(ten, SDT, cmtnd);
+        }
+        
+        public System.Data.DataTable TimKiemThuoc_Ban(string cmnd) {
+            return base.Channel.TimKiemThuoc_Ban(cmnd);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuoc_BanAsync(string cmnd) {
+            return base.Channel.TimKiemThuoc_BanAsync(cmnd);
+        }
+        
+        public System.Data.DataTable ThemPhieuXuat(string date, string makh, string manv, string tong) {
+            return base.Channel.ThemPhieuXuat(date, makh, manv, tong);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> ThemPhieuXuatAsync(string date, string makh, string manv, string tong) {
+            return base.Channel.ThemPhieuXuatAsync(date, makh, manv, tong);
+        }
+        
+        public System.Data.DataTable LayMaPX(string date, string makh, string manv, string tong) {
+            return base.Channel.LayMaPX(date, makh, manv, tong);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LayMaPXAsync(string date, string makh, string manv, string tong) {
+            return base.Channel.LayMaPXAsync(date, makh, manv, tong);
+        }
+        
+        public int ThemDonThuoc(string maPX, string maT, string sl, string gia) {
+            return base.Channel.ThemDonThuoc(maPX, maT, sl, gia);
+        }
+        
+        public System.Threading.Tasks.Task<int> ThemDonThuocAsync(string maPX, string maT, string sl, string gia) {
+            return base.Channel.ThemDonThuocAsync(maPX, maT, sl, gia);
         }
     }
 }

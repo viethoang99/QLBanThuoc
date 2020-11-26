@@ -38,11 +38,8 @@ namespace QLBanThuoc.frmQuanLyThuoc
             string ten = txbTen.Text;
             string cmtnd = txbCMTND.Text;
             string SDT = txbSDT.Text;
-
-            SqlCommand sqlKH = new SqlCommand("proc_searchKH");
-            sqlKH.Parameters.AddWithValue("@cmt", txbCMTND.Text);
             DataTable dt = new DataTable();
-            conn.readDataProc(sqlKH, dt);
+            dt = client.TimKiemKH(txbCMTND.Text);
             if (dt.Rows.Count != 0)
             {
                 MessageBox.Show("Khách hàng đã được đăng ký rồi", "Thông báo");
@@ -50,18 +47,17 @@ namespace QLBanThuoc.frmQuanLyThuoc
             }
             else
             {
-                string cmdtext1;
-                cmdtext1  = "proc_addKH";
-                SqlCommand sqlCommand = new SqlCommand(cmdtext1);
-                sqlCommand.Parameters.AddWithValue("@ten", ten);
-                sqlCommand.Parameters.AddWithValue("@sdt", SDT);
-                sqlCommand.Parameters.AddWithValue("@cmnd", cmtnd);
-                conn.executeProc(sqlCommand);
-                MessageBox.Show("Đăng ký khách hàng thành công", "Thông báo");
-                SqlCommand sqlKHTemp = new SqlCommand("proc_searchKH");
-                sqlKHTemp.Parameters.AddWithValue("@cmt", txbCMTND.Text);
+                int i = client.ThemKH(ten, SDT, cmtnd);
+                if (i != 0)
+                {
+                    MessageBox.Show("Đăng ký khách hàng thành công", "Thông báo");
+                }
+                else
+                {
+                    MessageBox.Show("Đăng ký khách hàng không thành công", "Thông báo");
+                }                    
                 DataTable dtTemp = new DataTable();
-                conn.readDataProc(sqlKH, dtTemp);
+                dtTemp = client.TimKiemKH(txbCMTND.Text);
                 maKH = dtTemp.Rows[0].ItemArray[0].ToString();
 
             }
@@ -134,8 +130,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
             
             DataTable dtTemp = new DataTable();
             dtTemp.Clear();
-            SqlCommand sqlThuoc = new SqlCommand("proc_searchTenThuoc");
-            conn.readDataProc(sqlThuoc, dtTemp);
+            dtTemp = client.TimKiemThuoc_Ban("");
             for (int i = 0; i < dtTemp.Rows.Count; i++)
             {
                 comboBoxTenThuoc.Items.Add(dtTemp.Rows[i].ItemArray[0]);
@@ -150,56 +145,13 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void button1_Click(object sender, EventArgs e)
         {
-            {
-                //SqlCommand sqlCommandPX = new SqlCommand();
-                //sqlCommandPX.CommandText = "proc_addPX";
-                //SqlCommand commandT = new SqlCommand();
-                //commandT.CommandText = "select MaKhachHang from KHACHHANG where CMND/TCCCD like " +
-                //    "'" + txbCMTND.Text + "'";
-                //string makh = conn.executeSelectQuery(commandT).ToString();
-                //sqlCommandPX.Parameters.AddWithValue("@date", DateTime.Today);
-                //sqlCommandPX.Parameters.AddWithValue("@makh", makh);
-                //sqlCommandPX.Parameters.AddWithValue("@manv", comboBoxTenThuoc.SelectedValue.ToString());
-                //conn.executeProc(sqlCommandPX);
-                //SqlCommand commandMaPH = new SqlCommand();
-                //commandMaPH.CommandText = "select MaPhieuXuat from PhieuXuat where NgayXuat like @Ngay" +
-                //    " and " +
-                //    "MaKhachHang like @makh and MaNhanVien like @manv";
-                //commandMaPH.Parameters.AddWithValue("@Ngay", DateTime.Today);
-                //commandMaPH.Parameters.AddWithValue("@makh", makh);
-                //commandMaPH.Parameters.AddWithValue("@manv", comboBoxTenThuoc.SelectedValue.ToString());
-                //string maph = conn.executeSelectQuery(commandMaPH).ToString();
-                //for (int i = 0; i < dataGridViewGioHang.Rows.Count; i++)
-                //{
-                //    SqlCommand commandCTPX = new SqlCommand();
-                //    commandCTPX.CommandText = "proc_addCTPX";
-                //    commandCTPX.Parameters.AddWithValue("@mpx", maph);
-                //    commandCTPX.Parameters.AddWithValue("@maT", dataGridViewGioHang.Rows[i].Cells[0].Value.ToString());
-                //    commandCTPX.Parameters.AddWithValue("@sl", dataGridViewGioHang.Rows[i].Cells[2].Value.ToString());
-                //    commandCTPX.Parameters.AddWithValue("@gia", dataGridViewGioHang.Rows[i].Cells[3].Value.ToString());
-                //    conn.executeProc(commandCTPX);
-                //}
-            }
-           
-         
-            
-            SqlCommand sqlPhieuXuat = new SqlCommand("proc_addPX");
-            sqlPhieuXuat.Parameters.AddWithValue("@date", DateTime.Now.ToString());
-            sqlPhieuXuat.Parameters.AddWithValue("@mkh", maKH);
-            sqlPhieuXuat.Parameters.AddWithValue("@mnv", XtraForm1.Ma_USER);
-            sqlPhieuXuat.Parameters.AddWithValue("@tong", labelTongTien.Text);
             DataTable dt = new DataTable();
-            conn.readDataProc(sqlPhieuXuat, dt);
-            string mapx = dt.Rows[1].ItemArray[0].ToString();
+            dt = client.ThemPhieuXuat(DateTime.Now.ToString(), maKH, XtraForm1.Ma_USER, labelTongTien.Text);
+            dt = client.LayMaPX(DateTime.Now.ToString(),maKH, XtraForm1.Ma_USER, labelTongTien.Text);
+            string mapx = dt.Rows[0].ItemArray[0].ToString();
             for (int i = 0; i < dataGridViewGioHang.Rows.Count - 1; i++)
             {
-
-                SqlCommand sqlCTPX = new SqlCommand("proc_addCTPX");
-                sqlCTPX.Parameters.AddWithValue("@mpx", mapx);
-                sqlCTPX.Parameters.AddWithValue("@maT", dataGridViewGioHang.Rows[i].Cells[0].Value.ToString());
-                sqlCTPX.Parameters.AddWithValue("@sl", dataGridViewGioHang.Rows[i].Cells[2].Value.ToString());
-                sqlCTPX.Parameters.AddWithValue("@gia", dataGridViewGioHang.Rows[i].Cells[3].Value.ToString());
-                conn.executeProc(sqlCTPX);
+                client.ThemDonThuoc(mapx, dataGridViewGioHang.Rows[i].Cells[0].Value.ToString(), dataGridViewGioHang.Rows[i].Cells[2].Value.ToString(), dataGridViewGioHang.Rows[i].Cells[3].Value.ToString());
             }
             MessageBox.Show("Xuất thành công", "Thông báo");
             
@@ -209,20 +161,16 @@ namespace QLBanThuoc.frmQuanLyThuoc
         {
 
         }
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         private void comboBoxTenThuoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            SqlCommand sqlSelectThuoc = new SqlCommand("proc_searchThuocBan");
-            sqlSelectThuoc.Parameters.AddWithValue("@tenThuoc", comboBoxTenThuoc.SelectedItem.ToString());
+        {           
             DataTable dtThuoc = new DataTable();
-            conn.readDataProc(sqlSelectThuoc, dtThuoc);
+            dtThuoc = client.TimKiemThuoc(comboBoxTenThuoc.SelectedItem.ToString());
             tbMaThuoc.Text = dtThuoc.Rows[0].ItemArray[0].ToString();
             tbThanhPhan.Text = dtThuoc.Rows[0].ItemArray[1].ToString();
             tbCongDung.Text = dtThuoc.Rows[0].ItemArray[2].ToString();
-            tbSoLuongTon.Text = dtThuoc.Rows[0].ItemArray[3].ToString();
+            tbSoLuongTon.Text = dtThuoc.Rows[0].ItemArray[5].ToString();
             tbDonGia.Text = dtThuoc.Rows[0].ItemArray[4].ToString();
-
-
         }
 
         private void buttonXoa_Click(object sender, EventArgs e)

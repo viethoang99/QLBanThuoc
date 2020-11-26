@@ -462,17 +462,166 @@ namespace WSTest
             //Kết thúc lấy dữ liệu
             return role;
         }
-
+        //Thống kê phần nhập thuốc
         [WebMethod]
-        public string HelloWorld()
+        public DataTable Thongke_ThuocNhap(string str1, string str2)
         {
-            return "Hello World";
+            DataTable result = new DataTable("DSLT");
+            SqlCommand command = new SqlCommand("execute dbo.proc_ThuocNhap '" + str1 + "', '" + str2 + "'", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            return result;
         }
-
+        //Thống kê thuốc bán ra
         [WebMethod]
-        public string HelloName(string name)
+        public DataTable Thongke_ThuocBan(string str1, string str2)
         {
-            return "Hello " + name;
+            DataTable result = new DataTable("DSLT");
+            SqlCommand command = new SqlCommand("execute dbo.proc_ThuocBan '" + str1 + "', '" + str2 + "'", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            return result;
+        }
+        //Thống kê số lượng tồn
+        [WebMethod]
+        public DataTable ThongkeSLT()
+        {
+            DataTable result = new DataTable("DSLT");
+            SqlCommand command = new SqlCommand("execute dbo.proc_ThongKeTon", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            return result;
+        }
+        //Thống kê thuốc hết hạn
+        [WebMethod]
+        public DataTable ThongkeTHH()
+        {
+            DataTable result = new DataTable("DSLT");
+            SqlCommand command = new SqlCommand("execute dbo.proc_ThongKeHetHan", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            return result;
+        }
+        //Thống kê doanh thu theo tháng
+        [WebMethod]
+        public DataTable TKDoanhThuMY(string date1)
+        {
+            DataTable result = new DataTable("DT");
+            SqlCommand command = new SqlCommand("exec dbo.DTThang '" + date1 + "'", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //Thống kê doanh thu theo năm
+        [WebMethod]
+        public DataTable TKDoanhThuY(string date2)
+        {
+            DataTable result = new DataTable("DT");
+            SqlCommand command = new SqlCommand("exec dbo.DTNam '" + date2 + "'", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //Thống kê doanh thu 
+        [WebMethod]
+        public DataTable TKDoanhThu()
+        {
+            DataTable result = new DataTable("DT");
+            SqlCommand command = new SqlCommand("execute dbo.DTThang0", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //Tìm kiếm khách hàng
+        [WebMethod]
+        public DataTable TimKiemKH(string cmnd)
+        {
+            DataTable result = new DataTable("DSKH");
+            SqlCommand sqlCommand = new SqlCommand("select * from KHACHHANG where [CMND/TCCCD] like @cmt ", Connection.connection);
+            sqlCommand.Parameters.AddWithValue("@cmt", cmnd);
+            SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
+            Adapter.Fill(result);
+            Adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //THêm khách hàng
+        [WebMethod]
+        public int ThemKH(string ten, string SDT,string cmtnd)
+        {
+            SqlCommand sqlCommand = new SqlCommand();
+            sqlCommand.CommandText = "proc_addKH";
+            sqlCommand.Parameters.AddWithValue("@ten", ten);
+            sqlCommand.Parameters.AddWithValue("@sdt", SDT);
+            sqlCommand.Parameters.AddWithValue("@cmnd", cmtnd);
+            int i = Connection.executeProc(sqlCommand);
+            return i;
+        }
+        //Tìm kiếm thuốc
+        [WebMethod]
+        public DataTable TimKiemThuoc_Ban(string cmnd)
+        {
+            DataTable result = new DataTable("DSLT");
+            SqlCommand command = new SqlCommand("execute proc_searchTenThuoc", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //Thêm vào Phiếu xuất
+        [WebMethod]
+        public DataTable ThemPhieuXuat(string date,string makh,string manv,string tong)
+        {
+            DataTable result = new DataTable("PX");
+            SqlCommand sqlPhieuXuat = new SqlCommand("execute proc_addPX @date,@mkh,@mnv,@tong",Connection.connection);
+            sqlPhieuXuat.Parameters.AddWithValue("@date", date);
+            sqlPhieuXuat.Parameters.AddWithValue("@mkh", makh);
+            sqlPhieuXuat.Parameters.AddWithValue("@mnv", manv);
+            sqlPhieuXuat.Parameters.AddWithValue("@tong", tong);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlPhieuXuat);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //Lấy mã phiếu xuất
+        [WebMethod]
+        public DataTable LayMaPX(string date, string makh, string manv, string tong)
+        {
+            DataTable result = new DataTable("PX");
+            SqlCommand sqlPhieuXuat = new SqlCommand("SELECT * FROM PHIEUXUAT WHERE NgayXuat = @date and MaKhachHang = @mkh and MaNhanVien = @mnv and Tong = @tong", Connection.connection);
+            sqlPhieuXuat.Parameters.AddWithValue("@date", date);
+            sqlPhieuXuat.Parameters.AddWithValue("@mkh", makh);
+            sqlPhieuXuat.Parameters.AddWithValue("@mnv", manv);
+            sqlPhieuXuat.Parameters.AddWithValue("@tong", tong);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlPhieuXuat);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        //THêm thuốc vào chi tiết phiếu xuất
+        [WebMethod]
+        public int ThemDonThuoc(string maPX,string maT,string sl,string gia)
+        {
+            SqlCommand sqlCTPX = new SqlCommand("execute proc_addCTPX @mpx,@maT,@sl,gia",Connection.connection);
+            sqlCTPX.Parameters.AddWithValue("@mpx", maPX);
+            sqlCTPX.Parameters.AddWithValue("@maT",maT);
+            sqlCTPX.Parameters.AddWithValue("@sl", sl);
+            sqlCTPX.Parameters.AddWithValue("@gia",gia);
+            int i = Connection.executeProc(sqlCTPX);
+            return i;
         }
     }
 }

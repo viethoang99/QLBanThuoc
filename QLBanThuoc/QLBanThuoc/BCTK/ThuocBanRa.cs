@@ -27,15 +27,14 @@ namespace QLBanThuoc.BCTK
         {
             MessageBox.Show("Đang xuất file Excel...", "Thông báo.");
         }
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         void loadData()
         {
             string startDate = date1.Value.ToString().Split(' ')[0].Replace("/", "-");
             string endDate = date2.Value.ToString().Split(' ')[0].Replace("/", "-");
 
             //xuất ra thông tin cho bảng
-            SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_ThuocBan '" + startDate + "', '" + endDate + "'", frmConnection.connection);
-            search.Fill(mainTable);
+            mainTable = client.Thongke_ThuocBan(startDate, endDate);
             dgvThuocBanRa.DataSource = mainTable;
         }
 

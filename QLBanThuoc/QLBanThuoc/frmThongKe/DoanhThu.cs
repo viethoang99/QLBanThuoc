@@ -14,14 +14,13 @@ namespace QLBanThuoc.frmThongKe
 {
     public partial class DoanhThu : UserControl
     {
-        frmConnection Connect = new frmConnection();
         DataTable mainTable = new DataTable();
 
         public DoanhThu()
         {
             InitializeComponent();
         }
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         void loadData()
         {
             string month = cmbThang.Text;
@@ -36,9 +35,7 @@ namespace QLBanThuoc.frmThongKe
                 if (cmbNam.Text != "Năm")
                 {
                     //đưa ra doanh thu tháng - năm
-                    string thangnam = "exec dbo.DTThang '" + date1 + "'";
-                    SqlDataAdapter search = new SqlDataAdapter(thangnam, frmConnection.connection);
-                    search.Fill(mainTable);
+                    mainTable = client.TKDoanhThuMY(date1);
                     dgvDoanhThu.DataSource = mainTable;
                 }
                 else if (cmbNam.Text == "Năm")
@@ -51,9 +48,7 @@ namespace QLBanThuoc.frmThongKe
                 if (cmbNam.Text != "Năm")
                 {
                     //đưa ra doanh thu năm
-                    string nam = "exec dbo.DTNam '" + date2 + "'";
-                    SqlDataAdapter search = new SqlDataAdapter(nam, frmConnection.connection);
-                    search.Fill(mainTable);
+                    mainTable = client.TKDoanhThuY(date2);
                     dgvDoanhThu.DataSource = mainTable;
                 }
                 else if (cmbNam.Text == "Năm")
@@ -78,8 +73,7 @@ namespace QLBanThuoc.frmThongKe
         private void DoanhThu_Load(object sender, EventArgs e)
         {
             //load thông tin vào bảng
-            SqlDataAdapter search = new SqlDataAdapter("execute dbo.DTThang0", frmConnection.connection);
-            search.Fill(mainTable);
+            mainTable = client.TKDoanhThu();
             dgvDoanhThu.DataSource = mainTable;
         }
     }

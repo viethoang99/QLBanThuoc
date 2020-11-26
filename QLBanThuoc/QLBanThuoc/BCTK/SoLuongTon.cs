@@ -22,12 +22,11 @@ namespace QLBanThuoc.BCTK
         {
             InitializeComponent();
         }
-
+        QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         void loadData()
         {
             //Lấy danh sách thông tin thuốc vào bảng
-            SqlDataAdapter search = new SqlDataAdapter("execute dbo.proc_ThongKeTon", frmConnection.connection);
-            search.Fill(mainTable);
+            mainTable = client.ThongkeSLT();
             dgvKetQua.DataSource = mainTable;
         }
 
