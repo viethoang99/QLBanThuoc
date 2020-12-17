@@ -28,7 +28,7 @@ namespace QLBanThuoc
 
         void checkQuyen()
         {
-            string permission = XtraForm1.quyen;
+            string permission = XtraForm1.quyen.Trim();
             if (permission == "0")
             {
                 ribbonPage1.Visible = true;

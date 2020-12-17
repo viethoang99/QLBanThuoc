@@ -40,9 +40,9 @@ namespace QLBanThuoc.Data
             {
                 //getRole
                 DataTable role = client.getRole(txbTenDangNhap.Text);
-                quyen = role.Rows[0]["IdRole"].ToString();
+                quyen = role.Rows[0].ItemArray[6].ToString();
                 string tenquyen;
-                if (quyen == "0")
+                if (quyen.TrimEnd() == "0")
                 {
                     tenquyen = "Admin";
                 }

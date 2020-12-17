@@ -18,20 +18,14 @@ namespace QLBanThuoc.frmQuanLyThuoc
         public frmBanThuoc()
         {
             InitializeComponent();
-        }
-        frmConnection conn = new frmConnection();
-     
+        }     
         private string maKH;
-       
-
         private void button2_Click(object sender, EventArgs e)
         {
             txbCMTND.Text = "";
             txbSDT.Text = "";
             txbTen.Text = "";
         }
-
-
    
         private void button3_Click(object sender, EventArgs e)
         {
@@ -47,19 +41,25 @@ namespace QLBanThuoc.frmQuanLyThuoc
             }
             else
             {
-                int i = client.ThemKH(ten, SDT, cmtnd);
-                if (i != 0)
+                if (ten != "" && SDT != "" && cmtnd != "")
                 {
-                    MessageBox.Show("Đăng ký khách hàng thành công", "Thông báo");
+                    int i = client.ThemKH(ten, SDT, cmtnd);
+                    if (i != 0)
+                    {
+                        MessageBox.Show("Đăng ký khách hàng thành công", "Thông báo");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đăng ký khách hàng không thành công", "Thông báo");
+                    }
+                    DataTable dtTemp = new DataTable();
+                    dtTemp = client.TimKiemKH(txbCMTND.Text);
+                    maKH = dtTemp.Rows[0].ItemArray[0].ToString();
                 }
                 else
                 {
-                    MessageBox.Show("Đăng ký khách hàng không thành công", "Thông báo");
-                }                    
-                DataTable dtTemp = new DataTable();
-                dtTemp = client.TimKiemKH(txbCMTND.Text);
-                maKH = dtTemp.Rows[0].ItemArray[0].ToString();
-
+                    MessageBox.Show("Mời nhập đầy đủ dữ liệu", "Thông báo");
+                }
             }
 
         }
@@ -145,16 +145,33 @@ namespace QLBanThuoc.frmQuanLyThuoc
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt = client.ThemPhieuXuat(DateTime.Now.ToString(), maKH, XtraForm1.Ma_USER, labelTongTien.Text);
-            dt = client.LayMaPX(DateTime.Now.ToString(),maKH, XtraForm1.Ma_USER, labelTongTien.Text);
-            string mapx = dt.Rows[0].ItemArray[0].ToString();
-            for (int i = 0; i < dataGridViewGioHang.Rows.Count - 1; i++)
+            if (maKH !=null)
             {
-                client.ThemDonThuoc(mapx, dataGridViewGioHang.Rows[i].Cells[0].Value.ToString(), dataGridViewGioHang.Rows[i].Cells[2].Value.ToString(), dataGridViewGioHang.Rows[i].Cells[3].Value.ToString());
+                DataTable dt = new DataTable();
+                dt = client.ThemPhieuXuat(DateTime.Now.ToString(), maKH, XtraForm1.Ma_USER, labelTongTien.Text);
+                dt = client.LayMaPX(DateTime.Now.ToString(), maKH, XtraForm1.Ma_USER, labelTongTien.Text);
+                string mapx = dt.Rows[0].ItemArray[0].ToString();
+                for (int i = 0; i < dataGridViewGioHang.Rows.Count - 1; i++)
+                {
+                    client.ThemDonThuoc(mapx, dataGridViewGioHang.Rows[i].Cells[0].Value.ToString(), dataGridViewGioHang.Rows[i].Cells[2].Value.ToString(), dataGridViewGioHang.Rows[i].Cells[3].Value.ToString());
+                }
+                MessageBox.Show("Xuất thành công", "Thông báo");
+                txbCMTND.Text = "";
+                txbSDT.Text = "";
+                txbTen.Text = "";
+                tbCongDung.Text = "";
+                tbDonGia.Text = "";
+                tbMaThuoc.Text = "";
+                tbSoLuongMua.Text = "";
+                tbSoLuongTon.Text = "";
+                tbThanhPhan.Text = "";
+                dataGridViewGioHang = null;
+                labelTongTien.Text = "_____________";
             }
-            MessageBox.Show("Xuất thành công", "Thông báo");
-            
+            else
+            {
+                MessageBox.Show("Mời thêm khách hàng", "Thông báo");
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
