@@ -22,7 +22,6 @@ namespace QLBanThuoc.frmTimKiem
 
         void loadData()
         {
-            MessageBox.Show("Vui lòng nhập chính xác tên / thời hạn / tên và thời hạn của thuốc cần tìm kiếm.", "Thông báo.");
             //Lấy danh sách thông tin thuốc vào bảng
             QL_SR.QLBanThuocServiceSoapClient qlClient = new QL_SR.QLBanThuocServiceSoapClient();
 

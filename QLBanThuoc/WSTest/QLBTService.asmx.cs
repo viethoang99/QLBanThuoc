@@ -7,7 +7,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Services;
-
 namespace WSTest
 {
     /// <summary>
@@ -22,8 +21,9 @@ namespace WSTest
     {
         static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
         //static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-
+        static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         public static SqlConnection connection = new SqlConnection(ConnectionString);
+        public static SqlConnection connection1 = new SqlConnection(ConnectionString1);
         public static int executeProc(SqlCommand command)
         {
             try
@@ -188,10 +188,15 @@ namespace WSTest
         {
             DataTable result = new DataTable("DSTB");
             SqlCommand sqlCommand = new SqlCommand("select MaThuoc, MaLoThuoc, TenThuoc, MaLoaiThuoc, DonGia, SoLuongTon from THUOC where THUOC.TenThuoc like N'%' + @ten + '%'", Connection.connection);
+            //SqlCommand sqlCommand1 = new SqlCommand("select MaThuoc, MaLoThuoc, TenThuoc, MaLoaiThuoc, DonGia, SoLuongTon,CongDung,ThanhPhan, from THUOC where THUOC.TenThuoc like N'%' + @ten + '%' OR TimKiem LIKE N'%' + @ten + '%'", Connection.connection1);
             sqlCommand.Parameters.AddWithValue("@ten", str);
+            //sqlCommand1.Parameters.AddWithValue("@ten", str);
             SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
+            //SqlDataAdapter Adapter1 = new SqlDataAdapter(sqlCommand1);
             Adapter.Fill(result);
             Adapter.Dispose();
+            //Adapter1.Fill(result);
+            //Adapter1.Dispose();
             //Kết thúc lấy dữ liệu
             return result;
         }
@@ -202,9 +207,14 @@ namespace WSTest
             DataTable result = new DataTable("DSTB");
             SqlCommand sqlCommand = new SqlCommand("select TenThuoc,THUOC.MaLoThuoc,MaLoaiThuoc,MaHangSX,ThanhPhan,CongDung,NgaySanXuat,HanSuDung,DonGia,SoLuongTon,DangThuoc from THUOC, LOTHUOC  where THUOC.MaThuoc like @maT and THUOC.MaLoThuoc = LOTHUOC.MaLoThuoc ", Connection.connection);
             sqlCommand.Parameters.AddWithValue("@maT", str);
+            SqlCommand sqlCommand1 = new SqlCommand("select TenThuoc,THUOC.MaLoThuoc,MaLoaiThuoc,MaHangSX,ThanhPhan,CongDung,DonGia,SoLuongTon,DangThuoc from THUOC where THUOC.MaThuoc like @maT ", Connection.connection1);
+            sqlCommand1.Parameters.AddWithValue("@maT", str);
             SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
+            SqlDataAdapter Adapter1 = new SqlDataAdapter(sqlCommand1);
             Adapter.Fill(result);
             Adapter.Dispose();
+            Adapter1.Fill(result);
+            Adapter1.Dispose();
             //Kết thúc lấy dữ liệu
             return result;         
         }
@@ -212,19 +222,36 @@ namespace WSTest
         [WebMethod]
         public int LuuThuoc(string mathuoc,string malo,string ten,string tp,string cd, string nsx,string hsd,string slt,string dt,string dongia )
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "proc_UpdateThuoc";            
-            cmd.Parameters.AddWithValue("@mathuoc", SqlDbType.Char).Value = mathuoc;
-            cmd.Parameters.AddWithValue("@malo", SqlDbType.Char).Value = malo;
-            cmd.Parameters.AddWithValue("@ten", SqlDbType.NVarChar).Value = ten;
-            cmd.Parameters.AddWithValue("@tp", SqlDbType.NVarChar).Value = tp;
-            cmd.Parameters.AddWithValue("@cd", SqlDbType.NVarChar).Value =cd;
-            cmd.Parameters.AddWithValue("@nsx", SqlDbType.Date).Value = nsx;
-            cmd.Parameters.AddWithValue("@hsd", SqlDbType.Date).Value = hsd;
-            cmd.Parameters.AddWithValue("@slt", SqlDbType.Int).Value = Convert.ToInt32(slt);
-            cmd.Parameters.AddWithValue("@dt", SqlDbType.NVarChar).Value = dt;
-            cmd.Parameters.AddWithValue("@dongia", SqlDbType.Int).Value = Convert.ToInt32(dongia);
-            int i = Connection.executeProc(cmd);
+            int i;
+            if (nsx == "" && hsd == "")
+            {
+                SqlCommand cmd = new SqlCommand("update THUOC set TenThuoc = @ten, ThanhPhan = @tp, CongDung = @cd, SoLuongTon = @slt, DangThuoc = @dt, DonGia = @dongia where MaThuoc = @mathuoc",Connection.connection1);
+                cmd.Parameters.AddWithValue("@mathuoc", SqlDbType.Char).Value = mathuoc;
+                cmd.Parameters.AddWithValue("@malo", SqlDbType.Char).Value = malo;
+                cmd.Parameters.AddWithValue("@ten", SqlDbType.NVarChar).Value = ten;
+                cmd.Parameters.AddWithValue("@tp", SqlDbType.NVarChar).Value = tp;
+                cmd.Parameters.AddWithValue("@cd", SqlDbType.NVarChar).Value = cd;
+                cmd.Parameters.AddWithValue("@slt", SqlDbType.Int).Value = Convert.ToInt32(slt);
+                cmd.Parameters.AddWithValue("@dt", SqlDbType.NVarChar).Value = dt;
+                cmd.Parameters.AddWithValue("@dongia", SqlDbType.Int).Value = Convert.ToInt32(dongia);
+                i = Connection.executeQuery(cmd);
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "proc_UpdateThuoc";
+                cmd.Parameters.AddWithValue("@mathuoc", SqlDbType.Char).Value = mathuoc;
+                cmd.Parameters.AddWithValue("@malo", SqlDbType.Char).Value = malo;
+                cmd.Parameters.AddWithValue("@ten", SqlDbType.NVarChar).Value = ten;
+                cmd.Parameters.AddWithValue("@tp", SqlDbType.NVarChar).Value = tp;
+                cmd.Parameters.AddWithValue("@cd", SqlDbType.NVarChar).Value = cd;
+                cmd.Parameters.AddWithValue("@nsx", SqlDbType.Date).Value = nsx;
+                cmd.Parameters.AddWithValue("@hsd", SqlDbType.Date).Value = hsd;
+                cmd.Parameters.AddWithValue("@slt", SqlDbType.Int).Value = Convert.ToInt32(slt);
+                cmd.Parameters.AddWithValue("@dt", SqlDbType.NVarChar).Value = dt;
+                cmd.Parameters.AddWithValue("@dongia", SqlDbType.Int).Value = Convert.ToInt32(dongia);
+                i = Connection.executeProc(cmd);               
+            }
             return i;
         }
         //6.3. Xóa thuốc đi
@@ -622,6 +649,37 @@ namespace WSTest
             sqlCTPX.Parameters.AddWithValue("@gia",gia);
             int i = Connection.executeProc(sqlCTPX);
             return i;
+        }
+
+        [WebMethod]
+        public List<THUOC> LayDS()
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC", Connection.connection1);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(result);
+            adapter.Dispose();
+            List<THUOC> dsThuoc = new List<THUOC>();
+            for (int i=0;i<result.Rows.Count;i++)
+            {
+                THUOC t = new THUOC();
+                t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
+                t.CongDung = result.Rows[i]["CongDung"].ToString();
+                t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
+                t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
+                t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
+                t.Tien = result.Rows[i]["Tien"].ToString();
+                t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
+                t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
+                t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
+                t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
+                t.UrlImage = result.Rows[i]["UrlImage"].ToString();
+                t.TimKiem = result.Rows[i]["TimKiem"].ToString();
+                t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
+                dsThuoc.Add(t);
+            }
+            return dsThuoc;
         }
     }
 }

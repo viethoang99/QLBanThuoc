@@ -110,9 +110,13 @@ C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\roslyn\VBCSCompiler
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csproj.CoreCompileInputs.cache
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csproj.CopyComplete
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.dll
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.pdb
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache
+C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache
+C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.dll
+C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.dll
+C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.xml
+C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.xml
