@@ -87,7 +87,7 @@ namespace WSTest
         //form nhà cung cấp
         //1. Chức năng thêm mới NCC
         [WebMethod]
-        public int ThemMoiNCC(string mancc, string tenncc,string nguoidd,string sdt,string diachi)
+        public int ThemMoiNCC(string mancc, string tenncc, string nguoidd, string sdt, string diachi)
         {
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.CommandText = "proc_addNCC";
@@ -128,7 +128,7 @@ namespace WSTest
         public DataTable TimKiemNCC(string thongtin)
         {
             DataTable result = new DataTable("DSTB");
-            SqlCommand sqlCommand = new SqlCommand("select * from NHACUNGCAP where TenNhaCungCap like '%'+ @ten +'%'",Connection.connection);
+            SqlCommand sqlCommand = new SqlCommand("select * from NHACUNGCAP where TenNhaCungCap like '%'+ @ten +'%'", Connection.connection);
             sqlCommand.Parameters.AddWithValue("@ten", thongtin);
             SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
             Adapter.Fill(result);
@@ -150,7 +150,7 @@ namespace WSTest
             byte[] hash = mh.ComputeHash(inputBytes);
             //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
             StringBuilder sb = new StringBuilder();
-            Ten_USER="0";
+            Ten_USER = "0";
             for (int i = 0; i < hash.Length; i++)
             {
                 sb.Append(hash[i].ToString("X2"));
@@ -216,16 +216,16 @@ namespace WSTest
             Adapter1.Fill(result);
             Adapter1.Dispose();
             //Kết thúc lấy dữ liệu
-            return result;         
+            return result;
         }
         //6.2. Lưu thuốc sau khi sửa thông tin
         [WebMethod]
-        public int LuuThuoc(string mathuoc,string malo,string ten,string tp,string cd, string nsx,string hsd,string slt,string dt,string dongia )
+        public int LuuThuoc(string mathuoc, string malo, string ten, string tp, string cd, string nsx, string hsd, string slt, string dt, string dongia)
         {
             int i;
             if (nsx == "" && hsd == "")
             {
-                SqlCommand cmd = new SqlCommand("update THUOC set TenThuoc = @ten, ThanhPhan = @tp, CongDung = @cd, SoLuongTon = @slt, DangThuoc = @dt, DonGia = @dongia where MaThuoc = @mathuoc",Connection.connection1);
+                SqlCommand cmd = new SqlCommand("update THUOC set TenThuoc = @ten, ThanhPhan = @tp, CongDung = @cd, SoLuongTon = @slt, DangThuoc = @dt, DonGia = @dongia where MaThuoc = @mathuoc", Connection.connection1);
                 cmd.Parameters.AddWithValue("@mathuoc", SqlDbType.Char).Value = mathuoc;
                 cmd.Parameters.AddWithValue("@malo", SqlDbType.Char).Value = malo;
                 cmd.Parameters.AddWithValue("@ten", SqlDbType.NVarChar).Value = ten;
@@ -250,7 +250,7 @@ namespace WSTest
                 cmd.Parameters.AddWithValue("@slt", SqlDbType.Int).Value = Convert.ToInt32(slt);
                 cmd.Parameters.AddWithValue("@dt", SqlDbType.NVarChar).Value = dt;
                 cmd.Parameters.AddWithValue("@dongia", SqlDbType.Int).Value = Convert.ToInt32(dongia);
-                i = Connection.executeProc(cmd);               
+                i = Connection.executeProc(cmd);
             }
             return i;
         }
@@ -358,7 +358,7 @@ namespace WSTest
             Random r = new Random();
 
             //hàm đăng ký
-            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password,IdRole) values('" + r.Next(1,999999999) + "','" + tenDangNhap + "','" + MatKhau + "','1')");
+            SqlCommand insert = new SqlCommand("insert into NHANVIEN(MaNhanVien,username,password,IdRole) values('" + r.Next(1, 999999999) + "','" + tenDangNhap + "','" + MatKhau + "','1')");
             Connection.executeQuery(insert);
         }
         //Tùng - Đổi mật khẩu
@@ -439,7 +439,7 @@ namespace WSTest
         {
             DataTable result = new DataTable("DSNV");
             SqlCommand command = new SqlCommand("execute proc_searchNhanVien '@maNV'", Connection.connection);
-            
+
             command.Parameters.AddWithValue("@maNV", maNV);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -481,8 +481,8 @@ namespace WSTest
         public DataTable getRole(string username)
         {
             DataTable role = new DataTable("Role");
-            SqlCommand command = new SqlCommand("select * from NHANVIEN where username = '" +  username + "'", Connection.connection);
-            
+            SqlCommand command = new SqlCommand("select * from NHANVIEN where username = '" + username + "'", Connection.connection);
+
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(role);
             adapter.Dispose();
@@ -584,7 +584,7 @@ namespace WSTest
         }
         //THêm khách hàng
         [WebMethod]
-        public int ThemKH(string ten, string SDT,string cmtnd)
+        public int ThemKH(string ten, string SDT, string cmtnd)
         {
             SqlCommand sqlCommand = new SqlCommand();
             sqlCommand.CommandText = "proc_addKH";
@@ -608,10 +608,10 @@ namespace WSTest
         }
         //Thêm vào Phiếu xuất
         [WebMethod]
-        public DataTable ThemPhieuXuat(string date,string makh,string manv,string tong)
+        public DataTable ThemPhieuXuat(string date, string makh, string manv, string tong)
         {
             DataTable result = new DataTable("PX");
-            SqlCommand sqlPhieuXuat = new SqlCommand("execute proc_addPX @date,@mkh,@mnv,@tong",Connection.connection);
+            SqlCommand sqlPhieuXuat = new SqlCommand("execute proc_addPX @date,@mkh,@mnv,@tong", Connection.connection);
             sqlPhieuXuat.Parameters.AddWithValue("@date", date);
             sqlPhieuXuat.Parameters.AddWithValue("@mkh", makh);
             sqlPhieuXuat.Parameters.AddWithValue("@mnv", manv);
@@ -640,46 +640,117 @@ namespace WSTest
         }
         //THêm thuốc vào chi tiết phiếu xuất
         [WebMethod]
-        public int ThemDonThuoc(string maPX,string maT,string sl,string gia)
+        public int ThemDonThuoc(string maPX, string maT, string sl, string gia)
         {
-            SqlCommand sqlCTPX = new SqlCommand("execute proc_addCTPX @mpx,@maT,@sl,gia",Connection.connection);
+            SqlCommand sqlCTPX = new SqlCommand("execute proc_addCTPX @mpx,@maT,@sl,gia", Connection.connection);
             sqlCTPX.Parameters.AddWithValue("@mpx", maPX);
-            sqlCTPX.Parameters.AddWithValue("@maT",maT);
+            sqlCTPX.Parameters.AddWithValue("@maT", maT);
             sqlCTPX.Parameters.AddWithValue("@sl", sl);
-            sqlCTPX.Parameters.AddWithValue("@gia",gia);
+            sqlCTPX.Parameters.AddWithValue("@gia", gia);
             int i = Connection.executeProc(sqlCTPX);
             return i;
         }
 
         [WebMethod]
-        public List<THUOC> LayDS()
+        public List<THUOC> LayDS(string str)
+        {
+            List<THUOC> dsThuoc = new List<THUOC>();
+            if (str == "")
+            {
+                DataTable result = new DataTable("DS");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC", Connection.connection1);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(result);
+                adapter.Dispose();
+
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    THUOC t = new THUOC();
+                    t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                    t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
+                    t.CongDung = result.Rows[i]["CongDung"].ToString();
+                    t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
+                    t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
+                    t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
+                    t.Tien = result.Rows[i]["Tien"].ToString();
+                    t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
+                    t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
+                    t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
+                    t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
+                    t.UrlImage = result.Rows[i]["UrlImage"].ToString();
+                    t.TimKiem = result.Rows[i]["TimKiem"].ToString();
+                    t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
+                    dsThuoc.Add(t);
+                }
+            }
+            else
+            {
+                DataTable result = new DataTable("DS");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC WHERE MaThuoc LIKE @mt", Connection.connection1);
+                cmd.Parameters.AddWithValue("@mt", str);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(result);
+                adapter.Dispose();
+
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    THUOC t = new THUOC();
+                    t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                    t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
+                    t.CongDung = result.Rows[i]["CongDung"].ToString();
+                    t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
+                    t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
+                    t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
+                    t.Tien = result.Rows[i]["Tien"].ToString();
+                    t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
+                    t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
+                    t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
+                    t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
+                    t.UrlImage = result.Rows[i]["UrlImage"].ToString();
+                    t.TimKiem = result.Rows[i]["TimKiem"].ToString();
+                    t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
+                    dsThuoc.Add(t);
+                }
+            }
+            return dsThuoc;
+        }
+        //Login
+        [WebMethod]
+        public List<KHACHHANG> Login(string email, string password)
         {
             DataTable result = new DataTable("DS");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC", Connection.connection1);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM KHACHHANG WHERE Email = @email AND MatKhau = @password", Connection.connection1);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@password", password);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(result);
             adapter.Dispose();
-            List<THUOC> dsThuoc = new List<THUOC>();
-            for (int i=0;i<result.Rows.Count;i++)
+            List<KHACHHANG> dskhachang = new List<KHACHHANG>();
+            for (int i = 0; i < result.Rows.Count; i++)
             {
-                THUOC t = new THUOC();
-                t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
-                t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
-                t.CongDung = result.Rows[i]["CongDung"].ToString();
-                t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
-                t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
-                t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
-                t.Tien = result.Rows[i]["Tien"].ToString();
-                t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
-                t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
-                t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
-                t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
-                t.UrlImage = result.Rows[i]["UrlImage"].ToString();
-                t.TimKiem = result.Rows[i]["TimKiem"].ToString();
-                t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
-                dsThuoc.Add(t);
+                KHACHHANG t = new KHACHHANG();
+                t.Email = result.Rows[i]["Email"].ToString();
+                t.MaKhachHang = result.Rows[i]["MaKhachHang"].ToString();
+                t.MatKhau = result.Rows[i]["MatKhau"].ToString();
+                t.TenKhachHang = result.Rows[i]["TenKhachHang"].ToString();                
+                dskhachang.Add(t);
             }
-            return dsThuoc;
+            return dskhachang;
+        }
+
+        //register
+        [WebMethod]
+        public int Register(string email,string password, string name, string makh)
+        {
+            Connection.connection1.Open();
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO KHACHHANG" +
+                " VALUES (@makh,@name,@email,@pass)",Connection.connection1);
+            sqlCommand.Parameters.AddWithValue("@makh",makh);
+            sqlCommand.Parameters.AddWithValue("@name", name);
+            sqlCommand.Parameters.AddWithValue("@email", email);
+            sqlCommand.Parameters.AddWithValue("@pass", password);
+            int i = sqlCommand.ExecuteNonQuery();
+            return i;
         }
     }
 }
