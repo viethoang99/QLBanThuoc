@@ -285,15 +285,18 @@ namespace WSTest
         {
             DataTable result = new DataTable("DS");
             //Lấy dữ liệu
-            SqlCommand command = new SqlCommand("select TenThuoc,CongDung,ThanhPhan,DangThuoc,NgaySanXuat,HanSuDung,C1.DonGia,C2.DonGia " +
-                "from THUOC T inner join LOTHUOC L on L.MaLoThuoc = T.MaLoThuoc " +
-                "inner join CHITIETPHIEUNHAP C1 on C1.MaThuoc = T.MaThuoc " +
-                "inner join CHITIETPHIEUXUAT C2 on C2.MaThuoc = T.MaThuoc " +
-                "where T.TenThuoc LIKE like '%'+ @ten +'%'", Connection.connection);
+            SqlCommand command = new SqlCommand("select TenThuoc,CongDung,ThanhPhan,DangThuoc,DonGia " +
+                " from THUOC where TenThuoc LIKE '%'+ @ten +'%'", Connection.connection);
             command.Parameters.AddWithValue("@ten", TenThuoc);
+            SqlCommand command1 = new SqlCommand("select TenThuoc,CongDung,ThanhPhan,DangThuoc,DonGia" +
+                " from THUOC where TenThuoc LIKE '%'+ @ten +'%'", Connection.connection1);
+            command1.Parameters.AddWithValue("@ten", TenThuoc);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
+            SqlDataAdapter adapter1 = new SqlDataAdapter(command1);
             adapter.Fill(result);
             adapter.Dispose();
+            adapter1.Fill(result);
+            adapter1.Dispose();
             //Kết thúc lấy dữ liệu
             return result;
         }

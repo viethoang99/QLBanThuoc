@@ -81,7 +81,7 @@ namespace QLBanThuoc.frmTimKiem
             {
                 MessageBox.Show("Vui lòng kiểm tra lại thông tin tìm kiếm.", "Thông báo.");
             }
-            else if (txbTimKiem.Text != "" && dateNSX.Value == DateTime.Now && dateHSD.Value == DateTime.Now)
+            else if (txbTimKiem.Text != "")
             {
                 searchTheoTen();
             }

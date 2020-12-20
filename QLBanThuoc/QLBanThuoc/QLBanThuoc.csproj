@@ -238,6 +238,9 @@
     <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.KHACHHANG.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.LOAITHUOC.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.THUOC.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
