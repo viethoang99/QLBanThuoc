@@ -87,9 +87,9 @@
             this.labelTien.Font = new System.Drawing.Font("Tahoma", 12F);
             this.labelTien.Location = new System.Drawing.Point(557, 470);
             this.labelTien.Name = "labelTien";
-            this.labelTien.Size = new System.Drawing.Size(64, 24);
+            this.labelTien.Size = new System.Drawing.Size(108, 24);
             this.labelTien.TabIndex = 4;
-            this.labelTien.Text = "label2";
+            this.labelTien.Text = "--------------";
             // 
             // label3
             // 
