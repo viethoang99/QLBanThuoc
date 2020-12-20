@@ -79,7 +79,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GIOHANG.cs" />
+    <Compile Include="HOADON.cs" />
     <Compile Include="KHACHHANG.cs" />
+    <Compile Include="KHUYENMAI.cs" />
     <Compile Include="LOAITHUOC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLBTService.asmx.cs">

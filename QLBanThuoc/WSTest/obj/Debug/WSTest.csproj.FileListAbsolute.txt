@@ -123,4 +123,3 @@ D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QL
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.dll
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.xml
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.xml
-D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache

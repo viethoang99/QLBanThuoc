@@ -820,7 +820,7 @@ namespace WSTest
 
         //DanhMuc
         [WebMethod]
-        public List<THUOC> LayTenLoaiThuoc (string str)
+        public List<THUOC> LayTenLoaiThuoc(string str)
         {
             List<THUOC> dsLoaiThuoc = new List<THUOC>();
             DataTable result = new DataTable("DS");
@@ -916,12 +916,196 @@ namespace WSTest
             return dsLoaiThuoc;
         }
 
-        //XoaSP
+        //Lấy thông tin khách hàng
         [WebMethod]
-        public int XoaSPGH(string maSP)
+        public List<KHACHHANG> ThongTinKH(string str)
         {
-            Connection.connection.Open();
-            SqlCommand sqlCommand = new SqlCommand();
+            List<KHACHHANG> thongtinKH = new List<KHACHHANG>();
+            DataTable result = new DataTable("DS");
+            SqlCommand cmd = new SqlCommand("SELECT * FROM KHACHHANG WHERE Email LIKE @email", Connection.connection1);
+            cmd.Parameters.AddWithValue("@email", str);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(result);
+            adapter.Dispose();
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                KHACHHANG t = new KHACHHANG();
+                t.MaKhachHang = result.Rows[i]["MaKhachHang"].ToString();
+                t.TenKhachHang = result.Rows[i]["TenKhachHang"].ToString();
+                t.Email = result.Rows[i]["Email"].ToString();
+
+                thongtinKH.Add(t);
+            }
+            return thongtinKH;
+        }
+
+        //Lấy thông tin giỏ hàng
+        [WebMethod]
+        public List<GIOHANG> ThongTinGH(string maKH, string maT)
+        {
+            List<GIOHANG> thongtinGH = new List<GIOHANG>();
+            if (maT == "" && maKH != "")
+            {
+                DataTable result = new DataTable("DS");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM GIOHANG WHERE MaKhachHang LIKE @makh", Connection.connection1);
+                cmd.Parameters.AddWithValue("@makh", maKH);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(result);
+                adapter.Dispose();
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    GIOHANG t = new GIOHANG();
+                    t.MaGH = Convert.ToInt32(result.Rows[i]["MaGH"].ToString());
+                    t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                    t.MaKhachHang = result.Rows[i]["MaKhachHang"].ToString();
+                    t.SoLuong = Convert.ToInt32(result.Rows[i]["SoLuong"].ToString());
+                    thongtinGH.Add(t);
+                }
+            }
+            else if (maKH == "" && maT != "")
+            {
+                DataTable result = new DataTable("DS");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM GIOHANG WHERE MaThuoc LIKE @mat", Connection.connection1);
+                cmd.Parameters.AddWithValue("@mat", maT);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(result);
+                adapter.Dispose();
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    GIOHANG t = new GIOHANG();
+                    t.MaGH = Convert.ToInt32(result.Rows[i]["MaGH"].ToString());
+                    t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                    t.MaKhachHang = result.Rows[i]["MaKhachHang"].ToString();
+                    t.SoLuong = Convert.ToInt32(result.Rows[i]["SoLuong"].ToString());
+                    thongtinGH.Add(t);
+                }
+            }
+            else
+            {
+                DataTable result = new DataTable("DS");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM GIOHANG WHERE MaKhachHang LIKE @makh AND MaThuoc LIKE @mat", Connection.connection1);
+                cmd.Parameters.AddWithValue("@makh", maKH);
+                cmd.Parameters.AddWithValue("@mat", maT);
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                adapter.Fill(result);
+                adapter.Dispose();
+                for (int i = 0; i < result.Rows.Count; i++)
+                {
+                    GIOHANG t = new GIOHANG();
+                    t.MaGH = Convert.ToInt32(result.Rows[i]["MaGH"].ToString());
+                    t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                    t.MaKhachHang = result.Rows[i]["MaKhachHang"].ToString();
+                    t.SoLuong = Convert.ToInt32(result.Rows[i]["SoLuong"].ToString());
+                    thongtinGH.Add(t);
+                }
+            }           
+            return thongtinGH;
+        }       
+
+        //Lấy thông tin coupon khuyến mại
+        [WebMethod]
+        public List<KHUYENMAI> TienKM(string coupon)
+        {
+            List<KHUYENMAI> dsKM = new List<KHUYENMAI>();
+            DataTable result = new DataTable("DS");
+            SqlCommand cmd = new SqlCommand("SELECT * FROM KHUYENMAI WHERE MaKM LIKE @makm", Connection.connection1);
+            cmd.Parameters.AddWithValue("@makm", coupon);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(result);
+            adapter.Dispose();
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                KHUYENMAI t = new KHUYENMAI();
+                t.MaKM = result.Rows[i]["MaKM"].ToString();
+                t.TienKM = Convert.ToInt32(result.Rows[i]["TienKM"].ToString());
+                dsKM.Add(t);
+            }
+            return dsKM;
+        }
+
+        //Thêm sản phẩm vào giỏ hàng
+        [WebMethod]
+        public int ThemSP(string maT, string maKH, int sl)
+        {
+            Random rd = new Random();
+
+            Connection.connection1.Open();
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO GIOHANG" +
+                " VALUES (@magh,@mat,@makh,@sl)", Connection.connection1);
+            sqlCommand.Parameters.AddWithValue("@magh", rd.Next(1, 9999));
+            sqlCommand.Parameters.AddWithValue("@mat", maT);
+            sqlCommand.Parameters.AddWithValue("@makh", maKH);
+            sqlCommand.Parameters.AddWithValue("@sl", Convert.ToInt32(sl));
+            int i = sqlCommand.ExecuteNonQuery();
+            return i;
+        }
+
+        //Xóa sản phẩm khỏi giỏ hàng
+        [WebMethod]
+        public int XoaSP(string maKH, string maT)
+        {
+            Connection.connection1.Open();
+            if (maT != "" && maKH == "")
+            {
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM GIOHANG" +
+                   " WHERE MaThuoc = @mat", Connection.connection1);
+                sqlCommand.Parameters.AddWithValue("@mat", maT);
+                int i = sqlCommand.ExecuteNonQuery();
+                return i;
+            }
+            else if (maT == "" && maKH != "")
+            {
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM GIOHANG" +
+                   " WHERE MaKhachHang = @makh", Connection.connection1);
+                sqlCommand.Parameters.AddWithValue("@makh", maKH);
+                int i = sqlCommand.ExecuteNonQuery();
+                return i;
+            }
+            else
+            {
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM GIOHANG" +
+                   " WHERE MaThuoc = @mat AND MaKhachHang = @makh", Connection.connection1);
+                sqlCommand.Parameters.AddWithValue("@mat", maT);
+                sqlCommand.Parameters.AddWithValue("@makh", maKH);
+                int i = sqlCommand.ExecuteNonQuery();
+                return i;
+            }           
+        }
+
+        //Thêm hóa đơn
+        [WebMethod]
+        public int ThemHoaDon(int maHD, string ho, string ten, string diachiduong, string sonha, string email, string sdt, string ghichu, string makhuyenmai, string giaohang)
+        {
+            string hoten = ho + " " + ten;
+            string diachi = sonha + " " + diachiduong;
+            Random rd = new Random();
+
+            Connection.connection1.Open();
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO HOADON" +
+                " VALUES (@mahd,@hoten,@diachi,@sdt,@email,@ghichu,@makhuyenmai,@giaohang)", Connection.connection1);
+            sqlCommand.Parameters.AddWithValue("@mahd", Convert.ToInt32(maHD)); 
+            sqlCommand.Parameters.AddWithValue("@hoten", hoten);
+            sqlCommand.Parameters.AddWithValue("@diachi", diachi);
+            sqlCommand.Parameters.AddWithValue("@sdt", sdt);
+            sqlCommand.Parameters.AddWithValue("@email", email);
+            sqlCommand.Parameters.AddWithValue("@ghichu", ghichu);
+            sqlCommand.Parameters.AddWithValue("@makhuyenmai", makhuyenmai);
+            sqlCommand.Parameters.AddWithValue("@giaohang", giaohang);
+            int i = sqlCommand.ExecuteNonQuery();
+            return i;
+        }
+
+        //Thêm chi tiết hóa đơn
+        [WebMethod]
+        public int ThemCCHoaDon(int maHD, string maT, int dongia, int sl)
+        {
+            Connection.connection1.Open();
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO CHITIETHOADON" +
+                " VALUES (@mahd,@mat,@dongia,@sl)", Connection.connection1);
+            sqlCommand.Parameters.AddWithValue("@mahd", Convert.ToInt32(maHD));
+            sqlCommand.Parameters.AddWithValue("@mat", maT);
+            sqlCommand.Parameters.AddWithValue("@dongia", Convert.ToInt32(dongia));
+            sqlCommand.Parameters.AddWithValue("@sl", Convert.ToInt32(sl));
             int i = sqlCommand.ExecuteNonQuery();
             return i;
         }
