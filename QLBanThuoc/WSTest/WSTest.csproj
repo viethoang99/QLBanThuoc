@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KHACHHANG.cs" />
+    <Compile Include="LOAITHUOC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLBTService.asmx.cs">
       <DependentUpon>QLBTService.asmx</DependentUpon>

@@ -114,9 +114,13 @@ C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csproj
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csproj.CopyComplete
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.dll
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.pdb
-D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.dll
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.dll
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.xml
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.xml
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.dll
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.dll
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.xml
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\bin\EntityFramework.SqlServer.xml
+D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\WSTest\obj\Debug\WSTest.csprojAssemblyReference.cache
