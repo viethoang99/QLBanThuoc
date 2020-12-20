@@ -38,54 +38,7 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
             lbMaNhanVien.Text = XtraForm1.Ma_USER;
             lbTenNhanVien.Text = DSNV.Rows[0].ItemArray[0].ToString();
             labelSDT.Text = DSNV.Rows[0].ItemArray[1].ToString();
-
-            //loadData();
         }
-
-        //void loadData()
-        //{
-        //    SqlCommand sql = new SqlCommand();
-        //    sql.CommandText = "proc_searchNhanVien";
-        //    sql.Parameters.AddWithValue("@maNV", XtraForm1.Ma_USER);
-        //    DataTable dataTemp = new DataTable();
-        //    frmconnection.readDataProc(sql, dataTemp);
-
-        //    lbMaNhanVien.Text = XtraForm1.Ma_USER;
-        //    lbTenNhanVien.Text = dataTemp.Rows[0].ItemArray[0].ToString();
-        //    labelSDT.Text = dataTemp.Rows[0].ItemArray[1].ToString();
-        //    //Load thông tin tất cả các nhà cung cấp > tạo DataTable TenNCC
-        //    SqlCommand cmNhaCungCap = new SqlCommand("proc_searchTenNhaCungCap");
-        //    DataTable dtNhaCungCap = new DataTable();
-        //    frmconnection.readDataProc(cmNhaCungCap, dtNhaCungCap);
-        //    for (int i = 0; i < dtNhaCungCap.Rows.Count; i++)
-        //    {
-        //        comboTenNCC.Items.Add(dtNhaCungCap.Rows[i].ItemArray[0].ToString());
-        //    }
-        //    dtNhaCungCap.Clear();
-        //    //
-
-        //    //Load thông tin tất cả các hãng sản xuất > tạo DataTable HSX
-        //    SqlCommand cmHangSX = new SqlCommand("proc_searchHangSanXuat");
-        //    DataTable dtHangSX = new DataTable();
-        //    frmconnection.readDataProc(cmHangSX, dtHangSX);
-        //    for (int i = 0; i < dtHangSX.Rows.Count; i++)
-        //    {
-        //        comboBoxHangSanXuat.Items.Add(dtHangSX.Rows[i].ItemArray[0].ToString());
-        //    }
-        //    dtHangSX.Clear();
-        //    //
-
-        //    //Load thông tin tất cả các loại thuốc > tạo DataTable LoaiThuoc
-        //    SqlCommand cmLoaiThuoc = new SqlCommand("proc_searchLoaiThuoc");
-        //    DataTable dtLoaiThuoc = new DataTable();
-        //    frmconnection.readDataProc(cmLoaiThuoc, dtLoaiThuoc);
-        //    for (int i = 0; i < dtLoaiThuoc.Rows.Count; i++)
-        //    {
-        //        comboBoxLoaiThuoc.Items.Add(dtLoaiThuoc.Rows[i].ItemArray[0].ToString());
-        //    }
-        //    dtLoaiThuoc.Clear();
-        //    //
-        //}
 
         private void btnNhaCungCapOK_Click(object sender, EventArgs e)
         {
