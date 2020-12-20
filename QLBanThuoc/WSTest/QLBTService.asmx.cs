@@ -815,9 +815,6 @@ namespace WSTest
             return i;
         }
 
-<<<<<<< HEAD
-
-=======
         //DanhMuc
         [WebMethod]
         public List<THUOC> LayTenLoaiThuoc (string str)
@@ -926,8 +923,5 @@ namespace WSTest
             return i;
         }
 
-        //ThanhToan
-        
->>>>>>> 5d107780c0e2b70cb37a860fdf4d0dd367771bb7
     }
 }
