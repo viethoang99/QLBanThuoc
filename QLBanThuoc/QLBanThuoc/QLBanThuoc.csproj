@@ -162,6 +162,12 @@
     <Compile Include="frmThongKe\DoanhThu.Designer.cs">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThongKe\ThuocOnline.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmThongKe\ThuocOnline.Designer.cs">
+      <DependentUpon>ThuocOnline.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTimKiem\TenThuoc.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,6 +218,9 @@
     <EmbeddedResource Include="frmThongKe\DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKe\ThuocOnline.resx">
+      <DependentUpon>ThuocOnline.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTimKiem\TenThuoc.resx">
       <DependentUpon>TenThuoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +235,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.KHACHHANG.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.THUOC.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\QL_SR\QLBTService.wsdl" />
     <None Include="Properties\DataSources\System.Data.DataTable.datasource" />
     <None Include="Properties\Settings.settings">

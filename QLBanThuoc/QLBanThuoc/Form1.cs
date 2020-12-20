@@ -164,5 +164,12 @@ namespace QLBanThuoc
                 e.Cancel = true;
             }
         }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            panel.Controls.Clear();
+            ThuocOnline ncc = new ThuocOnline();
+            panel.Controls.Add(ncc);
+        }
     }
 }

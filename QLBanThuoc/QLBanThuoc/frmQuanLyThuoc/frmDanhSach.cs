@@ -20,9 +20,9 @@ namespace QLBanThuoc.frmQuanLyThuoc
             InitializeComponent();
         }
         DataTable dt = new DataTable();
-        frmConnection frmConnection = new frmConnection();
         private string maThuoc;
         private int index;
+        private string madon;
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
@@ -36,7 +36,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
             index = e.RowIndex;
             if (i >= 0)
             {
-                maThuoc = dataGridView1.Rows[i].Cells[0].Value.ToString();
+                madon = dataGridView1.Rows[i].Cells[0].Value.ToString();
                 //MessageBox.Show(maThuoc);
             }
         }
@@ -167,6 +167,11 @@ namespace QLBanThuoc.frmQuanLyThuoc
             {
                 textBoxTimKiem.Text = "";
             }
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

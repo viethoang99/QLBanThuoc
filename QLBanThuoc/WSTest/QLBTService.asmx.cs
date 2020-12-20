@@ -574,7 +574,7 @@ namespace WSTest
         public DataTable TimKiemKH(string cmnd)
         {
             DataTable result = new DataTable("DSKH");
-            SqlCommand sqlCommand = new SqlCommand("select * from KHACHHANG where [CMND/TCCCD] like @cmt ", Connection.connection);
+            SqlCommand sqlCommand = new SqlCommand("select * from KHACHHANG where [CMND/TCCCD] like @cmt or SoDienThoai LIKE @cmt ", Connection.connection);
             sqlCommand.Parameters.AddWithValue("@cmt", cmnd);
             SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
             Adapter.Fill(result);
@@ -622,6 +622,21 @@ namespace WSTest
             //Kết thúc lấy dữ liệu
             return result;
         }
+        [WebMethod]
+        public DataTable ThemPhieuXuat1(string date, string makh, string manv, string tong)
+        {
+            DataTable result = new DataTable("PX");
+            SqlCommand sqlPhieuXuat = new SqlCommand("execute proc_addPX @date,@mkh,@mnv,@tong", Connection.connection);
+            sqlPhieuXuat.Parameters.AddWithValue("@date", date);
+            sqlPhieuXuat.Parameters.AddWithValue("@mkh", makh);
+            sqlPhieuXuat.Parameters.AddWithValue("@mnv", manv);
+            sqlPhieuXuat.Parameters.AddWithValue("@tong", tong);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlPhieuXuat);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
         //Lấy mã phiếu xuất
         [WebMethod]
         public DataTable LayMaPX(string date, string makh, string manv, string tong)
@@ -650,7 +665,54 @@ namespace WSTest
             int i = Connection.executeProc(sqlCTPX);
             return i;
         }
+        [WebMethod]
+        public DataTable LayThuocDatHang()
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand sql = new SqlCommand("SELECT * FROM HOADON", Connection.connection1);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        [WebMethod]
+        public DataTable LayThuocDaDatHang(string id)
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand sql = new SqlCommand("SELECT * FROM HOADON,CHITIETHOADON WHERE HOADON.MaHoaDon = CHITIETHOADON.MaHoaDon and HOADON.MaHoaDon = @id", Connection.connection1);
+            sql.Parameters.Add("@id", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
 
+        [WebMethod]
+        public DataTable LayThuocDatHangChiTiet(string id)
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand sql = new SqlCommand("SELECT * FROM CHITIETHOADON WHERE MaHoaDon = @id", Connection.connection1);
+            sql.Parameters.AddWithValue("@id", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+
+        [WebMethod]
+        public void XoaDon(string id)
+        {
+            Connection.connection1.Open();
+            SqlCommand sql = new SqlCommand("DELETE FROM HOADON WHERE HOADON.MaHoaDon = @id", Connection.connection1);
+            SqlCommand sql1 = new SqlCommand("DELETE FROM CHITIETHOADON WHERE MaHoaDon = @id", Connection.connection1);
+            sql.Parameters.AddWithValue("@id", id);
+            sql1.Parameters.AddWithValue("@id", id);
+            sql1.ExecuteNonQuery();
+            sql.ExecuteNonQuery();
+        }
         [WebMethod]
         public List<THUOC> LayDS(string str)
         {
@@ -752,5 +814,7 @@ namespace WSTest
             int i = sqlCommand.ExecuteNonQuery();
             return i;
         }
+
+
     }
 }
