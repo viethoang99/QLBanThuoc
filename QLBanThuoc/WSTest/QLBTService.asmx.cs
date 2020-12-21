@@ -19,9 +19,12 @@ namespace WSTest
     // [System.Web.Script.Services.ScriptService]
     static class Connection
     {
-        static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        //static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        //ConnectionString - Viet
+        //static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        //ConnectionString - Tung
+        static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static SqlConnection connection1 = new SqlConnection(ConnectionString1);
         public static int executeProc(SqlCommand command)
@@ -1151,6 +1154,70 @@ namespace WSTest
             sqlCommand.Parameters.AddWithValue("@sl", Convert.ToInt32(sl));
             int i = sqlCommand.ExecuteNonQuery();
             return i;
+        }
+
+        //danh sách sản phẩm bán chạy
+        [WebMethod]
+        public List<THUOC> SanPhamBanChay()
+        {
+            List<THUOC> dsSPBC = new List<THUOC>();
+            DataTable result = new DataTable("DS");
+            SqlCommand cmd = new SqlCommand("SELECT TOP 6 * FROM THUOC ORDER BY SoLuongTon ASC", Connection.connection1);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(result);
+            adapter.Dispose();
+
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                THUOC t = new THUOC();
+                t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
+                t.CongDung = result.Rows[i]["CongDung"].ToString();
+                t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
+                t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
+                t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
+                t.Tien = result.Rows[i]["Tien"].ToString();
+                t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
+                t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
+                t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
+                t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
+                t.UrlImage = result.Rows[i]["UrlImage"].ToString();
+                t.TimKiem = result.Rows[i]["TimKiem"].ToString();
+                dsSPBC.Add(t);
+            }
+            return dsSPBC;
+        }
+
+        //danh sách sản phẩm mới
+        [WebMethod]
+        public List<THUOC> SanPhamMoi()
+        {
+            List<THUOC> dsSPM = new List<THUOC>();
+            DataTable result = new DataTable("DS");
+            SqlCommand cmd = new SqlCommand("SELECT TOP 8 * FROM THUOC ORDER BY SoLuongTon DESC", Connection.connection1);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(result);
+            adapter.Dispose();
+
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                THUOC t = new THUOC();
+                t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
+                t.CongDung = result.Rows[i]["CongDung"].ToString();
+                t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
+                t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
+                t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
+                t.Tien = result.Rows[i]["Tien"].ToString();
+                t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
+                t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
+                t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
+                t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
+                t.UrlImage = result.Rows[i]["UrlImage"].ToString();
+                t.TimKiem = result.Rows[i]["TimKiem"].ToString();
+                dsSPM.Add(t);
+            }
+            return dsSPM;
         }
 
     }
