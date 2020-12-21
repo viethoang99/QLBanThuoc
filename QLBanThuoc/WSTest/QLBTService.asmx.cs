@@ -751,7 +751,7 @@ namespace WSTest
             else
             {
                 DataTable result = new DataTable("DS");
-                SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC WHERE MaThuoc LIKE @mt ORDER BY SoLuongTon ASC", Connection.connection1);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC,LOAITHUOC WHERE THUOC.MaLoaiThuoc = LOAITHUOC.MaLoaiThuoc AND MaThuoc = @mt ", Connection.connection1);
                 cmd.Parameters.AddWithValue("@mt", str);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                 adapter.Fill(result);
@@ -774,6 +774,7 @@ namespace WSTest
                     t.UrlImage = result.Rows[i]["UrlImage"].ToString();
                     t.TimKiem = result.Rows[i]["TimKiem"].ToString();
                     t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
+                    t.TenLoaiThuoc = result.Rows[i]["TenLoaiThuoc"].ToString();
                     dsThuoc.Add(t);
                 }
             }
@@ -824,16 +825,28 @@ namespace WSTest
         {
             List<THUOC> dsLoaiThuoc = new List<THUOC>();
             DataTable result = new DataTable("DS");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC WHERE MaLoaiThuoc LIKE @mlt", Connection.connection1);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC WHERE MaLoaiThuoc = @mlt", Connection.connection1);
             cmd.Parameters.AddWithValue("@mlt", str);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(result);
             adapter.Dispose();
-
             for (int i = 0; i < result.Rows.Count; i++)
             {
                 THUOC t = new THUOC();
+                t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
+                t.CongDung = result.Rows[i]["CongDung"].ToString();
+                t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
+                t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
+                t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
+                t.Tien = result.Rows[i]["Tien"].ToString();
+                t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
+                t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
+                t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
                 t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
+                t.UrlImage = result.Rows[i]["UrlImage"].ToString();
+                t.TimKiem = result.Rows[i]["TimKiem"].ToString();
+                t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
                 dsLoaiThuoc.Add(t);
             }
             return dsLoaiThuoc;

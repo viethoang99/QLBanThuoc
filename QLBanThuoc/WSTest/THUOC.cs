@@ -21,5 +21,6 @@ namespace WSTest
         public string  UrlImage;
         public string  Tien;
         public string  TimKiem;
+        public string  TenLoaiThuoc;
     }
 }
