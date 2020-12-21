@@ -803,7 +803,37 @@ namespace WSTest
             }
             return dskhachang;
         }
-
+        [WebMethod]
+        public List<THUOC> TimKiem_W(string str)
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand cmd = new SqlCommand("SELECT * FROM THUOC,LOAITHUOC WHERE THUOC.MaLoaiThuoc = LOAITHUOC.MaLoaiThuoc AND TimKiem LIKE N'%"+str+"%' ", Connection.connection1);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(result);
+            adapter.Dispose();
+            List<THUOC> dsThuoc = new List<THUOC>();
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                THUOC t = new THUOC();
+                t.MaThuoc = result.Rows[i]["MaThuoc"].ToString();
+                t.TenThuoc = result.Rows[i]["TenThuoc"].ToString();
+                t.CongDung = result.Rows[i]["CongDung"].ToString();
+                t.ThanhPhan = result.Rows[i]["ThanhPhan"].ToString();
+                t.SoLuongTon = Convert.ToInt32(result.Rows[i]["SoLuongTon"].ToString());
+                t.MaNhaCungCap = result.Rows[i]["MaNhaCungCap"].ToString();
+                t.Tien = result.Rows[i]["Tien"].ToString();
+                t.DangThuoc = result.Rows[i]["DangThuoc"].ToString();
+                t.DonGia = Convert.ToInt32(result.Rows[i]["DonGia"].ToString());
+                t.MaHangSX = result.Rows[i]["MaHangSX"].ToString();
+                t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
+                t.UrlImage = result.Rows[i]["UrlImage"].ToString();
+                t.TimKiem = result.Rows[i]["TimKiem"].ToString();
+                t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
+                t.TenLoaiThuoc = result.Rows[i]["TenLoaiThuoc"].ToString();
+                dsThuoc.Add(t);
+            }
+            return dsThuoc;
+        }
         //register
         [WebMethod]
         public int Register(string email,string password, string name, string makh)
@@ -935,7 +965,7 @@ namespace WSTest
         {
             List<KHACHHANG> thongtinKH = new List<KHACHHANG>();
             DataTable result = new DataTable("DS");
-            SqlCommand cmd = new SqlCommand("SELECT * FROM KHACHHANG WHERE Email LIKE @email", Connection.connection1);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM KHACHHANG WHERE Email = @email", Connection.connection1);
             cmd.Parameters.AddWithValue("@email", str);
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
             adapter.Fill(result);
