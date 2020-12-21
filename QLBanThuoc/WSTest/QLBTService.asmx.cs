@@ -747,7 +747,6 @@ namespace WSTest
                     t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
                     t.UrlImage = result.Rows[i]["UrlImage"].ToString();
                     t.TimKiem = result.Rows[i]["TimKiem"].ToString();
-                    t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
                     dsThuoc.Add(t);
                 }
             }
@@ -776,8 +775,6 @@ namespace WSTest
                     t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
                     t.UrlImage = result.Rows[i]["UrlImage"].ToString();
                     t.TimKiem = result.Rows[i]["TimKiem"].ToString();
-                    t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
-                    t.TenLoaiThuoc = result.Rows[i]["TenLoaiThuoc"].ToString();
                     dsThuoc.Add(t);
                 }
             }
@@ -831,8 +828,6 @@ namespace WSTest
                 t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
                 t.UrlImage = result.Rows[i]["UrlImage"].ToString();
                 t.TimKiem = result.Rows[i]["TimKiem"].ToString();
-                t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
-                t.TenLoaiThuoc = result.Rows[i]["TenLoaiThuoc"].ToString();
                 dsThuoc.Add(t);
             }
             return dsThuoc;
@@ -841,7 +836,8 @@ namespace WSTest
         [WebMethod]
         public int Register(string email,string password, string name, string makh)
         {
-            Connection.connection1.Open();
+            if (Connection.connection1.State != ConnectionState.Open)
+                Connection.connection1.Open();
             SqlCommand sqlCommand = new SqlCommand("INSERT INTO KHACHHANG" +
                 " VALUES (@makh,@name,@email,@pass)",Connection.connection1);
             sqlCommand.Parameters.AddWithValue("@makh",makh);
@@ -879,7 +875,6 @@ namespace WSTest
                 t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
                 t.UrlImage = result.Rows[i]["UrlImage"].ToString();
                 t.TimKiem = result.Rows[i]["TimKiem"].ToString();
-                t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
                 dsLoaiThuoc.Add(t);
             }
             return dsLoaiThuoc;
@@ -913,7 +908,6 @@ namespace WSTest
                 t.MaLoaiThuoc = result.Rows[i]["MaLoaiThuoc"].ToString();
                 t.UrlImage = result.Rows[i]["UrlImage"].ToString();
                 t.TimKiem = result.Rows[i]["TimKiem"].ToString();
-                t.MaLoThuoc = result.Rows[i]["MaLoThuoc"].ToString();
                 ThongTinThuoc.Add(t);
             }
             return ThongTinThuoc;
@@ -1073,12 +1067,10 @@ namespace WSTest
         [WebMethod]
         public int ThemSP(string maT, string maKH, int sl)
         {
-            Random rd = new Random();
-
-            Connection.connection1.Open();
-            SqlCommand sqlCommand = new SqlCommand("INSERT INTO GIOHANG" +
-                " VALUES (@magh,@mat,@makh,@sl)", Connection.connection1);
-            sqlCommand.Parameters.AddWithValue("@magh", rd.Next(1, 9999));
+            if (Connection.connection1.State != ConnectionState.Open)
+                Connection.connection1.Open();
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO GIOHANG(MaThuoc,MaKhachHang,SoLuong)" +
+                " VALUES (@mat,@makh,@sl)", Connection.connection1);
             sqlCommand.Parameters.AddWithValue("@mat", maT);
             sqlCommand.Parameters.AddWithValue("@makh", maKH);
             sqlCommand.Parameters.AddWithValue("@sl", Convert.ToInt32(sl));
@@ -1090,7 +1082,9 @@ namespace WSTest
         [WebMethod]
         public int XoaSP(string maKH, string maT)
         {
-            Connection.connection1.Open();
+            if (Connection.connection1.State != ConnectionState.Open)
+                Connection.connection1.Open();
+
             if (maT != "" && maKH == "")
             {
                 SqlCommand sqlCommand = new SqlCommand("DELETE FROM GIOHANG" +
@@ -1120,16 +1114,16 @@ namespace WSTest
 
         //Thêm hóa đơn
         [WebMethod]
-        public int ThemHoaDon(int maHD, string ho, string ten, string diachiduong, string sonha, string email, string sdt, string ghichu, string makhuyenmai, string giaohang)
+        public int ThemHoaDon(string ho, string ten, string diachiduong, string sonha, string email, string sdt, string ghichu, string makhuyenmai, string giaohang)
         {
             string hoten = ho + " " + ten;
             string diachi = sonha + " " + diachiduong;
-            Random rd = new Random();
 
-            Connection.connection1.Open();
-            SqlCommand sqlCommand = new SqlCommand("INSERT INTO HOADON" +
-                " VALUES (@mahd,@hoten,@diachi,@sdt,@email,@ghichu,@makhuyenmai,@giaohang)", Connection.connection1);
-            sqlCommand.Parameters.AddWithValue("@mahd", Convert.ToInt32(maHD)); 
+            if (Connection.connection1.State != ConnectionState.Open)
+                Connection.connection1.Open();
+
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO HOADON(TenKhachHang,DiaChi,SoDienThoai,Email,GhiChu,MaKhuyenMai,HinhThucGiaoHang)" +
+                " VALUES (@hoten,@diachi,@sdt,@email,@ghichu,@makhuyenmai,@giaohang)", Connection.connection1);
             sqlCommand.Parameters.AddWithValue("@hoten", hoten);
             sqlCommand.Parameters.AddWithValue("@diachi", diachi);
             sqlCommand.Parameters.AddWithValue("@sdt", sdt);
@@ -1141,12 +1135,45 @@ namespace WSTest
             return i;
         }
 
+        //Lấy mã hóa đơn
+        [WebMethod]
+        public List<HOADON> LayMaHD(string ho, string ten, string diachiduong, string sonha, string email, string sdt)
+        {
+            string hoten = ho + " " + ten;
+            string diachi = sonha + " " + diachiduong;
+
+            DataTable result = new DataTable("DS");
+            SqlCommand sqlCommand = new SqlCommand("SELECT * FROM HOADON " +
+                "WHERE TenKhachHang = @hoten AND DIACHI = @diachi AND SoDienThoai = @sdt AND Email = @email", Connection.connection1);
+            sqlCommand.Parameters.AddWithValue("@hoten", hoten);
+            sqlCommand.Parameters.AddWithValue("@diachi", diachi);
+            sqlCommand.Parameters.AddWithValue("@sdt", sdt);
+            sqlCommand.Parameters.AddWithValue("@email", email);
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
+            adapter.Fill(result);
+            adapter.Dispose();
+
+            List<HOADON> dsHD = new List<HOADON>();
+            for (int i = 0; i < result.Rows.Count; i++)
+            {
+                HOADON t = new HOADON();
+                t.TenKhachHang = result.Rows[i]["TenKhachHang"].ToString();
+                t.DiaChi = result.Rows[i]["DiaChi"].ToString();
+                t.SoDienThoai = result.Rows[i]["SoDienThoai"].ToString();
+                t.Email = result.Rows[i]["Email"].ToString();
+                dsHD.Add(t);
+            }
+            return dsHD;
+        }
+
         //Thêm chi tiết hóa đơn
         [WebMethod]
         public int ThemCCHoaDon(int maHD, string maT, int dongia, int sl)
         {
-            Connection.connection1.Open();
-            SqlCommand sqlCommand = new SqlCommand("INSERT INTO CHITIETHOADON" +
+            if (Connection.connection1.State != ConnectionState.Open)
+                Connection.connection1.Open();
+
+            SqlCommand sqlCommand = new SqlCommand("INSERT INTO CHITIETHOADON(MaHoaDon,MaThuoc,DonGia,SoLuong)" +
                 " VALUES (@mahd,@mat,@dongia,@sl)", Connection.connection1);
             sqlCommand.Parameters.AddWithValue("@mahd", Convert.ToInt32(maHD));
             sqlCommand.Parameters.AddWithValue("@mat", maT);

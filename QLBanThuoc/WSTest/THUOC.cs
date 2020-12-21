@@ -8,7 +8,6 @@ namespace WSTest
     public class THUOC
     {
         public string MaThuoc;
-        public string  MaLoThuoc;
         public string  TenThuoc;
         public string  CongDung;
         public string  ThanhPhan;
@@ -21,6 +20,5 @@ namespace WSTest
         public string  UrlImage;
         public string  Tien;
         public string  TimKiem;
-        public string  TenLoaiThuoc;
     }
 }
