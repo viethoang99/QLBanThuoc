@@ -104,6 +104,12 @@
             this.comboTenNCC.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboTenNCC.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboTenNCC.FormattingEnabled = true;
+            this.comboTenNCC.Items.AddRange(new object[] {
+            "CTY TNHH Downstair",
+            "CTY PP Duy Anh",
+            "CTY TNHH Hải Lam",
+            "CTY PP Wefor",
+            "CTY PP Gamma"});
             this.comboTenNCC.Location = new System.Drawing.Point(148, 28);
             this.comboTenNCC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboTenNCC.Name = "comboTenNCC";
@@ -306,6 +312,12 @@
             this.comboBoxLoaiThuoc.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBoxLoaiThuoc.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxLoaiThuoc.FormattingEnabled = true;
+            this.comboBoxLoaiThuoc.Items.AddRange(new object[] {
+            "Thuốc Đông Y",
+            "Thuốc Kháng Sinh",
+            "Thuốc Nam Y",
+            "Thực Phẩm Chức Năng",
+            "Thuốc Tây Y"});
             this.comboBoxLoaiThuoc.Location = new System.Drawing.Point(118, 367);
             this.comboBoxLoaiThuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxLoaiThuoc.Name = "comboBoxLoaiThuoc";
@@ -487,6 +499,15 @@
             this.comboBoxHangSanXuat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBoxHangSanXuat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxHangSanXuat.FormattingEnabled = true;
+            this.comboBoxHangSanXuat.Items.AddRange(new object[] {
+            "Công ty DP Armephaco",
+            "Công ty DP Traphaco",
+            "Công ty DP Davinci",
+            "Công ty DP Hoa Linh",
+            "Công ty DP Pharmedic",
+            "Công ty DP Shinpoong Daewoo",
+            "Một thành viên",
+            "Nam Thiên Phú"});
             this.comboBoxHangSanXuat.Location = new System.Drawing.Point(118, 223);
             this.comboBoxHangSanXuat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxHangSanXuat.Name = "comboBoxHangSanXuat";

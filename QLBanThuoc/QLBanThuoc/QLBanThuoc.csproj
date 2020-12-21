@@ -235,7 +235,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="App.config" />
+    <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.GIOHANG.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.HOADON.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.KHACHHANG.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.KHUYENMAI.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\QL_SR\QLBanThuoc.QL_SR.LOAITHUOC.datasource">

@@ -20,11 +20,11 @@ namespace WSTest
     static class Connection
     {
         //ConnectionString - Viet
-        //static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        //static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         //ConnectionString - Tung
-        static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static SqlConnection connection1 = new SqlConnection(ConnectionString1);
         public static int executeProc(SqlCommand command)
@@ -429,10 +429,7 @@ namespace WSTest
         public DataTable TimNCC(string TenNCC)
         {
             DataTable result = new DataTable("DSNCC");
-            SqlCommand command = new SqlCommand("execute proc_searchNhaCungCap '@tenNCC'", Connection.connection);
-
-            command.Parameters.AddWithValue("@tenNCC", TenNCC);
-
+            SqlCommand command = new SqlCommand("SELECT * FROM NHACUNGCAP WHERE TenNhaCungCap LIKE N'%"+TenNCC+"%'", Connection.connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(result);
             adapter.Dispose();
@@ -444,7 +441,7 @@ namespace WSTest
         public DataTable LoadThongTinNV(string maNV)
         {
             DataTable result = new DataTable("DSNV");
-            SqlCommand command = new SqlCommand("execute proc_searchNhanVien '@maNV'", Connection.connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM NHANVIEN WHERE MaNhanVien = @maNV", Connection.connection);
 
             command.Parameters.AddWithValue("@maNV", maNV);
 
@@ -458,9 +455,7 @@ namespace WSTest
         public DataTable LoadThongTinHSX(string tenHSX)
         {
             DataTable result = new DataTable("DSHSX");
-            SqlCommand command = new SqlCommand("execute proc_selectMaHangSX '@maNV'", Connection.connection);
-
-            command.Parameters.AddWithValue("@maNV", tenHSX);
+            SqlCommand command = new SqlCommand("SELECT * FROM HANGSANXUAT WHERE TenHangSX LIKE N'%"+tenHSX+"%'", Connection.connection);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(result);
@@ -472,9 +467,8 @@ namespace WSTest
         public DataTable LoadThongTinLoaiThuoc(string tenLoaiThuoc)
         {
             DataTable result = new DataTable("DSLT");
-            SqlCommand command = new SqlCommand("execute proc_selectLoaiThuoc '@tenLoaiThuoc'", Connection.connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM LOAITHUOC WHERE TenLoaiThuoc LIKE N'%"+tenLoaiThuoc+"%'", Connection.connection);
 
-            command.Parameters.AddWithValue("@tenLoaiThuoc", tenLoaiThuoc);
 
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             adapter.Fill(result);
