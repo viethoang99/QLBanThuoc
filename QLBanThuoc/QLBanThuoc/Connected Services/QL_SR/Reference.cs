@@ -130,10 +130,10 @@ namespace QLBanThuoc.QL_SR {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NhapThuoc", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        int NhapThuoc(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc);
+        int NhapThuoc(string maThuoc, string maHSX, string NSX, string HSD, string tenThuoc, string CD, string TP, string SL, string maDang, string maLoai, string date, string maNCC, string maNV, string Gia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/NhapThuoc", ReplyAction="*")]
-        System.Threading.Tasks.Task<int> NhapThuocAsync(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc);
+        System.Threading.Tasks.Task<int> NhapThuocAsync(string maThuoc, string maHSX, string NSX, string HSD, string tenThuoc, string CD, string TP, string SL, string maDang, string maLoai, string date, string maNCC, string maNV, string Gia);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimNCC", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -417,7 +417,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -617,7 +617,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -747,7 +747,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -793,7 +793,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -867,7 +867,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -927,7 +927,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1155,12 +1155,12 @@ namespace QLBanThuoc.QL_SR {
             return base.Channel.DoiMatKhauAsync(tenDangNhap, MatKhauCu, MatKhauMoi);
         }
         
-        public int NhapThuoc(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc) {
-            return base.Channel.NhapThuoc(date, maNCC, maNV, SL, Gia, HSD, maThuoc, maHSX, NSX, tenThuoc, CD, TP, dangThuoc, maloaiThuoc);
+        public int NhapThuoc(string maThuoc, string maHSX, string NSX, string HSD, string tenThuoc, string CD, string TP, string SL, string maDang, string maLoai, string date, string maNCC, string maNV, string Gia) {
+            return base.Channel.NhapThuoc(maThuoc, maHSX, NSX, HSD, tenThuoc, CD, TP, SL, maDang, maLoai, date, maNCC, maNV, Gia);
         }
         
-        public System.Threading.Tasks.Task<int> NhapThuocAsync(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc) {
-            return base.Channel.NhapThuocAsync(date, maNCC, maNV, SL, Gia, HSD, maThuoc, maHSX, NSX, tenThuoc, CD, TP, dangThuoc, maloaiThuoc);
+        public System.Threading.Tasks.Task<int> NhapThuocAsync(string maThuoc, string maHSX, string NSX, string HSD, string tenThuoc, string CD, string TP, string SL, string maDang, string maLoai, string date, string maNCC, string maNV, string Gia) {
+            return base.Channel.NhapThuocAsync(maThuoc, maHSX, NSX, HSD, tenThuoc, CD, TP, SL, maDang, maLoai, date, maNCC, maNV, Gia);
         }
         
         public System.Data.DataTable TimNCC(string TenNCC) {

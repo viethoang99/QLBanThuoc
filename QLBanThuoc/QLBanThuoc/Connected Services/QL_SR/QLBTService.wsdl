@@ -286,20 +286,20 @@
       <s:element name="NhapThuoc">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="maNCC" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="maNV" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="SL" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Gia" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="HSD" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="maThuoc" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="maHSX" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="NSX" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HSD" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="tenThuoc" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="CD" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="TP" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="dangThuoc" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="maloaiThuoc" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SL" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maDang" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maLoai" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maNCC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="maNV" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Gia" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>

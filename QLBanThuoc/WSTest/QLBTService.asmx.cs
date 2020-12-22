@@ -20,13 +20,14 @@ namespace WSTest
     static class Connection
     {
         //ConnectionString - Viet
-        static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         //ConnectionString - Tung
-        //static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        //static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static SqlConnection connection1 = new SqlConnection(ConnectionString1);
+        
         public static int executeProc(SqlCommand command)
         {
             try
@@ -191,15 +192,10 @@ namespace WSTest
         {
             DataTable result = new DataTable("DSTB");
             SqlCommand sqlCommand = new SqlCommand("select MaThuoc, MaLoThuoc, TenThuoc, MaLoaiThuoc, DonGia, SoLuongTon from THUOC where THUOC.TenThuoc like N'%' + @ten + '%'", Connection.connection);
-            //SqlCommand sqlCommand1 = new SqlCommand("select MaThuoc, MaLoThuoc, TenThuoc, MaLoaiThuoc, DonGia, SoLuongTon,CongDung,ThanhPhan, from THUOC where THUOC.TenThuoc like N'%' + @ten + '%' OR TimKiem LIKE N'%' + @ten + '%'", Connection.connection1);
             sqlCommand.Parameters.AddWithValue("@ten", str);
-            //sqlCommand1.Parameters.AddWithValue("@ten", str);
             SqlDataAdapter Adapter = new SqlDataAdapter(sqlCommand);
-            //SqlDataAdapter Adapter1 = new SqlDataAdapter(sqlCommand1);
             Adapter.Fill(result);
             Adapter.Dispose();
-            //Adapter1.Fill(result);
-            //Adapter1.Dispose();
             //Kết thúc lấy dữ liệu
             return result;
         }
@@ -402,25 +398,26 @@ namespace WSTest
         }
         //Tùng - Nhập thuốc
         [WebMethod]
-        public int NhapThuoc(string date, string maNCC, string maNV, string SL, string Gia, string HSD, string maThuoc, string maHSX, string NSX, string tenThuoc, string CD, string TP, string dangThuoc, string maloaiThuoc)
+        public int NhapThuoc(string maThuoc, string maHSX, string NSX, string HSD, string tenThuoc, string CD, string TP, string SL, string maDang, string maLoai, string date, string maNCC, string maNV, string Gia)
         {
-            SqlCommand command = new SqlCommand("execute proc_addThuoc '@date' '@mncc' '@mnv' '@sl' '@gia' '@hsd' '@maT' '@mahang' '@nsx' '@ten' '@cd' '@tp' '@dang' '@mLoai'", Connection.connection);
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "proc_addThuoc";
 
-            //button nhập thuốc OK
-            command.Parameters.AddWithValue("@date", date);
-            command.Parameters.AddWithValue("@mncc", maNCC);
-            command.Parameters.AddWithValue("@mnv", maNV);
-            command.Parameters.AddWithValue("@sl", SL);
-            command.Parameters.AddWithValue("@gia", Gia);
-            command.Parameters.AddWithValue("@hsd", HSD);
+            //button nhập thuốc OK            
             command.Parameters.AddWithValue("@maT", maThuoc);
             command.Parameters.AddWithValue("@mahang", maHSX);
             command.Parameters.AddWithValue("@nsx", NSX);
+            command.Parameters.AddWithValue("@hsd", HSD);
             command.Parameters.AddWithValue("@ten", tenThuoc);
             command.Parameters.AddWithValue("@cd", CD);
+            command.Parameters.AddWithValue("@sl", SL);
             command.Parameters.AddWithValue("@tp", TP);
-            command.Parameters.AddWithValue("@dang", dangThuoc);
-            command.Parameters.AddWithValue("@mLoai", maloaiThuoc);
+            command.Parameters.AddWithValue("@dang", maDang);
+            command.Parameters.AddWithValue("@mLoai", maLoai);
+            command.Parameters.AddWithValue("@date", date);
+            command.Parameters.AddWithValue("@mncc", maNCC);
+            command.Parameters.AddWithValue("@mnv", maNV);
+            command.Parameters.AddWithValue("@gia", Gia);
 
             int i = Connection.executeProc(command);
             return i;

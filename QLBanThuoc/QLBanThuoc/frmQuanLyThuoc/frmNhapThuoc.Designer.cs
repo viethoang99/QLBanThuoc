@@ -322,7 +322,7 @@
             this.comboBoxLoaiThuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxLoaiThuoc.Name = "comboBoxLoaiThuoc";
             this.comboBoxLoaiThuoc.Size = new System.Drawing.Size(228, 24);
-            this.comboBoxLoaiThuoc.TabIndex = 33;
+            this.comboBoxLoaiThuoc.TabIndex = 14;
             this.comboBoxLoaiThuoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxLoaiThuoc_SelectedIndexChanged);
             // 
             // label20
@@ -376,7 +376,7 @@
             this.tbDonGia.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbDonGia.Name = "tbDonGia";
             this.tbDonGia.Size = new System.Drawing.Size(101, 23);
-            this.tbDonGia.TabIndex = 27;
+            this.tbDonGia.TabIndex = 16;
             // 
             // label18
             // 
@@ -393,7 +393,7 @@
             this.tbSoLuong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbSoLuong.Name = "tbSoLuong";
             this.tbSoLuong.Size = new System.Drawing.Size(75, 23);
-            this.tbSoLuong.TabIndex = 25;
+            this.tbSoLuong.TabIndex = 15;
             // 
             // label17
             // 
@@ -432,7 +432,7 @@
             this.tbMaThuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbMaThuoc.Name = "tbMaThuoc";
             this.tbMaThuoc.Size = new System.Drawing.Size(227, 23);
-            this.tbMaThuoc.TabIndex = 21;
+            this.tbMaThuoc.TabIndex = 6;
             // 
             // label16
             // 
@@ -449,7 +449,7 @@
             this.tbDangThuoc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbDangThuoc.Name = "tbDangThuoc";
             this.tbDangThuoc.Size = new System.Drawing.Size(228, 23);
-            this.tbDangThuoc.TabIndex = 19;
+            this.tbDangThuoc.TabIndex = 13;
             // 
             // label15
             // 
@@ -466,7 +466,7 @@
             this.tbCongDung.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbCongDung.Name = "tbCongDung";
             this.tbCongDung.Size = new System.Drawing.Size(228, 23);
-            this.tbCongDung.TabIndex = 17;
+            this.tbCongDung.TabIndex = 12;
             // 
             // label14
             // 
@@ -483,7 +483,7 @@
             this.tbThanhPhan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbThanhPhan.Name = "tbThanhPhan";
             this.tbThanhPhan.Size = new System.Drawing.Size(228, 23);
-            this.tbThanhPhan.TabIndex = 15;
+            this.tbThanhPhan.TabIndex = 11;
             // 
             // label13
             // 
@@ -512,7 +512,7 @@
             this.comboBoxHangSanXuat.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxHangSanXuat.Name = "comboBoxHangSanXuat";
             this.comboBoxHangSanXuat.Size = new System.Drawing.Size(228, 24);
-            this.comboBoxHangSanXuat.TabIndex = 13;
+            this.comboBoxHangSanXuat.TabIndex = 10;
             this.comboBoxHangSanXuat.SelectedIndexChanged += new System.EventHandler(this.comboBoxHangSanXuat_SelectedIndexChanged);
             // 
             // label12
@@ -531,7 +531,7 @@
             this.dtpHanSD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpHanSD.Name = "dtpHanSD";
             this.dtpHanSD.Size = new System.Drawing.Size(227, 23);
-            this.dtpHanSD.TabIndex = 11;
+            this.dtpHanSD.TabIndex = 9;
             // 
             // label11
             // 
@@ -549,7 +549,7 @@
             this.dtpNgaySX.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpNgaySX.Name = "dtpNgaySX";
             this.dtpNgaySX.Size = new System.Drawing.Size(227, 23);
-            this.dtpNgaySX.TabIndex = 9;
+            this.dtpNgaySX.TabIndex = 8;
             // 
             // label10
             // 
