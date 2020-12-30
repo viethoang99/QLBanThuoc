@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SoLuongTon));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.bindingNavigatorHocSinh = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -53,25 +52,23 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExcel = new DevExpress.XtraEditors.SimpleButton();
-            this.groupBox1.SuspendLayout();
+            this.SoLuongTonlayoutControl1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.groupBox1item = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.bindingNavigatorHocSinhitem = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dgvKetQuaitem = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnExcelitem = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinh)).BeginInit();
             this.bindingNavigatorHocSinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoLuongTonlayoutControl1ConvertedLayout)).BeginInit();
+            this.SoLuongTonlayoutControl1ConvertedLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1item)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinhitem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaitem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelitem)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.bindingNavigatorHocSinh);
-            this.groupBox1.Controls.Add(this.dgvKetQua);
-            this.groupBox1.Controls.Add(this.btnExcel);
-            this.groupBox1.Location = new System.Drawing.Point(3, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(870, 511);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thống kê số lượng thuốc còn tồn trong kho";
             // 
             // bindingNavigatorHocSinh
             // 
@@ -96,21 +93,21 @@
             this.printToolStripButton,
             this.toolStripSeparator,
             this.toolStripSeparator1});
-            this.bindingNavigatorHocSinh.Location = new System.Drawing.Point(26, 60);
+            this.bindingNavigatorHocSinh.Location = new System.Drawing.Point(24, 93);
             this.bindingNavigatorHocSinh.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigatorHocSinh.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigatorHocSinh.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigatorHocSinh.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorHocSinh.Name = "bindingNavigatorHocSinh";
             this.bindingNavigatorHocSinh.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorHocSinh.Size = new System.Drawing.Size(817, 44);
+            this.bindingNavigatorHocSinh.Size = new System.Drawing.Size(1453, 37);
             this.bindingNavigatorHocSinh.TabIndex = 9;
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
             this.bindingNavigatorCountItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 41);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 34);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Tổng số dòng trong danh sách";
             // 
@@ -120,7 +117,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 41);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMoveFirstItem.Text = "Đến đầu danh sách";
             // 
             // bindingNavigatorMovePreviousItem
@@ -129,13 +126,13 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 41);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMovePreviousItem.Text = "Trở lại dòng trước";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 44);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 37);
             // 
             // bindingNavigatorPositionItem
             // 
@@ -149,7 +146,7 @@
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 44);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 37);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -157,7 +154,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 41);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMoveNextItem.Text = "Tới dòng kế tiếp";
             // 
             // bindingNavigatorMoveLastItem
@@ -166,13 +163,13 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 41);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMoveLastItem.Text = "Đến cuối danh sách";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 44);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 37);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -180,7 +177,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 41);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorDeleteItem.Text = "Xóa";
             // 
             // printToolStripButton
@@ -189,18 +186,18 @@
             this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
             this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(29, 41);
+            this.printToolStripButton.Size = new System.Drawing.Size(29, 34);
             this.printToolStripButton.Text = "&Print";
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 37);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 44);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
             // 
             // dgvKetQua
             // 
@@ -213,11 +210,11 @@
             this.Column4,
             this.Column6,
             this.Column2});
-            this.dgvKetQua.Location = new System.Drawing.Point(26, 108);
+            this.dgvKetQua.Location = new System.Drawing.Point(24, 134);
             this.dgvKetQua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvKetQua.Name = "dgvKetQua";
             this.dgvKetQua.RowHeadersWidth = 51;
-            this.dgvKetQua.Size = new System.Drawing.Size(817, 382);
+            this.dgvKetQua.Size = new System.Drawing.Size(1453, 565);
             this.dgvKetQua.TabIndex = 8;
             // 
             // Column1
@@ -270,35 +267,107 @@
             // 
             // btnExcel
             // 
+            this.btnExcel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExcel.Appearance.Options.UseFont = true;
             this.btnExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.ImageOptions.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(796, 12);
+            this.btnExcel.Location = new System.Drawing.Point(24, 53);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExcel.Name = "simpleButton2";
-            this.btnExcel.Size = new System.Drawing.Size(47, 44);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(1453, 36);
+            this.btnExcel.StyleController = this.SoLuongTonlayoutControl1ConvertedLayout;
             this.btnExcel.TabIndex = 7;
+            this.btnExcel.Text = " XUẤT THỐNG KÊ THÀNH FILE EXCEL";
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // SoLuongTonlayoutControl1ConvertedLayout
+            // 
+            this.SoLuongTonlayoutControl1ConvertedLayout.Controls.Add(this.bindingNavigatorHocSinh);
+            this.SoLuongTonlayoutControl1ConvertedLayout.Controls.Add(this.dgvKetQua);
+            this.SoLuongTonlayoutControl1ConvertedLayout.Controls.Add(this.btnExcel);
+            this.SoLuongTonlayoutControl1ConvertedLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SoLuongTonlayoutControl1ConvertedLayout.Location = new System.Drawing.Point(0, 0);
+            this.SoLuongTonlayoutControl1ConvertedLayout.Name = "SoLuongTonlayoutControl1ConvertedLayout";
+            this.SoLuongTonlayoutControl1ConvertedLayout.Root = this.layoutControlGroup1;
+            this.SoLuongTonlayoutControl1ConvertedLayout.Size = new System.Drawing.Size(1501, 723);
+            this.SoLuongTonlayoutControl1ConvertedLayout.TabIndex = 4;
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.groupBox1item});
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1501, 723);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // groupBox1item
+            // 
+            this.groupBox1item.AppearanceGroup.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold);
+            this.groupBox1item.AppearanceGroup.Options.UseFont = true;
+            this.groupBox1item.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.bindingNavigatorHocSinhitem,
+            this.dgvKetQuaitem,
+            this.btnExcelitem});
+            this.groupBox1item.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1item.Name = "groupBox1item";
+            this.groupBox1item.Size = new System.Drawing.Size(1481, 703);
+            this.groupBox1item.Text = "THỐNG KÊ SỐ LƯỢNG THUỐC CÒN TỒN TRONG KHO";
+            // 
+            // bindingNavigatorHocSinhitem
+            // 
+            this.bindingNavigatorHocSinhitem.Control = this.bindingNavigatorHocSinh;
+            this.bindingNavigatorHocSinhitem.Location = new System.Drawing.Point(0, 40);
+            this.bindingNavigatorHocSinhitem.Name = "bindingNavigatorHocSinhitem";
+            this.bindingNavigatorHocSinhitem.Size = new System.Drawing.Size(1457, 41);
+            this.bindingNavigatorHocSinhitem.TextSize = new System.Drawing.Size(0, 0);
+            this.bindingNavigatorHocSinhitem.TextVisible = false;
+            // 
+            // dgvKetQuaitem
+            // 
+            this.dgvKetQuaitem.Control = this.dgvKetQua;
+            this.dgvKetQuaitem.Location = new System.Drawing.Point(0, 81);
+            this.dgvKetQuaitem.Name = "dgvKetQuaitem";
+            this.dgvKetQuaitem.Size = new System.Drawing.Size(1457, 569);
+            this.dgvKetQuaitem.TextSize = new System.Drawing.Size(0, 0);
+            this.dgvKetQuaitem.TextVisible = false;
+            // 
+            // btnExcelitem
+            // 
+            this.btnExcelitem.Control = this.btnExcel;
+            this.btnExcelitem.Location = new System.Drawing.Point(0, 0);
+            this.btnExcelitem.MinSize = new System.Drawing.Size(42, 40);
+            this.btnExcelitem.Name = "btnExcelitem";
+            this.btnExcelitem.Size = new System.Drawing.Size(1457, 40);
+            this.btnExcelitem.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.btnExcelitem.TextSize = new System.Drawing.Size(0, 0);
+            this.btnExcelitem.TextVisible = false;
             // 
             // SoLuongTon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.SoLuongTonlayoutControl1ConvertedLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SoLuongTon";
-            this.Size = new System.Drawing.Size(870, 511);
+            this.Size = new System.Drawing.Size(1501, 723);
             this.Load += new System.EventHandler(this.SoLuongTon_Load);
-            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinh)).EndInit();
             this.bindingNavigatorHocSinh.ResumeLayout(false);
             this.bindingNavigatorHocSinh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKetQua)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SoLuongTonlayoutControl1ConvertedLayout)).EndInit();
+            this.SoLuongTonlayoutControl1ConvertedLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1item)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinhitem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvKetQuaitem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelitem)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.BindingNavigator bindingNavigatorHocSinh;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
@@ -321,5 +390,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private DevExpress.XtraLayout.LayoutControl SoLuongTonlayoutControl1ConvertedLayout;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlGroup groupBox1item;
+        private DevExpress.XtraLayout.LayoutControlItem bindingNavigatorHocSinhitem;
+        private DevExpress.XtraLayout.LayoutControlItem dgvKetQuaitem;
+        private DevExpress.XtraLayout.LayoutControlItem btnExcelitem;
     }
 }

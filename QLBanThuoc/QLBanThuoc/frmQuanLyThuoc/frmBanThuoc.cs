@@ -46,7 +46,7 @@ namespace QLBanThuoc.frmQuanLyThuoc
                     int i = client.ThemKH(ten, SDT, cmtnd);
                     if (i != 0)
                     {
-                        MessageBox.Show("Đăng ký khách hàng thành công", "Thông báo");
+                        MessageBox.Show("Đăng ký khách hàng thành công", "Thông báo");                        
                     }
                     else
                     {

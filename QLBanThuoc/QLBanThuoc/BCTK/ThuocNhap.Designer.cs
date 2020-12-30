@@ -30,7 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ThuocNhap));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.date2 = new System.Windows.Forms.DateTimePicker();
+            this.date1 = new System.Windows.Forms.DateTimePicker();
             this.bindingNavigatorHocSinh = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -46,12 +47,6 @@
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.dgvThuocNhap = new System.Windows.Forms.DataGridView();
-            this.btnExcel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnBaoCao = new DevExpress.XtraEditors.SimpleButton();
-            this.label1 = new System.Windows.Forms.Label();
-            this.date1 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.date2 = new System.Windows.Forms.DateTimePicker();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,30 +54,53 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1.SuspendLayout();
+            this.btnExcel = new DevExpress.XtraEditors.SimpleButton();
+            this.ThuocNhaplayoutControl1ConvertedLayout = new DevExpress.XtraLayout.LayoutControl();
+            this.btnBaoCao = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.groupBox1item = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.date2item = new DevExpress.XtraLayout.LayoutControlItem();
+            this.date1item = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bindingNavigatorHocSinhitem = new DevExpress.XtraLayout.LayoutControlItem();
+            this.dgvThuocNhapitem = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnExcelitem = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnBaoCaoitem = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinh)).BeginInit();
             this.bindingNavigatorHocSinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThuocNhap)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThuocNhaplayoutControl1ConvertedLayout)).BeginInit();
+            this.ThuocNhaplayoutControl1ConvertedLayout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1item)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date2item)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date1item)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinhitem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThuocNhapitem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelitem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBaoCaoitem)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // date2
             // 
-            this.groupBox1.Controls.Add(this.date2);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.date1);
-            this.groupBox1.Controls.Add(this.bindingNavigatorHocSinh);
-            this.groupBox1.Controls.Add(this.dgvThuocNhap);
-            this.groupBox1.Controls.Add(this.btnExcel);
-            this.groupBox1.Controls.Add(this.btnBaoCao);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(2, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(870, 517);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thống kê thuốc nhập";
+            this.date2.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
+            this.date2.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date2.Location = new System.Drawing.Point(460, 53);
+            this.date2.Name = "date2";
+            this.date2.Size = new System.Drawing.Size(302, 28);
+            this.date2.TabIndex = 12;
+            this.date2.ValueChanged += new System.EventHandler(this.date2_ValueChanged);
+            // 
+            // date1
+            // 
+            this.date1.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
+            this.date1.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date1.Location = new System.Drawing.Point(70, 53);
+            this.date1.Name = "date1";
+            this.date1.Size = new System.Drawing.Size(340, 28);
+            this.date1.TabIndex = 10;
+            this.date1.ValueChanged += new System.EventHandler(this.date1_ValueChanged);
             // 
             // bindingNavigatorHocSinh
             // 
@@ -107,21 +125,21 @@
             this.printToolStripButton,
             this.toolStripSeparator,
             this.toolStripSeparator1});
-            this.bindingNavigatorHocSinh.Location = new System.Drawing.Point(26, 80);
+            this.bindingNavigatorHocSinh.Location = new System.Drawing.Point(24, 93);
             this.bindingNavigatorHocSinh.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigatorHocSinh.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigatorHocSinh.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.bindingNavigatorHocSinh.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigatorHocSinh.Name = "bindingNavigatorHocSinh";
             this.bindingNavigatorHocSinh.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigatorHocSinh.Size = new System.Drawing.Size(817, 43);
+            this.bindingNavigatorHocSinh.Size = new System.Drawing.Size(1461, 37);
             this.bindingNavigatorHocSinh.TabIndex = 9;
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
             this.bindingNavigatorCountItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 40);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 34);
             this.bindingNavigatorCountItem.Text = "/ {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Tổng số dòng trong danh sách";
             // 
@@ -131,7 +149,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 40);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMoveFirstItem.Text = "Đến đầu danh sách";
             // 
             // bindingNavigatorMovePreviousItem
@@ -140,13 +158,13 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 40);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMovePreviousItem.Text = "Trở lại dòng trước";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 43);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 37);
             // 
             // bindingNavigatorPositionItem
             // 
@@ -160,7 +178,7 @@
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 43);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 37);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -168,7 +186,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 40);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMoveNextItem.Text = "Tới dòng kế tiếp";
             // 
             // bindingNavigatorMoveLastItem
@@ -177,13 +195,13 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 40);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorMoveLastItem.Text = "Đến cuối danh sách";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 43);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 37);
             // 
             // bindingNavigatorDeleteItem
             // 
@@ -191,7 +209,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 40);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 34);
             this.bindingNavigatorDeleteItem.Text = "Xóa";
             // 
             // printToolStripButton
@@ -200,18 +218,18 @@
             this.printToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("printToolStripButton.Image")));
             this.printToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.printToolStripButton.Name = "printToolStripButton";
-            this.printToolStripButton.Size = new System.Drawing.Size(29, 40);
+            this.printToolStripButton.Size = new System.Drawing.Size(29, 34);
             this.printToolStripButton.Text = "&Print";
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 43);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 37);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 43);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
             // 
             // dgvThuocNhap
             // 
@@ -225,73 +243,12 @@
             this.Column5,
             this.Column6,
             this.ThanhTien});
-            this.dgvThuocNhap.Location = new System.Drawing.Point(26, 122);
+            this.dgvThuocNhap.Location = new System.Drawing.Point(24, 134);
             this.dgvThuocNhap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvThuocNhap.Name = "dgvThuocNhap";
             this.dgvThuocNhap.RowHeadersWidth = 51;
-            this.dgvThuocNhap.Size = new System.Drawing.Size(817, 368);
+            this.dgvThuocNhap.Size = new System.Drawing.Size(1461, 566);
             this.dgvThuocNhap.TabIndex = 8;
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.ImageOptions.Image")));
-            this.btnExcel.Location = new System.Drawing.Point(757, 32);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnExcel.Name = "simpleButton2";
-            this.btnExcel.Size = new System.Drawing.Size(47, 44);
-            this.btnExcel.TabIndex = 7;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnBaoCao
-            // 
-            this.btnBaoCao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCao.ImageOptions.Image")));
-            this.btnBaoCao.Location = new System.Drawing.Point(621, 36);
-            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnBaoCao.Name = "simpleButton1";
-            this.btnBaoCao.Size = new System.Drawing.Size(96, 37);
-            this.btnBaoCao.TabIndex = 6;
-            this.btnBaoCao.Text = "Báo cáo";
-            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Từ:";
-            // 
-            // date1
-            // 
-            this.date1.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
-            this.date1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date1.Location = new System.Drawing.Point(97, 41);
-            this.date1.Name = "date1";
-            this.date1.Size = new System.Drawing.Size(146, 23);
-            this.date1.TabIndex = 10;
-            this.date1.ValueChanged += new System.EventHandler(this.date1_ValueChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(296, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 24);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Đến:";
-            // 
-            // date2
-            // 
-            this.date2.CalendarFont = new System.Drawing.Font("Tahoma", 10F);
-            this.date2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date2.Location = new System.Drawing.Point(366, 41);
-            this.date2.Name = "date2";
-            this.date2.Size = new System.Drawing.Size(146, 23);
-            this.date2.TabIndex = 12;
-            this.date2.ValueChanged += new System.EventHandler(this.date2_ValueChanged);
             // 
             // Column1
             // 
@@ -349,28 +306,163 @@
             this.ThanhTien.Name = "ThanhTien";
             this.ThanhTien.Width = 125;
             // 
+            // btnExcel
+            // 
+            this.btnExcel.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.btnExcel.Appearance.Options.UseFont = true;
+            this.btnExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.ImageOptions.Image")));
+            this.btnExcel.Location = new System.Drawing.Point(1017, 53);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(468, 36);
+            this.btnExcel.StyleController = this.ThuocNhaplayoutControl1ConvertedLayout;
+            this.btnExcel.TabIndex = 7;
+            this.btnExcel.Text = "XUẤT THỐNG KÊ RA FILE EXCEL";
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // ThuocNhaplayoutControl1ConvertedLayout
+            // 
+            this.ThuocNhaplayoutControl1ConvertedLayout.Controls.Add(this.date2);
+            this.ThuocNhaplayoutControl1ConvertedLayout.Controls.Add(this.date1);
+            this.ThuocNhaplayoutControl1ConvertedLayout.Controls.Add(this.bindingNavigatorHocSinh);
+            this.ThuocNhaplayoutControl1ConvertedLayout.Controls.Add(this.dgvThuocNhap);
+            this.ThuocNhaplayoutControl1ConvertedLayout.Controls.Add(this.btnExcel);
+            this.ThuocNhaplayoutControl1ConvertedLayout.Controls.Add(this.btnBaoCao);
+            this.ThuocNhaplayoutControl1ConvertedLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ThuocNhaplayoutControl1ConvertedLayout.Location = new System.Drawing.Point(0, 0);
+            this.ThuocNhaplayoutControl1ConvertedLayout.Name = "ThuocNhaplayoutControl1ConvertedLayout";
+            this.ThuocNhaplayoutControl1ConvertedLayout.Root = this.layoutControlGroup1;
+            this.ThuocNhaplayoutControl1ConvertedLayout.Size = new System.Drawing.Size(1509, 724);
+            this.ThuocNhaplayoutControl1ConvertedLayout.TabIndex = 2;
+            // 
+            // btnBaoCao
+            // 
+            this.btnBaoCao.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold);
+            this.btnBaoCao.Appearance.Options.UseFont = true;
+            this.btnBaoCao.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCao.ImageOptions.Image")));
+            this.btnBaoCao.Location = new System.Drawing.Point(766, 53);
+            this.btnBaoCao.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Size = new System.Drawing.Size(247, 36);
+            this.btnBaoCao.StyleController = this.ThuocNhaplayoutControl1ConvertedLayout;
+            this.btnBaoCao.TabIndex = 6;
+            this.btnBaoCao.Text = "BÁO CÁO";
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.groupBox1item});
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1509, 724);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // groupBox1item
+            // 
+            this.groupBox1item.AppearanceGroup.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Bold);
+            this.groupBox1item.AppearanceGroup.Options.UseFont = true;
+            this.groupBox1item.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.date2item,
+            this.date1item,
+            this.bindingNavigatorHocSinhitem,
+            this.dgvThuocNhapitem,
+            this.btnExcelitem,
+            this.btnBaoCaoitem});
+            this.groupBox1item.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1item.Name = "groupBox1item";
+            this.groupBox1item.Size = new System.Drawing.Size(1489, 704);
+            this.groupBox1item.Text = "THỐNG KÊ DANH SÁCH THUỐC NHẬP";
+            // 
+            // date2item
+            // 
+            this.date2item.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.date2item.AppearanceItemCaption.Options.UseFont = true;
+            this.date2item.Control = this.date2;
+            this.date2item.Location = new System.Drawing.Point(390, 0);
+            this.date2item.Name = "date2item";
+            this.date2item.Size = new System.Drawing.Size(352, 40);
+            this.date2item.Text = "Đến:";
+            this.date2item.TextLocation = DevExpress.Utils.Locations.Left;
+            this.date2item.TextSize = new System.Drawing.Size(43, 24);
+            // 
+            // date1item
+            // 
+            this.date1item.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.date1item.AppearanceItemCaption.Options.UseFont = true;
+            this.date1item.Control = this.date1;
+            this.date1item.Location = new System.Drawing.Point(0, 0);
+            this.date1item.Name = "date1item";
+            this.date1item.Size = new System.Drawing.Size(390, 40);
+            this.date1item.Text = "Từ:";
+            this.date1item.TextLocation = DevExpress.Utils.Locations.Left;
+            this.date1item.TextSize = new System.Drawing.Size(43, 24);
+            // 
+            // bindingNavigatorHocSinhitem
+            // 
+            this.bindingNavigatorHocSinhitem.Control = this.bindingNavigatorHocSinh;
+            this.bindingNavigatorHocSinhitem.Location = new System.Drawing.Point(0, 40);
+            this.bindingNavigatorHocSinhitem.Name = "bindingNavigatorHocSinhitem";
+            this.bindingNavigatorHocSinhitem.Size = new System.Drawing.Size(1465, 41);
+            this.bindingNavigatorHocSinhitem.TextSize = new System.Drawing.Size(0, 0);
+            this.bindingNavigatorHocSinhitem.TextVisible = false;
+            // 
+            // dgvThuocNhapitem
+            // 
+            this.dgvThuocNhapitem.Control = this.dgvThuocNhap;
+            this.dgvThuocNhapitem.Location = new System.Drawing.Point(0, 81);
+            this.dgvThuocNhapitem.Name = "dgvThuocNhapitem";
+            this.dgvThuocNhapitem.Size = new System.Drawing.Size(1465, 570);
+            this.dgvThuocNhapitem.TextSize = new System.Drawing.Size(0, 0);
+            this.dgvThuocNhapitem.TextVisible = false;
+            // 
+            // btnExcelitem
+            // 
+            this.btnExcelitem.Control = this.btnExcel;
+            this.btnExcelitem.Location = new System.Drawing.Point(993, 0);
+            this.btnExcelitem.Name = "btnExcelitem";
+            this.btnExcelitem.Size = new System.Drawing.Size(472, 40);
+            this.btnExcelitem.TextSize = new System.Drawing.Size(0, 0);
+            this.btnExcelitem.TextVisible = false;
+            // 
+            // btnBaoCaoitem
+            // 
+            this.btnBaoCaoitem.Control = this.btnBaoCao;
+            this.btnBaoCaoitem.Location = new System.Drawing.Point(742, 0);
+            this.btnBaoCaoitem.Name = "btnBaoCaoitem";
+            this.btnBaoCaoitem.Size = new System.Drawing.Size(251, 40);
+            this.btnBaoCaoitem.TextSize = new System.Drawing.Size(0, 0);
+            this.btnBaoCaoitem.TextVisible = false;
+            // 
             // ThuocNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.ThuocNhaplayoutControl1ConvertedLayout);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ThuocNhap";
-            this.Size = new System.Drawing.Size(876, 524);
+            this.Size = new System.Drawing.Size(1509, 724);
             this.Load += new System.EventHandler(this.ThuocNhap_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinh)).EndInit();
             this.bindingNavigatorHocSinh.ResumeLayout(false);
             this.bindingNavigatorHocSinh.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThuocNhap)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ThuocNhaplayoutControl1ConvertedLayout)).EndInit();
+            this.ThuocNhaplayoutControl1ConvertedLayout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1item)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date2item)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.date1item)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorHocSinhitem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvThuocNhapitem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelitem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBaoCaoitem)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.BindingNavigator bindingNavigatorHocSinh;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
@@ -387,10 +479,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.DataGridView dgvThuocNhap;
         private DevExpress.XtraEditors.SimpleButton btnBaoCao;
-        private System.Windows.Forms.Label label1;
         private DevExpress.XtraEditors.SimpleButton btnExcel;
         private System.Windows.Forms.DateTimePicker date2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker date1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -399,5 +489,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTien;
+        private DevExpress.XtraLayout.LayoutControl ThuocNhaplayoutControl1ConvertedLayout;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
+        private DevExpress.XtraLayout.LayoutControlGroup groupBox1item;
+        private DevExpress.XtraLayout.LayoutControlItem date2item;
+        private DevExpress.XtraLayout.LayoutControlItem date1item;
+        private DevExpress.XtraLayout.LayoutControlItem bindingNavigatorHocSinhitem;
+        private DevExpress.XtraLayout.LayoutControlItem dgvThuocNhapitem;
+        private DevExpress.XtraLayout.LayoutControlItem btnExcelitem;
+        private DevExpress.XtraLayout.LayoutControlItem btnBaoCaoitem;
     }
 }

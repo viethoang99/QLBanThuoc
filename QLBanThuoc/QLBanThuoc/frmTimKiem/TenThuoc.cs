@@ -13,7 +13,7 @@ using QLBanThuoc.Data;
 
 namespace QLBanThuoc.frmTimKiem
 {
-    public partial class TenThuoc : DevExpress.XtraEditors.XtraUserControl
+    public partial class TenThuoc : System.Windows.Forms.UserControl
     {
         public TenThuoc()
         {

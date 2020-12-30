@@ -410,8 +410,8 @@ namespace WSTest
             command.Parameters.AddWithValue("@hsd", HSD);
             command.Parameters.AddWithValue("@ten", tenThuoc);
             command.Parameters.AddWithValue("@cd", CD);
-            command.Parameters.AddWithValue("@sl", SL);
             command.Parameters.AddWithValue("@tp", TP);
+            command.Parameters.AddWithValue("@sl", SL);
             command.Parameters.AddWithValue("@dang", maDang);
             command.Parameters.AddWithValue("@mLoai", maLoai);
             command.Parameters.AddWithValue("@date", date);

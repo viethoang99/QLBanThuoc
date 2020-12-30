@@ -89,7 +89,7 @@ namespace QLBanThuoc.frmQuanLyNguoiDung
         {
             QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
 
-            int i = client.NhapThuoc(tbMaThuoc.Text, maHangSanXuat, dtpNgaySX.Value.ToString(), dtpHanSD.Value.ToString(), tbTenThuoc.Text, tbCongDung.Text, tbThanhPhan.Text, tbSoLuong.Text, tbDangThuoc.Text, maLoaiThuoc,DateTime.Now.ToString(), labelMaNhaCungCap.Text, XtraForm1.Ma_USER, tbDonGia.Text);
+            int i = client.NhapThuoc(tbMaThuoc.Text, maHangSanXuat, dtpNgaySX.Value.ToString(), dtpHanSD.Value.ToString(), tbTenThuoc.Text, tbCongDung.Text, tbThanhPhan.Text, tbSoLuong.Text, tbDangThuoc.Text, maLoaiThuoc, DateTime.Now.ToString(), labelMaNhaCungCap.Text, XtraForm1.Ma_USER, tbDonGia.Text);
 
             MessageBox.Show(i.ToString() + " dòng bị ảnh hưởng", "thông báo");
             int check = checkThongTin();
