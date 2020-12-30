@@ -68,14 +68,13 @@
             this.groupBox1.Controls.Add(this.simpleButton2);
             this.groupBox1.Controls.Add(this.groupControl2);
             this.groupBox1.Controls.Add(this.groupControl1);
-            this.groupBox1.Location = new System.Drawing.Point(4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(9, 8);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1004, 512);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Quản lý nhà cung cấp";
             // 
             // dataGridView1
             // 
@@ -159,7 +158,7 @@
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(427, 289);
             this.groupControl2.TabIndex = 1;
-            this.groupControl2.Text = "Tìm kiếm";
+            this.groupControl2.Text = "Tìm kiếm nhà cung cấp";
             this.groupControl2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupControl2_Paint);
             // 
             // simpleButton1
@@ -214,7 +213,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(533, 289);
             this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Thông tin";
+            this.groupControl1.Text = "Thông tin nhà cung cấp";
             // 
             // textBoxTenNhaCungCap
             // 
@@ -318,7 +317,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NhaCungCap";
-            this.Size = new System.Drawing.Size(1004, 512);
+            this.Size = new System.Drawing.Size(1026, 535);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();

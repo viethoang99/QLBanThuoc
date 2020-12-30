@@ -19,6 +19,8 @@ namespace QLBanThuoc
 
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(100, 100);
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -111,20 +113,6 @@ namespace QLBanThuoc
             panel.Controls.Add(dthang);
         }
 
-        private void BarButtonItem21_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            panel.Controls.Clear();
-            //DTQuy dtquy = new DTQuy();
-            //panel.Controls.Add(dtquy);
-        }
-
-        private void BarButtonItem22_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //panel.Controls.Clear();
-            //DTNam dtnam = new DTNam();
-            //panel.Controls.Add(dtnam);
-        }
-
 
         private void BarButtonItem3_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -138,6 +126,20 @@ namespace QLBanThuoc
             Đổi_mật_khẩu DoiMK = new Đổi_mật_khẩu();
             DoiMK.Show();
             this.Hide();
+        }
+
+        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            panel.Controls.Clear();
+            ThuocOnline ncc = new ThuocOnline();
+            panel.Controls.Add(ncc);
+        }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            panel.Controls.Clear();
+            DonThuocDaBan dt = new DonThuocDaBan();
+            panel.Controls.Add(dt);
         }
 
         private void barButtonItem11_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -163,20 +165,6 @@ namespace QLBanThuoc
             {
                 e.Cancel = true;
             }
-        }
-
-        private void barButtonItem10_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            panel.Controls.Clear();
-            ThuocOnline ncc = new ThuocOnline();
-            panel.Controls.Add(ncc);
-        }
-
-        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            panel.Controls.Clear();
-            DonThuocDaBan dt = new DonThuocDaBan();
-            panel.Controls.Add(dt);
         }
     }
 }

@@ -89,9 +89,7 @@ namespace QLBanThuoc.Data
 
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            Form1 frmMain = new Form1();
-            frmMain.Show();
-            this.Hide();
+            MessageBox.Show("Vui lòng đăng nhập trước khi sử dụng phần mềm.", "Thông báo.");
         }
 
         private void XtraForm1_FormClosing(object sender, FormClosingEventArgs e)
@@ -104,6 +102,14 @@ namespace QLBanThuoc.Data
             else
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void txbMatKhau_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnDangNhap_Click(this, new EventArgs());
             }
         }
     }

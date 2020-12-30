@@ -38,6 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txbMatKhau = new System.Windows.Forms.TextBox();
             this.txbTenDangNhap = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -45,7 +47,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(23, 163);
+            this.label4.Location = new System.Drawing.Point(8, 100);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(180, 24);
             this.label4.TabIndex = 24;
@@ -53,7 +55,7 @@
             // 
             // txbMatKhau2
             // 
-            this.txbMatKhau2.Location = new System.Drawing.Point(228, 163);
+            this.txbMatKhau2.Location = new System.Drawing.Point(213, 100);
             this.txbMatKhau2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbMatKhau2.Name = "txbMatKhau2";
             this.txbMatKhau2.Size = new System.Drawing.Size(230, 22);
@@ -76,12 +78,12 @@
             this.btnDangKy.Appearance.Options.UseFont = true;
             this.btnDangKy.Appearance.Options.UseForeColor = true;
             this.btnDangKy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnDangKy.ImageOptions.SvgImage")));
-            this.btnDangKy.Location = new System.Drawing.Point(154, 208);
+            this.btnDangKy.Location = new System.Drawing.Point(105, 145);
             this.btnDangKy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDangKy.Name = "btnDangKy";
-            this.btnDangKy.Size = new System.Drawing.Size(159, 41);
+            this.btnDangKy.Size = new System.Drawing.Size(288, 41);
             this.btnDangKy.TabIndex = 21;
-            this.btnDangKy.Text = "Đăng ký";
+            this.btnDangKy.Text = "Đăng ký tài khoản mới";
             this.btnDangKy.Click += new System.EventHandler(this.btnDangKy_Click);
             // 
             // label3
@@ -100,7 +102,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(22, 123);
+            this.label2.Location = new System.Drawing.Point(7, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 24);
             this.label2.TabIndex = 19;
@@ -111,7 +113,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(22, 83);
+            this.label1.Location = new System.Drawing.Point(7, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(151, 24);
             this.label1.TabIndex = 18;
@@ -119,7 +121,7 @@
             // 
             // txbMatKhau
             // 
-            this.txbMatKhau.Location = new System.Drawing.Point(227, 123);
+            this.txbMatKhau.Location = new System.Drawing.Point(212, 60);
             this.txbMatKhau.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbMatKhau.Name = "txbMatKhau";
             this.txbMatKhau.Size = new System.Drawing.Size(230, 22);
@@ -127,29 +129,40 @@
             // 
             // txbTenDangNhap
             // 
-            this.txbTenDangNhap.Location = new System.Drawing.Point(227, 83);
+            this.txbTenDangNhap.Location = new System.Drawing.Point(212, 20);
             this.txbTenDangNhap.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txbTenDangNhap.Name = "txbTenDangNhap";
             this.txbTenDangNhap.Size = new System.Drawing.Size(230, 22);
             this.txbTenDangNhap.TabIndex = 16;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.txbMatKhau2);
+            this.groupBox1.Controls.Add(this.btnDangKy);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txbMatKhau);
+            this.groupBox1.Controls.Add(this.txbTenDangNhap);
+            this.groupBox1.Location = new System.Drawing.Point(18, 75);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(457, 205);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            // 
             // Đăng_ký
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(499, 273);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txbMatKhau2);
+            this.ClientSize = new System.Drawing.Size(499, 298);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnTrangChu);
-            this.Controls.Add(this.btnDangKy);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txbMatKhau);
-            this.Controls.Add(this.txbTenDangNhap);
             this.Name = "Đăng_ký";
             this.Text = "Đăng ký tài khoản";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Đăng_ký_FormClosing);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +179,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbMatKhau;
         private System.Windows.Forms.TextBox txbTenDangNhap;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

@@ -20,11 +20,11 @@ namespace WSTest
     static class Connection
     {
         //ConnectionString - Viet
-        static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         //ConnectionString - Tung
-        //static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        //static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static SqlConnection connection1 = new SqlConnection(ConnectionString1);
         

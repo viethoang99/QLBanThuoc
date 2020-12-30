@@ -168,14 +168,14 @@
             this.groupBox1.Controls.Add(this.comboTenNCC);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 198);
+            this.groupBox1.Location = new System.Drawing.Point(9, 199);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Size = new System.Drawing.Size(393, 309);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Nhà cung cấp";
+            this.groupBox1.Text = "Thông tin nhà cung cấp";
             // 
             // labelMaNhaCungCap
             // 
@@ -203,7 +203,7 @@
             this.groupBox2.Controls.Add(this.lbMaNhanVien);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(3, 4);
+            this.groupBox2.Location = new System.Drawing.Point(9, 5);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -298,7 +298,7 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.tbTenThuoc);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(404, 9);
+            this.groupBox3.Location = new System.Drawing.Point(410, 10);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -604,7 +604,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmNhapThuoc";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Size = new System.Drawing.Size(870, 511);
+            this.Size = new System.Drawing.Size(877, 518);
             this.Load += new System.EventHandler(this.frmNhapThuoc_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -82,14 +82,13 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.groupControl2);
             this.groupBox1.Controls.Add(this.groupControl1);
-            this.groupBox1.Location = new System.Drawing.Point(-3, -1);
+            this.groupBox1.Location = new System.Drawing.Point(9, 7);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(878, 512);
+            this.groupBox1.Size = new System.Drawing.Size(910, 512);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cập nhật thuốc";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
@@ -97,7 +96,7 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.simpleButton4);
             this.groupBox2.Controls.Add(this.simpleButton3);
-            this.groupBox2.Location = new System.Drawing.Point(464, 196);
+            this.groupBox2.Location = new System.Drawing.Point(484, 197);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -208,7 +207,7 @@
             this.groupControl2.CaptionImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("groupControl2.CaptionImageOptions.Image")));
             this.groupControl2.Controls.Add(this.btnTimKiem);
             this.groupControl2.Controls.Add(this.textBoxTimKiem);
-            this.groupControl2.Location = new System.Drawing.Point(464, 25);
+            this.groupControl2.Location = new System.Drawing.Point(495, 26);
             this.groupControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.Size = new System.Drawing.Size(386, 155);
@@ -281,7 +280,7 @@
             this.groupControl1.Location = new System.Drawing.Point(14, 25);
             this.groupControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(443, 487);
+            this.groupControl1.Size = new System.Drawing.Size(455, 487);
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Thông tin";
             // 
@@ -513,7 +512,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmDanhSach";
-            this.Size = new System.Drawing.Size(870, 511);
+            this.Size = new System.Drawing.Size(942, 537);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

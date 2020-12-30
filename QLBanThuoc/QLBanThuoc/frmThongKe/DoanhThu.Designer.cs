@@ -69,14 +69,13 @@
             this.groupBox1.Controls.Add(this.cmbThang);
             this.groupBox1.Controls.Add(this.cmbNam);
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9.75F);
-            this.groupBox1.Location = new System.Drawing.Point(4, 12);
+            this.groupBox1.Location = new System.Drawing.Point(9, 11);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1000, 513);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Thống kê Doanh thu";
             // 
             // groupBox2
             // 
@@ -253,7 +252,7 @@
             this.btnExcel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExcel.ImageOptions.Image")));
             this.btnExcel.Location = new System.Drawing.Point(700, 7);
             this.btnExcel.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExcel.Name = "simpleButton2";
+            this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(40, 34);
             this.btnExcel.TabIndex = 8;
             this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
@@ -263,7 +262,7 @@
             this.btnThongKe.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThongKe.ImageOptions.Image")));
             this.btnThongKe.Location = new System.Drawing.Point(520, 7);
             this.btnThongKe.Margin = new System.Windows.Forms.Padding(4);
-            this.btnThongKe.Name = "simpleButton1";
+            this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(139, 34);
             this.btnThongKe.TabIndex = 7;
             this.btnThongKe.Text = "Thống kê";
@@ -351,7 +350,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DoanhThu";
-            this.Size = new System.Drawing.Size(1005, 527);
+            this.Size = new System.Drawing.Size(1016, 534);
             this.Load += new System.EventHandler(this.DoanhThu_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

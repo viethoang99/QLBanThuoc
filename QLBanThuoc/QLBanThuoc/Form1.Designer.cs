@@ -60,6 +60,7 @@
             this.barButtonItem28 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -76,7 +77,6 @@
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.panel = new System.Windows.Forms.Panel();
-            this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.SuspendLayout();
@@ -126,7 +126,7 @@
             this.ribbonPage3,
             this.ribbonPage4,
             this.ribbonPage5});
-            this.ribbonControl1.Size = new System.Drawing.Size(884, 193);
+            this.ribbonControl1.Size = new System.Drawing.Size(1487, 193);
             // 
             // barLinkContainerItem1
             // 
@@ -153,7 +153,7 @@
             // 
             this.Nhập.ActAsDropDown = true;
             this.Nhập.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.Nhập.Caption = "Nhập thuốc";
+            this.Nhập.Caption = "NHẬP THUỐC";
             this.Nhập.Id = 3;
             this.Nhập.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Nhập.ImageOptions.SvgImage")));
             this.Nhập.Name = "Nhập";
@@ -161,7 +161,7 @@
             // 
             // barButtonItem2
             // 
-            this.barButtonItem2.Caption = "Bán thuốc";
+            this.barButtonItem2.Caption = "BÁN THUỐC";
             this.barButtonItem2.Id = 4;
             this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
             this.barButtonItem2.Name = "barButtonItem2";
@@ -209,7 +209,7 @@
             // 
             // barButtonItem9
             // 
-            this.barButtonItem9.Caption = "Đôi mật khẩu tài khoản";
+            this.barButtonItem9.Caption = "ĐỔI MẬT KHẨU TÀI KHOẢN";
             this.barButtonItem9.Id = 26;
             this.barButtonItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
             this.barButtonItem9.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.LargeImage")));
@@ -218,7 +218,7 @@
             // 
             // barButtonItem11
             // 
-            this.barButtonItem11.Caption = "Đăng xuất";
+            this.barButtonItem11.Caption = "ĐĂNG XUẤT";
             this.barButtonItem11.Id = 28;
             this.barButtonItem11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.ImageOptions.Image")));
             this.barButtonItem11.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem11.ImageOptions.LargeImage")));
@@ -227,7 +227,7 @@
             // 
             // barButtonItem13
             // 
-            this.barButtonItem13.Caption = "Tên thuốc";
+            this.barButtonItem13.Caption = "TÌM KIẾM THEO TÊN THUỐC";
             this.barButtonItem13.Id = 30;
             this.barButtonItem13.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.ImageOptions.Image")));
             this.barButtonItem13.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.ImageOptions.LargeImage")));
@@ -273,7 +273,7 @@
             // 
             // barButtonItem20
             // 
-            this.barButtonItem20.Caption = "Doanh thu ";
+            this.barButtonItem20.Caption = "THỐNG KÊ DOANH THU";
             this.barButtonItem20.Id = 37;
             this.barButtonItem20.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.Image")));
             this.barButtonItem20.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem20.ImageOptions.LargeImage")));
@@ -287,7 +287,6 @@
             this.barButtonItem21.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem21.ImageOptions.Image")));
             this.barButtonItem21.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem21.ImageOptions.LargeImage")));
             this.barButtonItem21.Name = "barButtonItem21";
-            this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem21_ItemClick);
             // 
             // barButtonItem22
             // 
@@ -296,11 +295,10 @@
             this.barButtonItem22.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem22.ImageOptions.Image")));
             this.barButtonItem22.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem22.ImageOptions.LargeImage")));
             this.barButtonItem22.Name = "barButtonItem22";
-            this.barButtonItem22.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem22_ItemClick);
             // 
             // barButtonItem23
             // 
-            this.barButtonItem23.Caption = "Thuốc Nhập";
+            this.barButtonItem23.Caption = "DANH SÁCH THUỐC NHẬP";
             this.barButtonItem23.Id = 40;
             this.barButtonItem23.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem23.ImageOptions.Image")));
             this.barButtonItem23.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem23.ImageOptions.LargeImage")));
@@ -309,7 +307,7 @@
             // 
             // barButtonItem24
             // 
-            this.barButtonItem24.Caption = "Thuốc bán ra";
+            this.barButtonItem24.Caption = "DANH SÁCH THUỐC BÁN";
             this.barButtonItem24.Id = 41;
             this.barButtonItem24.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem24.ImageOptions.Image")));
             this.barButtonItem24.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem24.ImageOptions.LargeImage")));
@@ -318,7 +316,7 @@
             // 
             // barButtonItem25
             // 
-            this.barButtonItem25.Caption = "Số lượng tồn kho";
+            this.barButtonItem25.Caption = "DANH SÁCH THUỐC TỒN";
             this.barButtonItem25.Id = 42;
             this.barButtonItem25.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem25.ImageOptions.Image")));
             this.barButtonItem25.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem25.ImageOptions.LargeImage")));
@@ -327,7 +325,7 @@
             // 
             // barButtonItem26
             // 
-            this.barButtonItem26.Caption = "Thuốc sắp hết hạn";
+            this.barButtonItem26.Caption = "DANH SÁCH THUỐC SẮP HẾT HẠN";
             this.barButtonItem26.Id = 43;
             this.barButtonItem26.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem26.ImageOptions.Image")));
             this.barButtonItem26.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem26.ImageOptions.LargeImage")));
@@ -342,7 +340,7 @@
             // 
             // barButtonItem28
             // 
-            this.barButtonItem28.Caption = "Danh sách thuốc";
+            this.barButtonItem28.Caption = "DANH SÁCH THUỐC";
             this.barButtonItem28.Id = 45;
             this.barButtonItem28.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem28.ImageOptions.Image")));
             this.barButtonItem28.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem28.ImageOptions.LargeImage")));
@@ -351,7 +349,7 @@
             // 
             // barButtonItem3
             // 
-            this.barButtonItem3.Caption = "Nhà Cung Cấp";
+            this.barButtonItem3.Caption = "QUẢN LÝ THÔNG TIN NHÀ CUNG CẤP";
             this.barButtonItem3.Id = 46;
             this.barButtonItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.Image")));
             this.barButtonItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.ImageOptions.LargeImage")));
@@ -360,18 +358,26 @@
             // 
             // barButtonItem10
             // 
-            this.barButtonItem10.Caption = "Thuốc đã đặt hàng";
+            this.barButtonItem10.Caption = "DANH SÁCH THUỐC ĐÃ ĐẶT HÀNG";
             this.barButtonItem10.Id = 48;
             this.barButtonItem10.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem10.ImageOptions.SvgImage")));
             this.barButtonItem10.Name = "barButtonItem10";
             this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            // 
+            // barButtonItem12
+            // 
+            this.barButtonItem12.Caption = "THỐNG KÊ ĐƠN THUỐC ĐÃ HOÀN THÀNH";
+            this.barButtonItem12.Id = 49;
+            this.barButtonItem12.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem12.ImageOptions.SvgImage")));
+            this.barButtonItem12.Name = "barButtonItem12";
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Quản lý thuốc";
+            this.ribbonPage1.Text = "QUẢN LÝ THUỐC";
             // 
             // ribbonPageGroup1
             // 
@@ -379,14 +385,13 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem28);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Quản lý";
             // 
             // ribbonPage6
             // 
             this.ribbonPage6.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup8});
             this.ribbonPage6.Name = "ribbonPage6";
-            this.ribbonPage6.Text = "Quản lý nhà cung cấp";
+            this.ribbonPage6.Text = "QUẢN LÝ NHÀ CUNG CẤP";
             // 
             // ribbonPageGroup8
             // 
@@ -398,7 +403,7 @@
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3});
             this.ribbonPage3.Name = "ribbonPage3";
-            this.ribbonPage3.Text = "Tìm kiếm";
+            this.ribbonPage3.Text = "TÌM KIẾM";
             // 
             // ribbonPageGroup3
             // 
@@ -413,7 +418,7 @@
             this.ribbonPageGroup7,
             this.ribbonPageGroup6});
             this.ribbonPage4.Name = "ribbonPage4";
-            this.ribbonPage4.Text = "Báo cáo - Thống kê";
+            this.ribbonPage4.Text = "BÁO CÁO - THỐNG KÊ";
             // 
             // ribbonPageGroup4
             // 
@@ -422,28 +427,25 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem25);
             this.ribbonPageGroup4.ItemLinks.Add(this.barButtonItem26);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "Báo cáo";
             // 
             // ribbonPageGroup7
             // 
             this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem20);
             this.ribbonPageGroup7.ItemLinks.Add(this.barButtonItem12);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            this.ribbonPageGroup7.Text = "Thống kê";
             // 
             // ribbonPageGroup6
             // 
             this.ribbonPageGroup6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ribbonPageGroup6.ImageOptions.Image")));
             this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem10);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Thuốc đã đặt hàng";
             // 
             // ribbonPage5
             // 
             this.ribbonPage5.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup5});
             this.ribbonPage5.Name = "ribbonPage5";
-            this.ribbonPage5.Text = "Quản lý người dùng";
+            this.ribbonPage5.Text = "QUẢN LÝ TÀI KHOẢN NGƯỜI DÙNG";
             // 
             // ribbonPageGroup5
             // 
@@ -470,32 +472,24 @@
             // 
             // panel
             // 
-            this.panel.Location = new System.Drawing.Point(3, 177);
+            this.panel.Location = new System.Drawing.Point(3, 201);
             this.panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(880, 527);
+            this.panel.Size = new System.Drawing.Size(1472, 529);
             this.panel.TabIndex = 1;
-            // 
-            // barButtonItem12
-            // 
-            this.barButtonItem12.Caption = "Đơn thuốc đã bán";
-            this.barButtonItem12.Id = 49;
-            this.barButtonItem12.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem12.ImageOptions.SvgImage")));
-            this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem12_ItemClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 705);
+            this.ClientSize = new System.Drawing.Size(1487, 705);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ribbonControl1);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("Form1.IconOptions.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Ribbon = this.ribbonControl1;
-            this.Text = "PHẦN MỀM QUẢN LÝ BÁN THUỐC";
+            this.Text = "PHẦN MỀM QUẢN LÝ NHÀ THUỐC";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
