@@ -21,6 +21,7 @@ namespace QLBanThuoc
             this.Location = new Point(100, 100);
 
             this.WindowState = FormWindowState.Maximized;
+            this.Size = new System.Drawing.Size(10000, 1000);
         }
 
         private void Form1_Load(object sender, EventArgs e)

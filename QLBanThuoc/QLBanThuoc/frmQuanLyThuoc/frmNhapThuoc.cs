@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 namespace QLBanThuoc.frmQuanLyNguoiDung
 {
-    public partial class frmNhapThuoc : DevExpress.XtraEditors.XtraUserControl
+    public partial class frmNhapThuoc : System.Windows.Forms.UserControl
     {
         public frmNhapThuoc()
         {

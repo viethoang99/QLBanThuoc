@@ -17,13 +17,15 @@ namespace QLBanThuoc.frmNhaCungCap
         public NhaCungCap()
         {
             InitializeComponent();
+
+            this.AutoSize = true;
         }
 
         frmConnection connection = new frmConnection();
         QL_SR.QLBanThuocServiceSoapClient client = new QL_SR.QLBanThuocServiceSoapClient();
         private void SimpleButton1_Click(object sender, EventArgs e)
         {
-            DataTable DSTK = client.TimKiemNCC(textBox6.Text);
+            DataTable DSTK = client.TimKiemNCC(txbTimKiem.Text);
             dataGridView1.DataSource = DSTK;
         }
 
@@ -157,11 +159,9 @@ namespace QLBanThuoc.frmNhaCungCap
             textBoxMaNhaCungCap.ReadOnly = false;
         }
 
-
-
-
-
-
-
+        private void textBox6_Click(object sender, EventArgs e)
+        {
+            txbTimKiem.Text = "";
+        }
     }
 }

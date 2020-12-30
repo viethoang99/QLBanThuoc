@@ -126,7 +126,7 @@
             this.ribbonPage3,
             this.ribbonPage4,
             this.ribbonPage5});
-            this.ribbonControl1.Size = new System.Drawing.Size(1487, 193);
+            this.ribbonControl1.Size = new System.Drawing.Size(1799, 193);
             // 
             // barLinkContainerItem1
             // 
@@ -475,14 +475,14 @@
             this.panel.Location = new System.Drawing.Point(3, 201);
             this.panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1472, 529);
+            this.panel.Size = new System.Drawing.Size(1796, 854);
             this.panel.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1487, 705);
+            this.ClientSize = new System.Drawing.Size(1799, 1000);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.ribbonControl1);
             this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("Form1.IconOptions.Icon")));

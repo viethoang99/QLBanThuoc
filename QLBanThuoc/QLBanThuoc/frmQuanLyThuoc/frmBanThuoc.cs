@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 
 namespace QLBanThuoc.frmQuanLyThuoc
 {
-    public partial class frmBanThuoc : DevExpress.XtraEditors.XtraUserControl
+    public partial class frmBanThuoc : System.Windows.Forms.UserControl
     {
         public frmBanThuoc()
         {
@@ -230,6 +230,11 @@ namespace QLBanThuoc.frmQuanLyThuoc
             dataGridViewGioHang.Rows.Add(tbMaThuoc.Text, comboBoxTenThuoc.SelectedItem.ToString(),
                 tbSoLuongMua.Text, tbDonGia.Text, tien);
             TinhTongTien();
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
