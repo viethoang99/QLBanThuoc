@@ -138,6 +138,19 @@ namespace QLBanThuoc.frmQuanLyThuoc
             {
                 dt = client.TimKiemThuoc(textBoxTimKiem.Text);
                 dataGridView1.DataSource = dt;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                    if (Convert.ToInt32(row.Cells[5].Value) <= 100)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                    else if (Convert.ToInt32(row.Cells[5].Value) > 100 && Convert.ToInt32(row.Cells[5].Value) <= 1000)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
+                    }
             }
             else
             {
