@@ -28,6 +28,20 @@ namespace QLBanThuoc.frmThongKe
             ThuocOnlineGrid.DataSource = ds;
             labelTien.Text = "";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (madon != null)
+            {
+                client.XoaDon(madon);
+                MessageBox.Show("Hủy đơn hàng thành công!");
+            }
+            else
+            {
+                MessageBox.Show("Không thể thực hiện thao tác này!");
+            }                
+        }
+
         public string MaHoaMD5(string str)
         {
             MD5 mh = MD5.Create();

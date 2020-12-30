@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ThuocOnlineGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -73,12 +74,14 @@
             // 
             // btnXacNhan
             // 
-            this.btnXacNhan.Location = new System.Drawing.Point(714, 461);
+            this.btnXacNhan.BackColor = System.Drawing.Color.Yellow;
+            this.btnXacNhan.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXacNhan.Location = new System.Drawing.Point(688, 461);
             this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(142, 47);
+            this.btnXacNhan.Size = new System.Drawing.Size(102, 47);
             this.btnXacNhan.TabIndex = 3;
-            this.btnXacNhan.Text = "Xác nhận thuốc";
-            this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Text = "Xác nhận";
+            this.btnXacNhan.UseVisualStyleBackColor = false;
             this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // labelTien
@@ -121,10 +124,23 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "CHI TIẾT HÓA ĐƠN";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Red;
+            this.button1.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(813, 461);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(64, 47);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Hủy";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ThuocOnline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -153,5 +169,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
