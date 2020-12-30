@@ -289,6 +289,27 @@ namespace QLBanThuoc.QL_SR {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDatHangChiTiet", ReplyAction="*")]
         System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDatHangChiTietAsync(string id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDonThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable LayThuocDonThuoc();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LayThuocDonThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDonThuocAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuocDonThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TimKiemThuocDonThuoc(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemThuocDonThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuocDonThuocAsync(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemChiTietDonThuoc", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Data.DataTable TimKiemChiTietDonThuoc(string str);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TimKiemChiTietDonThuoc", ReplyAction="*")]
+        System.Threading.Tasks.Task<System.Data.DataTable> TimKiemChiTietDonThuocAsync(string str);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/XoaDon", ReplyAction="*")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         void XoaDon(string id);
@@ -417,7 +438,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -617,7 +638,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -747,7 +768,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -793,7 +814,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -867,7 +888,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -927,7 +948,7 @@ namespace QLBanThuoc.QL_SR {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3761.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -1337,6 +1358,30 @@ namespace QLBanThuoc.QL_SR {
         
         public System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDatHangChiTietAsync(string id) {
             return base.Channel.LayThuocDatHangChiTietAsync(id);
+        }
+        
+        public System.Data.DataTable LayThuocDonThuoc() {
+            return base.Channel.LayThuocDonThuoc();
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> LayThuocDonThuocAsync() {
+            return base.Channel.LayThuocDonThuocAsync();
+        }
+        
+        public System.Data.DataTable TimKiemThuocDonThuoc(string str) {
+            return base.Channel.TimKiemThuocDonThuoc(str);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TimKiemThuocDonThuocAsync(string str) {
+            return base.Channel.TimKiemThuocDonThuocAsync(str);
+        }
+        
+        public System.Data.DataTable TimKiemChiTietDonThuoc(string str) {
+            return base.Channel.TimKiemChiTietDonThuoc(str);
+        }
+        
+        public System.Threading.Tasks.Task<System.Data.DataTable> TimKiemChiTietDonThuocAsync(string str) {
+            return base.Channel.TimKiemChiTietDonThuocAsync(str);
         }
         
         public void XoaDon(string id) {

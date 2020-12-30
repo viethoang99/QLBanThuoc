@@ -162,6 +162,12 @@
     <Compile Include="frmThongKe\DoanhThu.Designer.cs">
       <DependentUpon>DoanhThu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmThongKe\DonThuocDaBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="frmThongKe\DonThuocDaBan.Designer.cs">
+      <DependentUpon>DonThuocDaBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmThongKe\ThuocOnline.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -217,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongKe\DoanhThu.resx">
       <DependentUpon>DoanhThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmThongKe\DonThuocDaBan.resx">
+      <DependentUpon>DonThuocDaBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmThongKe\ThuocOnline.resx">
       <DependentUpon>ThuocOnline.cs</DependentUpon>

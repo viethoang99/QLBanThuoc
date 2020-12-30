@@ -20,11 +20,11 @@ namespace WSTest
     static class Connection
     {
         //ConnectionString - Viet
-        //static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        //static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        static string ConnectionString1 = @"Data Source=(local)\SQLEXPRESS;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         //ConnectionString - Tung
-        static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
-        static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString = @"Data Source=WIN7PROX64;Initial Catalog=QLBanThuoc; Integrated Security=True;Connect Timeout=200";
+        //static string ConnectionString1 = @"Data Source=WIN7PROX64;Initial Catalog=CNWeb_Pharmacy; Integrated Security=True;Connect Timeout=200";
         public static SqlConnection connection = new SqlConnection(ConnectionString);
         public static SqlConnection connection1 = new SqlConnection(ConnectionString1);
         
@@ -692,6 +692,41 @@ namespace WSTest
             DataTable result = new DataTable("DS");
             SqlCommand sql = new SqlCommand("SELECT * FROM CHITIETHOADON WHERE MaHoaDon = @id", Connection.connection1);
             sql.Parameters.AddWithValue("@id", id);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+
+        [WebMethod]
+        public DataTable LayThuocDonThuoc()
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand sql = new SqlCommand("SELECT MaPhieuXuat 'Mã hóa đơn',NgayXuat 'Ngày xuất',TenKhachHang'Tên khách hàng',TenNhanVien 'Tên nhân viên',Tong 'Tổng' FROM PHIEUXUAT,KHACHHANG,NHANVIEN WHERE PHIEUXUAT.MaKhachHang=KHACHHANG.MaKhachHang AND NHANVIEN.MaNhanVien = PHIEUXUAT.MaNhanVien", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+        [WebMethod]
+        public DataTable TimKiemThuocDonThuoc(string str)
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand sql = new SqlCommand("SELECT MaPhieuXuat 'Mã hóa đơn',NgayXuat 'Ngày xuất',TenKhachHang'Tên khách hàng',TenNhanVien 'Tên nhân viên',Tong 'Tổng' FROM PHIEUXUAT,KHACHHANG,NHANVIEN WHERE PHIEUXUAT.MaKhachHang=KHACHHANG.MaKhachHang AND NHANVIEN.MaNhanVien = PHIEUXUAT.MaNhanVien AND TenKhachHang LIKE N'%"+str+"%'", Connection.connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(sql);
+            adapter.Fill(result);
+            adapter.Dispose();
+            //Kết thúc lấy dữ liệu
+            return result;
+        }
+
+        [WebMethod]
+        public DataTable TimKiemChiTietDonThuoc(string str)
+        {
+            DataTable result = new DataTable("DS");
+            SqlCommand sql = new SqlCommand("SELECT TenThuoc,SoLuong,CHITIETPHIEUXUAT.DonGia FROM THUOC,CHITIETPHIEUXUAT WHERE CHITIETPHIEUXUAT.MaThuoc=THUOC.MaThuoc AND MaPhieuXuat LIKE '%" + str + "%'", Connection.connection);
             SqlDataAdapter adapter = new SqlDataAdapter(sql);
             adapter.Fill(result);
             adapter.Dispose();

@@ -171,5 +171,12 @@ namespace QLBanThuoc
             ThuocOnline ncc = new ThuocOnline();
             panel.Controls.Add(ncc);
         }
+
+        private void barButtonItem12_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            panel.Controls.Clear();
+            DonThuocDaBan dt = new DonThuocDaBan();
+            panel.Controls.Add(dt);
+        }
     }
 }

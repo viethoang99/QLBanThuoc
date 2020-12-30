@@ -1480,3 +1480,4 @@ C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuo
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.Data.Đổi_mật_khẩu.resources
 C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmThongKe.ThuocOnline.resources
 D:\Study\College Stuff\Nam4\Kỳ 1\CN lập trình tích hợp\BTL\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmThongKe.ThuocOnline.resources
+C:\Users\Hoang Viet\Desktop\QLBanThuoc\QLBanThuoc\QLBanThuoc\obj\Debug\QLBanThuoc.frmThongKe.DonThuocDaBan.resources

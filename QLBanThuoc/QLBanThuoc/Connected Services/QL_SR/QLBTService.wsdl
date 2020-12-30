@@ -758,6 +758,65 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="LayThuocDonThuoc">
+        <s:complexType />
+      </s:element>
+      <s:element name="LayThuocDonThuocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LayThuocDonThuocResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimKiemThuocDonThuoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="str" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimKiemThuocDonThuocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TimKiemThuocDonThuocResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimKiemChiTietDonThuoc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="str" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TimKiemChiTietDonThuocResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TimKiemChiTietDonThuocResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="XoaDon">
         <s:complexType>
           <s:sequence>
@@ -1346,6 +1405,24 @@
   <wsdl:message name="LayThuocDatHangChiTietSoapOut">
     <wsdl:part name="parameters" element="tns:LayThuocDatHangChiTietResponse" />
   </wsdl:message>
+  <wsdl:message name="LayThuocDonThuocSoapIn">
+    <wsdl:part name="parameters" element="tns:LayThuocDonThuoc" />
+  </wsdl:message>
+  <wsdl:message name="LayThuocDonThuocSoapOut">
+    <wsdl:part name="parameters" element="tns:LayThuocDonThuocResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimKiemThuocDonThuocSoapIn">
+    <wsdl:part name="parameters" element="tns:TimKiemThuocDonThuoc" />
+  </wsdl:message>
+  <wsdl:message name="TimKiemThuocDonThuocSoapOut">
+    <wsdl:part name="parameters" element="tns:TimKiemThuocDonThuocResponse" />
+  </wsdl:message>
+  <wsdl:message name="TimKiemChiTietDonThuocSoapIn">
+    <wsdl:part name="parameters" element="tns:TimKiemChiTietDonThuoc" />
+  </wsdl:message>
+  <wsdl:message name="TimKiemChiTietDonThuocSoapOut">
+    <wsdl:part name="parameters" element="tns:TimKiemChiTietDonThuocResponse" />
+  </wsdl:message>
   <wsdl:message name="XoaDonSoapIn">
     <wsdl:part name="parameters" element="tns:XoaDon" />
   </wsdl:message>
@@ -1610,6 +1687,18 @@
     <wsdl:operation name="LayThuocDatHangChiTiet">
       <wsdl:input message="tns:LayThuocDatHangChiTietSoapIn" />
       <wsdl:output message="tns:LayThuocDatHangChiTietSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LayThuocDonThuoc">
+      <wsdl:input message="tns:LayThuocDonThuocSoapIn" />
+      <wsdl:output message="tns:LayThuocDonThuocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemThuocDonThuoc">
+      <wsdl:input message="tns:TimKiemThuocDonThuocSoapIn" />
+      <wsdl:output message="tns:TimKiemThuocDonThuocSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemChiTietDonThuoc">
+      <wsdl:input message="tns:TimKiemChiTietDonThuocSoapIn" />
+      <wsdl:output message="tns:TimKiemChiTietDonThuocSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="XoaDon">
       <wsdl:input message="tns:XoaDonSoapIn" />
@@ -2030,6 +2119,33 @@
     </wsdl:operation>
     <wsdl:operation name="LayThuocDatHangChiTiet">
       <soap:operation soapAction="http://tempuri.org/LayThuocDatHangChiTiet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayThuocDonThuoc">
+      <soap:operation soapAction="http://tempuri.org/LayThuocDonThuoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemThuocDonThuoc">
+      <soap:operation soapAction="http://tempuri.org/TimKiemThuocDonThuoc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemChiTietDonThuoc">
+      <soap:operation soapAction="http://tempuri.org/TimKiemChiTietDonThuoc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2546,6 +2662,33 @@
     </wsdl:operation>
     <wsdl:operation name="LayThuocDatHangChiTiet">
       <soap12:operation soapAction="http://tempuri.org/LayThuocDatHangChiTiet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LayThuocDonThuoc">
+      <soap12:operation soapAction="http://tempuri.org/LayThuocDonThuoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemThuocDonThuoc">
+      <soap12:operation soapAction="http://tempuri.org/TimKiemThuocDonThuoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TimKiemChiTietDonThuoc">
+      <soap12:operation soapAction="http://tempuri.org/TimKiemChiTietDonThuoc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
